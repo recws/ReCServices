@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://impl.sei.rest.services.client.maya.omnitracs.mx/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://sei.rest.services.client.maya.omnitracs.mx/" name="VehicleActivityWebServiceService" targetNamespace="http://impl.sei.rest.services.client.maya.omnitracs.mx/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://sei.rest.services.client.maya.omnitracs.mx/" location="https://command.omnitracs.com/customer-services/VehicleActivityService?wsdl=IVehicleActivityWebService.wsdl" />
+  <wsdl:types />
+  <wsdl:binding name="VehicleActivityWebServiceServiceSoapBinding" type="ns1:IVehicleActivityWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getGeofenceVisits">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getGeofenceVisits">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getGeofenceVisitsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPositions">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getPositions">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getPositionsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAlerts">
+      <soap:operation soapAction="" style="document" />
+      <wsdl:input name="getAlerts">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAlertsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VehicleActivityWebServiceService">
+    <wsdl:port name="VehicleActivityWebServicePort" binding="tns:VehicleActivityWebServiceServiceSoapBinding">
+      <soap:address location="https://command.omnitracs.com/customer-services/VehicleActivityService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

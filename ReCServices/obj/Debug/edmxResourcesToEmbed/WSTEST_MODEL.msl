@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WSTEST_EntitiesStoreContainer" CdmEntityContainer="TEST_WS">
+    <FunctionImportMapping FunctionImportName="WS_GPS_InsertaSimple" FunctionName="WSTEST_Entities.Store.WS_GPS_InsertaSimple">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WSTEST_Entities.WS_GPS_InsertaSimple_Result">
+          <ScalarProperty Name="Indicador" ColumnName="Indicador" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="IdRegistroAfectado" ColumnName="IdRegistroAfectado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WS_GPS_SincronizaGPS" FunctionName="WSTEST_Entities.Store.WS_GPS_SincronizaGPS" />
+    <FunctionImportMapping FunctionImportName="WS_GPS_SincronizaUsuario" FunctionName="WSTEST_Entities.Store.WS_GPS_SincronizaUsuario" />
+    <FunctionImportMapping FunctionImportName="WS_GPS_ValidaUsuario" FunctionName="WSTEST_Entities.Store.WS_GPS_ValidaUsuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WSTEST_Entities.WS_GPS_ValidaUsuario_Result">
+          <ScalarProperty Name="Indicador" ColumnName="Indicador" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="IdRegistroAfectado" ColumnName="IdRegistroAfectado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

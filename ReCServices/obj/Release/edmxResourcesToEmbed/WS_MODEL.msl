@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WS_ModelStoreContainer" CdmEntityContainer="WS_CONTEXT">
+    <FunctionImportMapping FunctionImportName="WS_GPS_ConsultaHistoricoUTC" FunctionName="WS_Model.Store.WS_GPS_ConsultaHistoricoUTC">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WS_Model.WS_GPS_ConsultaHistoricoUTC_Result">
+          <ScalarProperty Name="CodigoEvento" ColumnName="CodigoEvento" />
+          <ScalarProperty Name="NombreEvento" ColumnName="NombreEvento" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="GPSValido" ColumnName="GPSValido" />
+          <ScalarProperty Name="Velocidad" ColumnName="Velocidad" />
+          <ScalarProperty Name="NivelBateria" ColumnName="NivelBateria" />
+          <ScalarProperty Name="KMOdometro" ColumnName="KMOdometro" />
+          <ScalarProperty Name="FechaHoraGeneracion" ColumnName="FechaHoraGeneracion" />
+          <ScalarProperty Name="FechaHoraRecepcion" ColumnName="FechaHoraRecepcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WS_GPS_ConsultaIncidenciasAutomaticas" FunctionName="WS_Model.Store.WS_GPS_ConsultaIncidenciasAutomaticas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WS_Model.WS_GPS_ConsultaIncidenciasAutomaticas_Result">
+          <ScalarProperty Name="IdEventoGPS" ColumnName="IdEventoGPS" />
+          <ScalarProperty Name="Incidencia" ColumnName="Incidencia" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Velocidad" ColumnName="Velocidad" />
+          <ScalarProperty Name="NivelBateria" ColumnName="NivelBateria" />
+          <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+          <ScalarProperty Name="CorreoEnviado" ColumnName="CorreoEnviado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WS_GPS_ConsultaUltimaPosicion" FunctionName="WS_Model.Store.WS_GPS_ConsultaUltimaPosicion">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WS_Model.WS_GPS_ConsultaUltimaPosicion_Result">
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="CodigoEvento" ColumnName="CodigoEvento" />
+          <ScalarProperty Name="NombreEvento" ColumnName="NombreEvento" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+          <ScalarProperty Name="GPSValido" ColumnName="GPSValido" />
+          <ScalarProperty Name="Velocidad" ColumnName="Velocidad" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="NivelBateria" ColumnName="NivelBateria" />
+          <ScalarProperty Name="KMOdometro" ColumnName="KMOdometro" />
+          <ScalarProperty Name="FechaHoraGeneracion" ColumnName="FechaHoraGeneracion" />
+          <ScalarProperty Name="FechaHoraRecepcion" ColumnName="FechaHoraRecepcion" />
+          <ScalarProperty Name="FechaHoraRecibidoWS" ColumnName="FechaHoraRecibidoWS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WS_GPS_ConsultaxUsuarioUTC" FunctionName="WS_Model.Store.WS_GPS_ConsultaxUsuarioUTC">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WS_Model.WS_GPS_ConsultaxUsuarioUTC_Result">
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="CodigoEvento" ColumnName="CodigoEvento" />
+          <ScalarProperty Name="NombreEvento" ColumnName="NombreEvento" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="GPSValido" ColumnName="GPSValido" />
+          <ScalarProperty Name="Velocidad" ColumnName="Velocidad" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="NivelBateria" ColumnName="NivelBateria" />
+          <ScalarProperty Name="KMOdometro" ColumnName="KMOdometro" />
+          <ScalarProperty Name="FechaHoraGeneracion" ColumnName="FechaHoraGeneracion" />
+          <ScalarProperty Name="FechaHoraRecepcion" ColumnName="FechaHoraRecepcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WS_GPS_InsertaSimple" FunctionName="WS_Model.Store.WS_GPS_InsertaSimple">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WS_Model.WS_GPS_InsertaSimple_Result">
+          <ScalarProperty Name="Indicador" ColumnName="Indicador" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="IdRegistroAfectado" ColumnName="IdRegistroAfectado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WS_GPS_ListaGPSxProveedor" FunctionName="WS_Model.Store.WS_GPS_ListaGPSxProveedor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WS_Model.WS_GPS_ListaGPSxProveedor_Result">
+          <ScalarProperty Name="Economico" ColumnName="Economico" />
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WS_GPS_SincronizaGPS" FunctionName="WS_Model.Store.WS_GPS_SincronizaGPS" />
+    <FunctionImportMapping FunctionImportName="WS_GPS_SincronizaUsuario" FunctionName="WS_Model.Store.WS_GPS_SincronizaUsuario" />
+    <FunctionImportMapping FunctionImportName="WS_GPS_ValidaUsuario" FunctionName="WS_Model.Store.WS_GPS_ValidaUsuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WS_Model.WS_GPS_ValidaUsuario_Result">
+          <ScalarProperty Name="Indicador" ColumnName="Indicador" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="IdRegistroAfectado" ColumnName="IdRegistroAfectado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WS_GPS_ValidaUsuarioyPassword" FunctionName="WS_Model.Store.WS_GPS_ValidaUsuarioyPassword">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="WS_Model.WS_GPS_ValidaUsuarioyPassword_Result">
+          <ScalarProperty Name="Indicador" ColumnName="Indicador" />
+          <ScalarProperty Name="Mensaje" ColumnName="Mensaje" />
+          <ScalarProperty Name="IdRegistroAfectado" ColumnName="IdRegistroAfectado" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,1229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://astus.com/service/static/2010/11" xmlns:s1="http://astus.com/service/2010/11" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://astus.com/service/messaging/2010/11" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://astus.com/service/static/2010/11" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://astus.com/service/static/2010/11">
+      <s:import namespace="http://astus.com/service/2010/11" />
+      <s:import namespace="http://astus.com/service/messaging/2010/11" />
+      <s:element name="GetAccessibleCustomers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:AuthenticatedRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetAccessibleCustomerResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageResponseBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Customers" type="tns:ArrayOfCustomer" />
+              <s:element minOccurs="1" maxOccurs="1" name="CurrentlySelectedCustomerID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfCustomer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Customer" nillable="true" type="tns:Customer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Customer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Description" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAccessibleCustomersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAccessibleFleetOwnerResponse" type="tns:GetAccessibleCustomerResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:ChangeFleetOwnerRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ChangeCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerChangedResponse" type="tns:CustomerChangedResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CustomerChangedResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageResponseBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetCustomerOptions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:AuthenticatedRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerOptionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerOptionsResponse" type="tns:GetCustomerOptionsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetCustomerOptionsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageResponseBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CustomerOptions" type="tns:CustomerOptions" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CustomerOptions">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsAllowTransmitUsageData" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFleets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:AuthenticatedRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFleetsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFleetResponse" type="tns:GetFleetResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetFleetResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Fleets" nillable="true" type="tns:ArrayOfFleet" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfFleet">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Fleet" nillable="true" type="tns:Fleet" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Fleet">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Description" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVehicleGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:AuthenticatedRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehicleGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehicleGroupResponse" type="tns:GetVehicleGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetVehicleGroupResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="VehicleGroups" nillable="true" type="tns:ArrayOfVehicleGroup" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfVehicleGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VehicleGroup" nillable="true" type="tns:VehicleGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VehicleGroup">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Description" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentVehicleGroupID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FleetID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleIDs" type="tns:ArrayOfInt" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVehicles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:AuthenticatedRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVehiclesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehiclesResponse" type="tns:GetVehiclesResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetVehiclesResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Vehicles" nillable="true" type="tns:ArrayOfVehicle" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfVehicle">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Vehicle" nillable="true" type="tns:Vehicle" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Vehicle">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Description" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Model" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BrandName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PlateNumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Odometer" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="MotorTime" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="FuelTank" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NotificationConfig" nillable="true" type="tns:ArrayOfNotificationConfig" />
+          <s:element minOccurs="1" maxOccurs="1" name="Accessories" nillable="true" type="tns:ArrayOfAccessory" />
+          <s:element minOccurs="1" maxOccurs="1" name="UpdatedDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="VIN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TechnicalInformations" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Timezone" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceSerialNumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DevicePhoneNumber" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SIMCardProvider" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceFirmwareVersion" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceID" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfNotificationConfig">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NotificationConfig" nillable="true" type="tns:NotificationConfig" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NotificationConfig">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Description" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAccessory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Accessory" nillable="true" type="tns:Accessory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Accessory">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PeripherialDeviceType" nillable="true" type="s1:PeripherialDeviceType" />
+          <s:element minOccurs="0" maxOccurs="1" name="HighStateName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NeutralStateName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LowStateName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Description" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="AccessoryType" type="tns:AccessoryType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="AccessoryType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Digital" />
+          <s:enumeration value="Analog" />
+          <s:enumeration value="Pulse" />
+          <s:enumeration value="Text" />
+          <s:enumeration value="Choice" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="FindVehicles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:FindVehiclesRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindVehiclesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehiclesResponse" type="tns:GetVehiclesResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployeeGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:AuthenticatedRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployeeGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmployeeGroupsResponse" type="tns:GetEmployeeGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetEmployeeGroupResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EmployeeGroups" nillable="true" type="tns:ArrayOfEmployeeGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEmployeeGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EmployeeGroup" nillable="true" type="tns:EmployeeGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EmployeeGroup">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EmployeeGroupID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FleetID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeeGroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Enabled" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSystem" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEmployees">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:AuthenticatedRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEmployeesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEmployeesResponse" type="tns:GetEmployeesResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetEmployeesResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Employees" nillable="true" type="tns:ArrayOfEmployee" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfEmployee">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Employee" nillable="true" type="tns:Employee" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Employee">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FirstName" nillable="true" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MiddleName" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmployeeNumber" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLocationGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:AuthenticatedRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationGroupsResponse" type="tns:GetLocationGroupsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetLocationGroupsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="LocationGroups" nillable="true" type="tns:ArrayOfLocationGroup" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfLocationGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LocationGroup" nillable="true" type="tns:LocationGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LocationGroup">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Description" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocationType" nillable="true" type="tns:LocationType" />
+          <s:element minOccurs="1" maxOccurs="1" name="FleetID" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="LocationType">
+        <s:restriction base="s:string">
+          <s:enumeration value="HeadOffice" />
+          <s:enumeration value="BranchOffice" />
+          <s:enumeration value="Customer" />
+          <s:enumeration value="Supplier" />
+          <s:enumeration value="Other" />
+          <s:enumeration value="EmployeeHouse" />
+          <s:enumeration value="Garage" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetLocations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:AuthenticatedRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationsResponse" type="tns:GetLocationsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetLocationsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Locations" nillable="true" type="tns:ArrayOfLocation" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfLocation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Location" nillable="true" type="tns:Location" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Location">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Address" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PrimaryCity" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SecondaryCity" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SubDivision" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PostalCode" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Country" nillable="true" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocationGroupID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddLocationRequest" type="tns:AddLocationRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AddLocationRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:AuthenticatedRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Locations" type="tns:ArrayOfLocation" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="AddLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddLocationResponse" type="tns:AddLocationResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AddLocationResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:AuthenticatedRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IsValid" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="Results" type="tns:ArrayOfLocationResult" />
+              <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" nillable="true" type="s1:ErrorCode" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfLocationResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LocationResult" nillable="true" type="tns:LocationResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LocationResult">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:PersistResult">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ID" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DeleteLocation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteLocationRequest" type="tns:DeleteLocationRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DeleteLocationRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:AuthenticatedRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="LocationInformation" type="tns:ArrayOfDeleteLocation" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfDeleteLocation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DeleteLocation" nillable="true" type="tns:DeleteLocation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DeleteLocation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="LocationID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteLocationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:PersistResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNotificationGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:AuthenticatedRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNotificationGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNotificationGroupsResponse" type="tns:GetNotificationGroupsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetNotificationGroupsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="NotificationGroups" nillable="true" type="tns:ArrayOfNotificationGroup" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfNotificationGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NotificationGroup" nillable="true" type="tns:NotificationGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NotificationGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notifications" type="tns:ArrayOfNotification" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfNotification">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Notification" nillable="true" type="tns:Notification" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Notification">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Employee" type="tns:Employee" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTerritoryGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:AuthenticatedRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTerritoryGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTerritoryGroupsResponse" type="tns:GetTerritoryGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetTerritoryGroupResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TerritoryGroups" nillable="true" type="tns:ArrayOfTerritoryGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTerritoryGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TerritoryGroup" nillable="true" type="tns:TerritoryGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TerritoryGroup">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TerritoryGroupID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FleetID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerritoryGroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTerritories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:AuthenticatedRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTerritoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTerritoriesResponse" type="tns:GetTerritoryResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetTerritoryResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Territories" nillable="true" type="tns:ArrayOfTerritory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTerritory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Territory" nillable="true" type="tns:Territory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Territory">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TerritoryID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TerritoryGroupID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerritoryName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Color" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatitudeMaximal" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="LatitudeMinimal" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="LongitudeMaximal" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="LongitudeMinimal" nillable="true" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://astus.com/service/2010/11">
+      <s:element name="AuthenticatedRequest" nillable="true" type="s1:AuthenticatedRequest" />
+      <s:complexType name="AuthenticatedRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UnsafeToken" type="s1:Token" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MessageBase" abstract="true" />
+      <s:complexType name="MessageResponseBase" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" nillable="true" type="s1:ErrorCode" />
+              <s:element minOccurs="1" maxOccurs="1" name="ErrorType" type="s1:ParameterErrorType" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ErrorCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Parameter" />
+          <s:enumeration value="Converting" />
+          <s:enumeration value="Validating" />
+          <s:enumeration value="CRC" />
+          <s:enumeration value="NotFound" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ParameterErrorType">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Fleet" />
+          <s:enumeration value="Vehicle" />
+          <s:enumeration value="VehicleGroup" />
+          <s:enumeration value="Employee" />
+          <s:enumeration value="EmployeeGroup" />
+          <s:enumeration value="Location" />
+          <s:enumeration value="LocationGroup" />
+          <s:enumeration value="Customer" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="Token">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PeripherialDeviceType">
+        <s:restriction base="s:string">
+          <s:enumeration value="ThermoKing" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="PersistResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Index" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsValid" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" nillable="true" type="s1:ErrorCode" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PersistResponse" type="s1:PersistResultsResponse" />
+      <s:complexType name="PersistResultsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IsValid" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="Results" nillable="true" type="s1:ArrayOfPersistResult" />
+              <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" nillable="true" type="s1:ErrorCode" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfPersistResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PersistResult" nillable="true" type="s1:PersistResult" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://astus.com/service/messaging/2010/11">
+      <s:import namespace="http://astus.com/service/2010/11" />
+      <s:element name="ChangeFleetOwnerRequest" type="s2:ChangeCustomerRequest" />
+      <s:complexType name="ChangeCustomerRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:AuthenticatedRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="NewCustomerID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="FindVehiclesRequest" type="s2:FindVehiclesRequest" />
+      <s:complexType name="FindVehiclesRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:AuthenticatedRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="Informations" type="s2:InformationWrapper" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="InformationWrapper">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="VIN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DeviceID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LicensePlateNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAccessibleCustomersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAccessibleCustomers" />
+  </wsdl:message>
+  <wsdl:message name="GetAccessibleCustomersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAccessibleCustomersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ChangeCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:ChangeCustomer" />
+  </wsdl:message>
+  <wsdl:message name="ChangeCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:ChangeCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerOptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerOptions" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerOptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerOptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFleetsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFleets" />
+  </wsdl:message>
+  <wsdl:message name="GetFleetsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFleetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVehicleGroups" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVehicleGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVehiclesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVehicles" />
+  </wsdl:message>
+  <wsdl:message name="GetVehiclesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVehiclesResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindVehiclesSoapIn">
+    <wsdl:part name="parameters" element="tns:FindVehicles" />
+  </wsdl:message>
+  <wsdl:message name="FindVehiclesSoapOut">
+    <wsdl:part name="parameters" element="tns:FindVehiclesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmployeeGroup" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeeGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmployeeGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEmployees" />
+  </wsdl:message>
+  <wsdl:message name="GetEmployeesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEmployeesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocationGroups" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocations" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:AddLocation" />
+  </wsdl:message>
+  <wsdl:message name="AddLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:AddLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLocationSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteLocation" />
+  </wsdl:message>
+  <wsdl:message name="DeleteLocationSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNotificationGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNotificationGroups" />
+  </wsdl:message>
+  <wsdl:message name="GetNotificationGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNotificationGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTerritoryGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTerritoryGroups" />
+  </wsdl:message>
+  <wsdl:message name="GetTerritoryGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTerritoryGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTerritoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTerritories" />
+  </wsdl:message>
+  <wsdl:message name="GetTerritoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTerritoriesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="StaticContract">
+    <wsdl:operation name="GetAccessibleCustomers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permet d'obtenir la liste des clients // Get the customers list</wsdl:documentation>
+      <wsdl:input message="tns:GetAccessibleCustomersSoapIn" />
+      <wsdl:output message="tns:GetAccessibleCustomersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeCustomer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permet de changer de client // change customer</wsdl:documentation>
+      <wsdl:input message="tns:ChangeCustomerSoapIn" />
+      <wsdl:output message="tns:ChangeCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerOptions">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"> Permet d'obtenir les options de client // get customer options</wsdl:documentation>
+      <wsdl:input message="tns:GetCustomerOptionsSoapIn" />
+      <wsdl:output message="tns:GetCustomerOptionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFleets">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permet d'obtenir la liste des flottes // Get the fleet list</wsdl:documentation>
+      <wsdl:input message="tns:GetFleetsSoapIn" />
+      <wsdl:output message="tns:GetFleetsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleGroups">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permet d'obtenir la liste des groupes de véhicules // Get the vehciles group list</wsdl:documentation>
+      <wsdl:input message="tns:GetVehicleGroupsSoapIn" />
+      <wsdl:output message="tns:GetVehicleGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicles">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Liste des véhicules avec leurs configurations //Vehicle list with configuration</wsdl:documentation>
+      <wsdl:input message="tns:GetVehiclesSoapIn" />
+      <wsdl:output message="tns:GetVehiclesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindVehicles">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Trouve les véhicules à partir du VIN, DeviceID et numéro de plaque // Find the vehicles using DeviceID, VIN and license plate number</wsdl:documentation>
+      <wsdl:input message="tns:FindVehiclesSoapIn" />
+      <wsdl:output message="tns:FindVehiclesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeGroup">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Liste des groupes d'employées // Employee groups list</wsdl:documentation>
+      <wsdl:input message="tns:GetEmployeeGroupSoapIn" />
+      <wsdl:output message="tns:GetEmployeeGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployees">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Liste des employées // Employee list</wsdl:documentation>
+      <wsdl:input message="tns:GetEmployeesSoapIn" />
+      <wsdl:output message="tns:GetEmployeesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationGroups">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permet d'obtenir la liste des groupes d'endroits // Get the group Location list</wsdl:documentation>
+      <wsdl:input message="tns:GetLocationGroupsSoapIn" />
+      <wsdl:output message="tns:GetLocationGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocations">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Liste des endroits // Location list</wsdl:documentation>
+      <wsdl:input message="tns:GetLocationsSoapIn" />
+      <wsdl:output message="tns:GetLocationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddLocation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Ajoute un nouvel endroit / Add a new location</wsdl:documentation>
+      <wsdl:input message="tns:AddLocationSoapIn" />
+      <wsdl:output message="tns:AddLocationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLocation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Supprimer un endroit / Delete a location</wsdl:documentation>
+      <wsdl:input message="tns:DeleteLocationSoapIn" />
+      <wsdl:output message="tns:DeleteLocationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotificationGroups">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Liste des groupes de notifications // Notification groups list</wsdl:documentation>
+      <wsdl:input message="tns:GetNotificationGroupsSoapIn" />
+      <wsdl:output message="tns:GetNotificationGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTerritoryGroups">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Liste des groupes de territoire // Territory groups list</wsdl:documentation>
+      <wsdl:input message="tns:GetTerritoryGroupsSoapIn" />
+      <wsdl:output message="tns:GetTerritoryGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTerritories">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Liste des territoires // Territories list</wsdl:documentation>
+      <wsdl:input message="tns:GetTerritoriesSoapIn" />
+      <wsdl:output message="tns:GetTerritoriesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="StaticContract" type="tns:StaticContract">
+    <wsdl:documentation>
+      <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" />
+    </wsdl:documentation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAccessibleCustomers">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetAccessibleCustomers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeCustomer">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/ChangeCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerOptions">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetCustomerOptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFleets">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetFleets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleGroups">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetVehicleGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicles">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetVehicles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindVehicles">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/FindVehicleFromInformations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeGroup">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetEmployeeGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployees">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetEmployees" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationGroups">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetLocationGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocations">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetLocations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLocation">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/AddLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLocation">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/DeleteLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotificationGroups">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetNotificationGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTerritoryGroups">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetTerritoyGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTerritories">
+      <soap:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetTerritoies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="StaticContract1" type="tns:StaticContract">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAccessibleCustomers">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetAccessibleCustomers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeCustomer">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/ChangeCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerOptions">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetCustomerOptions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFleets">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetFleets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleGroups">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetVehicleGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicles">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetVehicles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindVehicles">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/FindVehicleFromInformations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeGroup">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetEmployeeGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployees">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetEmployees" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationGroups">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetLocationGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocations">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetLocations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddLocation">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/AddLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLocation">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/DeleteLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotificationGroups">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetNotificationGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTerritoryGroups">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetTerritoyGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTerritories">
+      <soap12:operation soapAction="http://astus.com/service/static/2010/11/StaticContract/GetTerritoies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StaticService">
+    <wsdl:port name="StaticContract" binding="tns:StaticContract">
+      <soap:address location="http://dews.astus.com/2010/11/StaticService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="StaticContract1" binding="tns:StaticContract1">
+      <soap12:address location="http://dews.astus.com/2010/11/StaticService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

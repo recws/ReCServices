@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MonitoreoReCStoreContainer" CdmEntityContainer="Monitoreo">
+    <FunctionImportMapping FunctionImportName="Color_Consulta" FunctionName="MonitoreoReC.Store.Color_Consulta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MonitoreoReC.Color_Consulta_Result">
+          <ScalarProperty Name="IdColor" ColumnName="IdColor" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="MonitoreoAutomatico_CargaSiguienteViaje" FunctionName="MonitoreoReC.Store.MonitoreoAutomatico_CargaSiguienteViaje">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MonitoreoReC.MonitoreoAutomatico_CargaSiguienteViaje_Result">
+          <ScalarProperty Name="IdViaje" ColumnName="IdViaje" />
+          <ScalarProperty Name="IdGrupo" ColumnName="IdGrupo" />
+          <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+          <ScalarProperty Name="IdOperacion" ColumnName="IdOperacion" />
+          <ScalarProperty Name="Operacion" ColumnName="Operacion" />
+          <ScalarProperty Name="FolioCliente" ColumnName="FolioCliente" />
+          <ScalarProperty Name="Operador" ColumnName="Operador" />
+          <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
+          <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+          <ScalarProperty Name="Transportista" ColumnName="Transportista" />
+          <ScalarProperty Name="FechaHoraViaje" ColumnName="FechaHoraViaje" />
+          <ScalarProperty Name="FechaHoraCarga" ColumnName="FechaHoraCarga" />
+          <ScalarProperty Name="FechaHoraCargaReal" ColumnName="FechaHoraCargaReal" />
+          <ScalarProperty Name="FechaHoraSalida" ColumnName="FechaHoraSalida" />
+          <ScalarProperty Name="FechaHoraSalidaReal" ColumnName="FechaHoraSalidaReal" />
+          <ScalarProperty Name="FechaHoraCita" ColumnName="FechaHoraCita" />
+          <ScalarProperty Name="IdEstatusViaje" ColumnName="IdEstatusViaje" />
+          <ScalarProperty Name="EstatusViaje" ColumnName="EstatusViaje" />
+          <ScalarProperty Name="TipoViaje" ColumnName="TipoViaje" />
+          <ScalarProperty Name="FrecuenciaMonitoreo" ColumnName="FrecuenciaMonitoreo" />
+          <ScalarProperty Name="FechaUltimoMonitoreo" ColumnName="FechaUltimoMonitoreo" />
+          <ScalarProperty Name="Incidencia" ColumnName="Incidencia" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Destinos" ColumnName="Destinos" />
+          <ScalarProperty Name="RetrasoMinutos" ColumnName="RetrasoMinutos" />
+          <ScalarProperty Name="GPS" ColumnName="GPS" />
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="Plataforma" ColumnName="Plataforma" />
+          <ScalarProperty Name="TipoGPS" ColumnName="TipoGPS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="NotificacionIncidencia_CargaHTML" FunctionName="MonitoreoReC.Store.NotificacionIncidencia_CargaHTML">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MonitoreoReC.NotificacionIncidencia_CargaHTML_Result">
+          <ScalarProperty Name="FolioCliente" ColumnName="FolioCliente" />
+          <ScalarProperty Name="FolioInterno" ColumnName="FolioInterno" />
+          <ScalarProperty Name="TipoViaje" ColumnName="TipoViaje" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="EstatusViaje" ColumnName="EstatusViaje" />
+          <ScalarProperty Name="AgenciaAduanal" ColumnName="AgenciaAduanal" />
+          <ScalarProperty Name="Forwarding" ColumnName="Forwarding" />
+          <ScalarProperty Name="Contenedor1" ColumnName="Contenedor1" />
+          <ScalarProperty Name="Contenedor2" ColumnName="Contenedor2" />
+          <ScalarProperty Name="Incidencia" ColumnName="Incidencia" />
+          <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+          <ScalarProperty Name="Operacion" ColumnName="Operacion" />
+          <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+          <ScalarProperty Name="Placas" ColumnName="Placas" />
+          <ScalarProperty Name="Transportista" ColumnName="Transportista" />
+          <ScalarProperty Name="Destinos" ColumnName="Destinos" />
+          <ScalarProperty Name="Para" ColumnName="Para" />
+          <ScalarProperty Name="CC" ColumnName="CC" />
+          <ScalarProperty Name="CCO" ColumnName="CCO" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Cuerpo" ColumnName="Cuerpo" />
+          <ScalarProperty Name="Operador" ColumnName="Operador" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

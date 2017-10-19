@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MonitoreoReC.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="Color_Consulta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="MonitoreoAutomatico_CargaSiguienteViaje" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdUsuario" Type="int" Mode="In" />
+          <Parameter Name="IMEI" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="NotificacionIncidencia_CargaHTML" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IMEI" Type="varchar" Mode="In" />
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Incidencia" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="MonitoreoReCStoreContainer" />
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MonitoreoReC" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Monitoreo" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="Color_Consulta" ReturnType="Collection(MonitoreoReC.Color_Consulta_Result)" />
+          <FunctionImport Name="MonitoreoAutomatico_CargaSiguienteViaje" ReturnType="Collection(MonitoreoReC.MonitoreoAutomatico_CargaSiguienteViaje_Result)">
+          <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
+            <Parameter Name="IMEI" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="NotificacionIncidencia_CargaHTML" ReturnType="Collection(MonitoreoReC.NotificacionIncidencia_CargaHTML_Result)">
+            <Parameter Name="IMEI" Mode="In" Type="String" />
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+            <Parameter Name="Incidencia" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="Color_Consulta_Result">
+          <Property Type="Int32" Name="IdColor" Nullable="true" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="MonitoreoAutomatico_CargaSiguienteViaje_Result">
+          <Property Type="Int32" Name="IdViaje" Nullable="false" />
+          <Property Type="Int32" Name="IdGrupo" Nullable="false" />
+          <Property Type="String" Name="Grupo" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="IdOperacion" Nullable="false" />
+          <Property Type="String" Name="Operacion" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="FolioCliente" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Operador" Nullable="false" MaxLength="171" />
+          <Property Type="Int32" Name="IdUnidad" Nullable="true" />
+          <Property Type="String" Name="Unidad" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Transportista" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="FechaHoraViaje" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaHoraCarga" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaHoraCargaReal" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaHoraSalida" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaHoraSalidaReal" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="FechaHoraCita" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="IdEstatusViaje" Nullable="true" />
+          <Property Type="String" Name="EstatusViaje" Nullable="true" MaxLength="102" />
+          <Property Type="String" Name="TipoViaje" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="FrecuenciaMonitoreo" Nullable="false" />
+          <Property Type="DateTime" Name="FechaUltimoMonitoreo" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Incidencia" Nullable="false" MaxLength="68" />
+          <Property Type="String" Name="Color" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Destinos" Nullable="true" />
+          <Property Type="Int32" Name="RetrasoMinutos" Nullable="true" />
+          <Property Type="String" Name="GPS" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="IMEI" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Plataforma" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="TipoGPS" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <ComplexType Name="NotificacionIncidencia_CargaHTML_Result">
+          <Property Type="String" Name="FolioCliente" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="FolioInterno" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TipoViaje" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Observaciones" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="EstatusViaje" Nullable="true" MaxLength="102" />
+          <Property Type="String" Name="AgenciaAduanal" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Forwarding" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Contenedor1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Contenedor2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Incidencia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Grupo" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Operacion" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Unidad" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="Placas" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Transportista" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Destinos" Nullable="true" />
+          <Property Type="String" Name="Para" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="CC" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="CCO" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Asunto" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Cuerpo" Nullable="true" />
+          <Property Type="String" Name="Operador" Nullable="false" MaxLength="72" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MonitoreoReCStoreContainer" CdmEntityContainer="Monitoreo" >
+          <FunctionImportMapping FunctionImportName="Color_Consulta" FunctionName="MonitoreoReC.Store.Color_Consulta">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MonitoreoReC.Color_Consulta_Result">
+                <ScalarProperty Name="IdColor" ColumnName="IdColor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="MonitoreoAutomatico_CargaSiguienteViaje" FunctionName="MonitoreoReC.Store.MonitoreoAutomatico_CargaSiguienteViaje">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MonitoreoReC.MonitoreoAutomatico_CargaSiguienteViaje_Result">
+                <ScalarProperty Name="IdViaje" ColumnName="IdViaje" />
+                <ScalarProperty Name="IdGrupo" ColumnName="IdGrupo" />
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+                <ScalarProperty Name="IdOperacion" ColumnName="IdOperacion" />
+                <ScalarProperty Name="Operacion" ColumnName="Operacion" />
+                <ScalarProperty Name="FolioCliente" ColumnName="FolioCliente" />
+                <ScalarProperty Name="Operador" ColumnName="Operador" />
+                <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Transportista" ColumnName="Transportista" />
+                <ScalarProperty Name="FechaHoraViaje" ColumnName="FechaHoraViaje" />
+                <ScalarProperty Name="FechaHoraCarga" ColumnName="FechaHoraCarga" />
+                <ScalarProperty Name="FechaHoraCargaReal" ColumnName="FechaHoraCargaReal" />
+                <ScalarProperty Name="FechaHoraSalida" ColumnName="FechaHoraSalida" />
+                <ScalarProperty Name="FechaHoraSalidaReal" ColumnName="FechaHoraSalidaReal" />
+                <ScalarProperty Name="FechaHoraCita" ColumnName="FechaHoraCita" />
+                <ScalarProperty Name="IdEstatusViaje" ColumnName="IdEstatusViaje" />
+                <ScalarProperty Name="EstatusViaje" ColumnName="EstatusViaje" />
+                <ScalarProperty Name="TipoViaje" ColumnName="TipoViaje" />
+                <ScalarProperty Name="FrecuenciaMonitoreo" ColumnName="FrecuenciaMonitoreo" />
+                <ScalarProperty Name="FechaUltimoMonitoreo" ColumnName="FechaUltimoMonitoreo" />
+                <ScalarProperty Name="Incidencia" ColumnName="Incidencia" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Destinos" ColumnName="Destinos" />
+                <ScalarProperty Name="RetrasoMinutos" ColumnName="RetrasoMinutos" />
+                <ScalarProperty Name="GPS" ColumnName="GPS" />
+                <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+                <ScalarProperty Name="Plataforma" ColumnName="Plataforma" />
+                <ScalarProperty Name="TipoGPS" ColumnName="TipoGPS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="NotificacionIncidencia_CargaHTML" FunctionName="MonitoreoReC.Store.NotificacionIncidencia_CargaHTML">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MonitoreoReC.NotificacionIncidencia_CargaHTML_Result">
+                <ScalarProperty Name="FolioCliente" ColumnName="FolioCliente" />
+                <ScalarProperty Name="FolioInterno" ColumnName="FolioInterno" />
+                <ScalarProperty Name="TipoViaje" ColumnName="TipoViaje" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="EstatusViaje" ColumnName="EstatusViaje" />
+                <ScalarProperty Name="AgenciaAduanal" ColumnName="AgenciaAduanal" />
+                <ScalarProperty Name="Forwarding" ColumnName="Forwarding" />
+                <ScalarProperty Name="Contenedor1" ColumnName="Contenedor1" />
+                <ScalarProperty Name="Contenedor2" ColumnName="Contenedor2" />
+                <ScalarProperty Name="Incidencia" ColumnName="Incidencia" />
+                <ScalarProperty Name="Grupo" ColumnName="Grupo" />
+                <ScalarProperty Name="Operacion" ColumnName="Operacion" />
+                <ScalarProperty Name="Unidad" ColumnName="Unidad" />
+                <ScalarProperty Name="Placas" ColumnName="Placas" />
+                <ScalarProperty Name="Transportista" ColumnName="Transportista" />
+                <ScalarProperty Name="Destinos" ColumnName="Destinos" />
+                <ScalarProperty Name="Para" ColumnName="Para" />
+                <ScalarProperty Name="CC" ColumnName="CC" />
+                <ScalarProperty Name="CCO" ColumnName="CCO" />
+                <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+                <ScalarProperty Name="Cuerpo" ColumnName="Cuerpo" />
+                <ScalarProperty Name="Operador" ColumnName="Operador" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

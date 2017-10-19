@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tns3="http://exception.sharedws" xmlns:intf="http://websvcs.otswebws" xmlns:wsi="http://ws-i.org/profiles/basic/1.1/xsd" xmlns:tns2="http://datatype.otswebws" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:impl="http://websvcs.otswebws" targetNamespace="http://websvcs.otswebws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://websvcs.otswebws">
+      <xsd:import namespace="http://datatype.otswebws" />
+      <xsd:element name="dequeueResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="dequeueReturn" nillable="true" type="tns2:TransactionBlock" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getSubscriberInfo">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="subscriberID" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="getSubscriberInfoResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="getSubscriberInfoReturn" nillable="true" type="tns2:SubscriberInfo" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="dequeue2">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="subscriberId" type="xsd:int" />
+            <xsd:element name="transactionIdIn" type="xsd:long" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="dequeue2Response">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="dequeue2Return" nillable="true" type="tns2:TransactionBlock2" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="dequeue">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="subscriberId" type="xsd:int" />
+            <xsd:element name="blockCount" type="xsd:int" />
+            <xsd:element name="transactionId" type="xsd:int" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://datatype.otswebws">
+      <xsd:complexType name="TransactionBlock">
+        <xsd:sequence>
+          <xsd:element name="count" type="xsd:int" />
+          <xsd:element name="transactions" type="xsd:base64Binary" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SubscriberInfo">
+        <xsd:sequence>
+          <xsd:element name="enqueueEnabled" type="xsd:boolean" />
+          <xsd:element name="enqueueCount" type="xsd:int" />
+          <xsd:element name="enqueueCountResetTime" nillable="true" type="xsd:string" />
+          <xsd:element name="enqueueEnabledTime" nillable="true" type="xsd:string" />
+          <xsd:element name="fullThreshold" type="xsd:int" />
+          <xsd:element name="lastDequeueTime" nillable="true" type="xsd:string" />
+          <xsd:element name="lastEnqueueTime" nillable="true" type="xsd:string" />
+          <xsd:element name="dequeueBlockCount" type="xsd:int" />
+          <xsd:element name="queueDepth" type="xsd:int" />
+          <xsd:element name="warnThreshold" type="xsd:int" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="TransactionBlock2">
+        <xsd:sequence>
+          <xsd:element name="count" type="xsd:int" />
+          <xsd:element name="transactions" type="xsd:base64Binary" />
+          <xsd:element name="transactionIdOut" type="xsd:long" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://exception.sharedws">
+      <xsd:complexType name="WSException">
+        <xsd:sequence>
+          <xsd:element name="message" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="WSException" nillable="true" type="tns3:WSException" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getSubscriberInfoResponse">
+    <wsdl:part name="parameters" element="impl:getSubscriberInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="dequeue2Response">
+    <wsdl:part name="parameters" element="impl:dequeue2Response" />
+  </wsdl:message>
+  <wsdl:message name="dequeueResponse">
+    <wsdl:part name="parameters" element="impl:dequeueResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSubscriberInfoRequest">
+    <wsdl:part name="parameters" element="impl:getSubscriberInfo" />
+  </wsdl:message>
+  <wsdl:message name="WSException">
+    <wsdl:part name="fault" element="tns3:WSException" />
+  </wsdl:message>
+  <wsdl:message name="dequeueRequest">
+    <wsdl:part name="parameters" element="impl:dequeue" />
+  </wsdl:message>
+  <wsdl:message name="dequeue2Request">
+    <wsdl:part name="parameters" element="impl:dequeue2" />
+  </wsdl:message>
+  <wsdl:portType name="OTSWebSvcs">
+    <wsdl:operation name="dequeue">
+      <wsdl:input name="dequeueRequest" message="impl:dequeueRequest" />
+      <wsdl:output name="dequeueResponse" message="impl:dequeueResponse" />
+      <wsdl:fault name="WSException" message="impl:WSException" />
+    </wsdl:operation>
+    <wsdl:operation name="getSubscriberInfo">
+      <wsdl:input name="getSubscriberInfoRequest" message="impl:getSubscriberInfoRequest" />
+      <wsdl:output name="getSubscriberInfoResponse" message="impl:getSubscriberInfoResponse" />
+      <wsdl:fault name="WSException" message="impl:WSException" />
+    </wsdl:operation>
+    <wsdl:operation name="dequeue2">
+      <wsdl:input name="dequeue2Request" message="impl:dequeue2Request" />
+      <wsdl:output name="dequeue2Response" message="impl:dequeue2Response" />
+      <wsdl:fault name="WSException" message="impl:WSException" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OTSWebSvcsSoapBinding" type="impl:OTSWebSvcs">
+    <wsaw:UsingAddressing wsdl:required="false" />
+    <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="dequeue">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="dequeueRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="dequeueResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="WSException">
+        <wsdlsoap:fault use="literal" name="WSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getSubscriberInfo">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="getSubscriberInfoRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getSubscriberInfoResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="WSException">
+        <wsdlsoap:fault use="literal" name="WSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="dequeue2">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="dequeue2Request">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="dequeue2Response">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="WSException">
+        <wsdlsoap:fault use="literal" name="WSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OTSWebSvcsService">
+    <wsdl:port name="OTSWebSvcs" binding="impl:OTSWebSvcsSoapBinding">
+      <wsdlsoap:address location="https://www.cnrportal.com:443/otsWebWS/services/OTSWebSvcs" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

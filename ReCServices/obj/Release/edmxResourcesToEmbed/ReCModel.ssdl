@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ReCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <Function Name="WS_GPS_InsertaSimple" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Usuario" Type="varchar" Mode="In" />
+    <Parameter Name="IMEI" Type="varchar" Mode="In" />
+    <Parameter Name="CodigoEvento" Type="varchar" Mode="In" />
+    <Parameter Name="Lat" Type="decimal" Mode="In" />
+    <Parameter Name="Lng" Type="decimal" Mode="In" />
+    <Parameter Name="Ubicacion" Type="varchar" Mode="In" />
+    <Parameter Name="GPSValido" Type="bit" Mode="In" />
+    <Parameter Name="Velocidad" Type="int" Mode="In" />
+    <Parameter Name="Direccion" Type="int" Mode="In" />
+    <Parameter Name="NivelBateria" Type="int" Mode="In" />
+    <Parameter Name="KMOdometro" Type="int" Mode="In" />
+    <Parameter Name="FechaHoraGeneracion" Type="datetime" Mode="In" />
+    <Parameter Name="FechaHoraRecepcion" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="WS_GPS_SincronizaGPS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WS_GPS_SincronizaUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="WS_GPS_ValidaUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Usuario" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+    <Parameter Name="IMEI" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="ReCModelStoreContainer" />
+</Schema>

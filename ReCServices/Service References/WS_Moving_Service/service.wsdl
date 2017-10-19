@@ -1,0 +1,3289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://onlineavl2.navmanwireless.com/0907/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://onlineavl2.navmanwireless.com/0907/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;h1&gt;Welcome to the OnlineAVL 2 Published Interface WSDL&lt;/h1&gt;The Published Interface is designed to provide programmatic access via the internet to the Navman Wireless OnlineAVL2 Vehicle Tracking and Fleet Management product. The Published Interface to the OnlineAVL2 system consists of a set of web-methods made available over the internet to authenticated users of the Published Interface.  It provides the ability to send information to vehicles e.g. Text Messages and asserting Auxiliary Outputs (ConEx), and retrieve information from the Vehicles e.g. GPS Activity, Auxiliary Inputs (ConEx), Engine Management data (EMS) and Text Messaging (MDT/MNav). It is assumed the reader is somewhat familiar with the Navman Fleet Tracking system.</wsdl:documentation>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://onlineavl2.navmanwireless.com/0907/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="AssignToVehicleGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:AssignToVehicleGroupRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AssignToVehicleGroupRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OwnerIDPIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="VehicleDisplayName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="ToVehicleGroupName" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="OwnerIDPIRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:VersionIDPIRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="OwnerId" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="VersionIDPIRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BasePIRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BasePIRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Session" type="tns:SessionInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SessionInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SessionId" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DoSendFormsRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OwnerIDPIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="SendFormInstanceMessages" type="tns:ArrayOfSendFormInstanceMessage" />
+              <s:element minOccurs="0" maxOccurs="1" name="Culture" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfSendFormInstanceMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SendFormInstanceMessage" nillable="true" type="tns:SendFormInstanceMessage" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SendFormInstanceMessage">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OutgoingPIMessage">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="TrackingID" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="FormNumber" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="DefinitionNumber" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="BaseFieldValues" type="tns:BaseFieldValues" />
+              <s:element minOccurs="1" maxOccurs="1" name="FormInstanceFieldCount" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="OutgoingPIMessage">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BasePISendMessage">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ReplyToMessageId" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="PriorityReadEnabled" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BasePISendMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RecipientIds" type="tns:ArrayOfGuid" />
+          <s:element minOccurs="1" maxOccurs="1" name="MessageType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BaseFieldValues">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Values" type="tns:ArrayOfBaseFieldValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBaseFieldValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BaseFieldValue" nillable="true" type="tns:BaseFieldValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BaseFieldValue" abstract="true" />
+      <s:complexType name="TimeFieldValue">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseFieldValue">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Bias" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StringFieldValue">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseFieldValue">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SelectFieldValue">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseFieldValue">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DecimalFieldValue">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseFieldValue">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DateTimeFieldValue">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseFieldValue">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Bias" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DateFieldValue">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseFieldValue">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Value" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="Bias" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AddressFieldValue">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseFieldValue">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Lat" type="s:float" />
+              <s:element minOccurs="1" maxOccurs="1" name="Lon" type="s:float" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="AssignToVehicleGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AssignToVehicleGroupResult" type="tns:AssignToVehicleGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AssignToVehicleGroupResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessagePIResponse" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CacheMessagePIResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BasePIResponse">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="MoreItemsAvailable" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="RemovedItems" type="tns:ArrayOfGuid" />
+              <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BasePIResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="OperationStatus" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessages" type="tns:ArrayOfSystemMessage" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessage" type="tns:ArrayOfSystemMessage" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSystemMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SystemMessage" nillable="true" type="tns:SystemMessage" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SystemMessage">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MessageCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExceptionMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExceptionStackTrace" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExceptionType" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetMessagesResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessagePIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Messages" type="tns:ArrayOfBaseMessage" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfBaseMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BaseMessage" nillable="true" type="tns:BaseMessage" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BaseMessage">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MessageID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecipientID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="SenderID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="MessageType" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="MessageThreadID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentMessageID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="MessageThreadNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SentDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="MenuNumber" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Reply" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncomingMessage" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageStatus" type="tns:BaseMessageStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="StreetName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="PriorityReadRequested" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadReceiptRequested" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PriorityRead" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadReceipt" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReadReceiptIncomingMessage" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsEnhancedTextMessage" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DriverID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="DriverFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DriverLastName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleLocation" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GPSValid" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleLatitude" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleLongitude" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SiteID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="OffRoadMetres" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="DegreesBearing" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocationType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AreaCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NamedArea" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BaseMessageStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MessageID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReceivedDateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="MessageDelivered" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="MessageRead" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadReceiptReceived" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadReceiptReceivedDateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadReceiptActivityDateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetFormsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessagePIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="FormInstanceList" type="tns:ArrayOfFormInstance" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfFormInstance">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FormInstance" nillable="true" type="tns:FormInstance" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FormInstance">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseFormInstance">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="KeyFieldValue" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseFormInstance">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="FormNumber" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefinitionNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FormName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FormInstanceId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="RecipientID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="SenderID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ThreadID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ThreadNumber" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SentDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="MenuNumber" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Reply" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncomingForm" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FormInstanceStatus" type="tns:Status" />
+          <s:element minOccurs="0" maxOccurs="1" name="StreetName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PriorityReadRequested" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadReceiptRequested" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PriorityRead" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadReceipt" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsReadReceiptIncomingForm" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DriverID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="DriverFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DriverLastName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserFirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserLastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleLocation" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="GPSValid" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleLatitude" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleLongitude" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OffRoadMetres" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="DegreesBearing" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocationType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AreaCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NamedArea" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Status">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ReceivedDateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FormDelivered" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="FormRead" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadReceiptReceived" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadReceiptReceivedDateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReadReceiptActivityDateTime" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FormInstanceDetail">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseFormInstance">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="FormFields" type="tns:ArrayOfFormField" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfFormField">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FormField" nillable="true" type="tns:FormField" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FormField">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetFormsDetailsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessagePIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="FormInstanceDetailList" type="tns:ArrayOfFormInstanceDetail" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfFormInstanceDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FormInstanceDetail" nillable="true" type="tns:FormInstanceDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DoLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DoLoginRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoLoginRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UserCredential" type="tns:UserCredentialInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="IPAddress" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ClockVerificationUtc" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseMessageRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Session" type="tns:SessionInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserCredentialInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicationID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ClientID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClientVersion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DoLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoLoginResult" type="tns:DoLoginResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoLoginResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="SecurityProfile" type="tns:SecurityProfile" />
+              <s:element minOccurs="1" maxOccurs="1" name="Authenticated" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="UpgradeRecommended" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="UpgradeEssential" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="MinimumVersionRecommended" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="MinimumVersionEssential" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DynamicClientConfiguration" type="tns:DynamicClientConfiguration" />
+              <s:element minOccurs="1" maxOccurs="1" name="ServerUTCTime" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="EntityVersions" type="tns:ArrayOfEntityVersion" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseMessageResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="OperationStatus" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="StatusMessage" type="tns:ArrayOfSystemMessage" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SecurityProfile">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="User" type="tns:UserInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="Session" type="tns:SessionInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsFirstLogon" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSystemOwner" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="UserID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AlertEmail" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PasswordExpiryDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PasswordExpiryDays" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressLine1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressLine2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressLine3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressLine4" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MobilePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AfterHoursPhone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SystemUser" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SystemOwner" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Active" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="JobTitle" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DaysToPasswordExpiryDate" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EVGSuperUser" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RestrictedVehicleAccess" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicationId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsFirstLogon" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DynamicClientConfiguration">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PollIntervalMilliseconds" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EnableDecompression" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="KeepAliveIntervalMinutes" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GMapSettings" type="tns:GoogleMapSettings" />
+          <s:element minOccurs="0" maxOccurs="1" name="KVPS" type="tns:ArrayOfKVP" />
+          <s:element minOccurs="1" maxOccurs="1" name="RetentionDays" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDWEnabled" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReportCriteriaVehicleAndDriverSoftThrottleLimit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReportCriteriaVehicleAndDriverHardThrottleLimit" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReportCriteriaDurationSoftThrottleLimitInDays" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReportCriteriaDurationHardThrottleLimitInDays" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReportSchedulingMaxDateRangeDays" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GoogleMapSettings">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="VersionNumber" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsRealTimeDrawingAllowed" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="HtmlUrl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfKVP">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="KVP" nillable="true" type="tns:KVP" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="KVP">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="K" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="V" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEntityVersion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EntityVersion" nillable="true" type="tns:EntityVersion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EntityVersion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EntityName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DoLogoff">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DoLogoffRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoLogoffRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DoLogoffResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoLogoffResult" type="tns:DoLogoffResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoLogoffResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageResponse" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DoSendDeleteTextMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DoSendDeleteTextMessageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoSendDeleteTextMessageRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="VehicleIDs" type="tns:ArrayOfGuid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DoSendDeleteTextMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoSendDeleteTextMessageResult" type="tns:DoSendDeleteTextMessageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoSendDeleteTextMessageResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DeleteSendDeferred" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="VehicleIds" type="tns:ArrayOfGuid" />
+              <s:element minOccurs="1" maxOccurs="1" name="RecordId" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DoSendForms">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DoSendFormsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DoSendFormsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoSendFormsResult" type="tns:DoSendFormsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoSendFormsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BasePIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="SendFormsOperationStatuses" type="tns:ArrayOfSendFormsOperationStatus" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfSendFormsOperationStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SendFormsOperationStatus" nillable="true" type="tns:SendFormsOperationStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SendFormsOperationStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TrackingID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="FormErrorMessages" type="tns:ArrayOfMessage" />
+          <s:element minOccurs="0" maxOccurs="1" name="RecipientStatuses" type="tns:ArrayOfRecipientStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="FormInstanceResults" type="tns:ArrayOfFormInstanceResult" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Message">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="MessageCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FieldName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRecipientStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RecipientStatus" nillable="true" type="tns:RecipientStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RecipientStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RecipientID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleErrorMessages" type="tns:ArrayOfMessage" />
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFormInstanceResult">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FormInstanceResult" nillable="true" type="tns:FormInstanceResult" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FormInstanceResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="FormInstanceID" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DoSendRouteMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DoSendRouteMessageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoSendRouteMessageRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OutgoingRouteMessage" type="tns:OutgoingRoutingMessage" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="OutgoingRoutingMessage">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OutgoingMessage">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+              <s:element minOccurs="0" maxOccurs="1" name="StreetName" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="OutgoingMessage">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseSendMessage">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ReplyToMessageId" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="PriorityReadEnabled" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsSatelliteEnabled" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseSendMessage">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RecipientIds" type="tns:ArrayOfGuid" />
+          <s:element minOccurs="1" maxOccurs="1" name="MessageType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageBody" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DoSendRouteMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoSendRouteMessageResult" type="tns:DoSendRouteMessageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoSendRouteMessageResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="VehicleIds" type="tns:ArrayOfGuid" />
+              <s:element minOccurs="0" maxOccurs="1" name="MessageIds" type="tns:ArrayOfGuid" />
+              <s:element minOccurs="1" maxOccurs="1" name="RecordId" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DoSendRouteMessages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DoSendRouteMessagesRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoSendRouteMessagesRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="SendDeleteTextMessageFirst" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="BulkId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="UserId" nillable="true" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="SendRouteMessageRequests" type="tns:ArrayOfDoSendRouteMessageRequest" />
+              <s:element minOccurs="1" maxOccurs="1" name="OperationStatusGuid" nillable="true" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfDoSendRouteMessageRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DoSendRouteMessageRequest" nillable="true" type="tns:DoSendRouteMessageRequest" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DoSendRouteMessagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoSendRouteMessagesResult" type="tns:DoSendRouteMessagesResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoSendRouteMessagesResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="RequestedOperationsCount" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OperationStatusGuid" nillable="true" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DoSendTextMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DoSendTextMessageRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoSendTextMessageRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="OutgoingMessage" type="tns:OutgoingMessage" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DoSendTextMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoSendTextMessageResult" type="tns:DoSendTextMessageResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoSendTextMessageResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="MessageIds" type="tns:ArrayOfGuid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DoSetDeviceOutputs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:DoSetDeviceOutputsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoSetDeviceOutputsRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ChannelEnum" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="VehicleID" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="OutputSetting" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="SerialOutput" type="s:base64Binary" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DoSetDeviceOutputsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DoSetDeviceOutputsResult" type="tns:DoSetDeviceOutputsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoSetDeviceOutputsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageResponse" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetConExConfigurationsByVehicles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetConExConfigurationsByVehiclesRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetConExConfigurationsByVehiclesRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="VehicleIds" type="tns:ArrayOfGuid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetConExConfigurationsByVehiclesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetConExConfigurationsByVehiclesResult" type="tns:GetConExConfigurationsByVehiclesResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetConExConfigurationsByVehiclesResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ConExChannels" type="tns:ArrayOfConExChannel" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfConExChannel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConExChannel" nillable="true" type="tns:ConExChannel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConExChannel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ChannelTypeCanChange" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Enumeration" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="OutputBytes" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="OutputSwitch" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ChannelValues" type="tns:ArrayOfConExChannelValue" />
+          <s:element minOccurs="0" maxOccurs="1" name="Events" type="tns:ArrayOfConExChannelEvent" />
+          <s:element minOccurs="1" maxOccurs="1" name="ConExChannelID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ConExID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="SetUpForVehicle" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ChannelType" type="tns:ConExChannelType" />
+          <s:element minOccurs="1" maxOccurs="1" name="ChannelChoices" type="tns:ConExChannelChoices" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Reserved" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusDateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="OutputDateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ChannelValuesChanged" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="InputDateTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="InputString" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IOStatusQueryPending" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SetOutputPending" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AssetQubeEnabled" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PullUpPullDownType" nillable="true" type="tns:ConExPullUpDownType" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActivationDelayAfterIgnitionOn" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActivationDelayAfterIgnitionOff" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfConExChannelValue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConExChannelValue" nillable="true" type="tns:ConExChannelValue" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConExChannelValue">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ChannelValueID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ChannelID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ChannelValue" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfConExChannelEvent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConExChannelEvent" nillable="true" type="tns:ConExChannelEvent" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConExChannelEvent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="EmailAddressIDs" type="tns:ArrayOfGuid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ConExChannelEventID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="IconID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ConExChannelID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasEmailAlert" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="EventType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsConExStart" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ConExChannelType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unconfigured" />
+          <s:enumeration value="DigitalInput" />
+          <s:enumeration value="DigitalOutput" />
+          <s:enumeration value="AnalogInput" />
+          <s:enumeration value="SerialIO" />
+          <s:enumeration value="DigitalInputAndOutput" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ConExChannelChoices">
+        <s:restriction base="s:string">
+          <s:enumeration value="DigitalInputOnly" />
+          <s:enumeration value="DigitalOutputOnly" />
+          <s:enumeration value="DigitalIO" />
+          <s:enumeration value="DigitalIOOrAnalogInput" />
+          <s:enumeration value="DigitalOrAnalogInput" />
+          <s:enumeration value="AnalogInputOnly" />
+          <s:enumeration value="SerialOnly" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ConExPullUpDownType">
+        <s:restriction base="s:string">
+          <s:enumeration value="PullDown" />
+          <s:enumeration value="PullUp" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetDrivers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetDriversRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetDriversRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OwnerCacheMessageRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="OwnerCacheMessageRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="OwnerId" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CacheMessageRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetDriversResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDriversResult" type="tns:GetDriversResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetDriversResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Drivers" type="tns:ArrayOfDriverHeader" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CacheMessageResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="MoreItemsAvailable" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="RemovedItems" type="tns:ArrayOfGuid" />
+              <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfDriverHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DriverHeader" nillable="true" type="tns:DriverHeader" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DriverHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DriverID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LicenseNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DriverPin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DallasKeyPin" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MultipleLoginsAllowed" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DriverFullName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetEMSPeriodActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetEMSPeriodActivityRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetEMSPeriodActivityRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OwnerVehicleMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="StartDateTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="EndDateTime" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="OwnerVehicleMessageRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="RequestType" type="tns:OwnerVehicleRequestType" />
+              <s:element minOccurs="0" maxOccurs="1" name="Ids" type="tns:ArrayOfGuid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="OwnerVehicleRequestType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Vehicle" />
+          <s:enumeration value="Owner" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetEMSPeriodActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEMSPeriodActivityResult" type="tns:GetEMSPeriodActivityResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetEMSPeriodActivityResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="EMSTripInfo" type="tns:ArrayOfEMSTripInfo" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfEMSTripInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EMSTripInfo" nillable="true" type="tns:EMSTripInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EMSTripInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Trip" type="tns:EMSTrip" />
+          <s:element minOccurs="0" maxOccurs="1" name="SpeedMatrix" type="tns:TwoDimensionMatrix" />
+          <s:element minOccurs="0" maxOccurs="1" name="TemperatureMatrix" type="tns:OneDimensionMatrix" />
+          <s:element minOccurs="0" maxOccurs="1" name="OilPressureMatrix" type="tns:OneDimensionMatrix" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EMSTrip">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseEMSConfiguration">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="TripID" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="OwnerID" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="DriverID" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="VehicleID" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="VehicleEMSConfigurationID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="StartDateTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="StartOdometer" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="StopDateTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="EngineHours" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Distance" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="BrakeDistance" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="BrakeCount" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="BrakeRoll" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="BrakeOn" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OverSpeedCount" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OverSpeedSeconds" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OverRPMCount" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OverRPMSeconds" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OverTempSeconds" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="UnderOilSeconds" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="MaxSpeed" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="MaxRPM" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="MaxTemp" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="MinOil" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="KeyOnSeconds" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="IdleSeconds" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="WarmSeconds" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ExcessIdleSeconds" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="RollingSeconds" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PTOSeconds" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PTOIdleSeconds" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PTORollSeconds" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="PTOOverRPMSeconds" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="HeavyBrakeCount" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="FuelUsedIdle" nillable="true" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="FuelUsedRoll" nillable="true" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="FuelUsedPTOIdle" nillable="true" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="FuelUsedPTORoll" nillable="true" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="StartLatitude" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="StartLongitude" type="s:double" />
+              <s:element minOccurs="0" maxOccurs="1" name="StartLocation" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="StartOffRoadMetres" nillable="true" type="s:float" />
+              <s:element minOccurs="1" maxOccurs="1" name="StartDegreesBearing" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="StartLocationType" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="StopLatitude" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="StopLongitude" type="s:double" />
+              <s:element minOccurs="0" maxOccurs="1" name="StopLocation" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="StopOffRoadMetres" nillable="true" type="s:float" />
+              <s:element minOccurs="1" maxOccurs="1" name="StopDegreesBearing" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="StopLocationType" nillable="true" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseEMSConfiguration">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionNumber" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TransactionType" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TwoDimensionMatrix">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="XAxisType" type="tns:EMSRangeTypes" />
+          <s:element minOccurs="1" maxOccurs="1" name="YAxisType" type="tns:EMSMatrixTypes" />
+          <s:element minOccurs="1" maxOccurs="1" name="XOrigin" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="YOrigin" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="XCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="YCount" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="YAxisValues" type="tns:ArrayOfDouble" />
+          <s:element minOccurs="0" maxOccurs="1" name="XAxisValues" type="tns:ArrayOfDouble" />
+          <s:element minOccurs="0" maxOccurs="1" name="Values" type="tns:ArrayOfArrayOfInt" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EMSRangeTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="EMSUnknown1" />
+          <s:enumeration value="Speed" />
+          <s:enumeration value="EMSUnknown2" />
+          <s:enumeration value="EMSUnknown3" />
+          <s:enumeration value="EMSUnknown4" />
+          <s:enumeration value="Temperature" />
+          <s:enumeration value="OilPressure" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="EMSMatrixTypes">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unknown" />
+          <s:enumeration value="Speed" />
+          <s:enumeration value="EMSUnknown1" />
+          <s:enumeration value="RPM" />
+          <s:enumeration value="EMSUnknown2" />
+          <s:enumeration value="Temperature" />
+          <s:enumeration value="OilPressure" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfDouble">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="double" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ArrayOfInt" nillable="true" type="tns:ArrayOfInt" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OneDimensionMatrix">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="AxisType" type="tns:EMSRangeTypes" />
+          <s:element minOccurs="1" maxOccurs="1" name="Origin" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Count" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="AxisValues" type="tns:ArrayOfDouble" />
+          <s:element minOccurs="0" maxOccurs="1" name="Values" type="tns:ArrayOfInt" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFormList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetFormSummaryItemsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetFormSummaryItemsRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OwnerIDPIRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetFormListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFormListResult" type="tns:GetFormSummaryItemsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetFormSummaryItemsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessagePIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="FormSummaryItemList" type="tns:ArrayOfFormSummaryItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfFormSummaryItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FormSummaryItem" nillable="true" type="tns:FormSummaryItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FormSummaryItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="FormNumber" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefinitionNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanBeSentBy" type="tns:FormSentBy" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FormSentBy">
+        <s:restriction base="s:string">
+          <s:enumeration value="undefined" />
+          <s:enumeration value="dispatcher" />
+          <s:enumeration value="driver" />
+          <s:enumeration value="both" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetFormListDetail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetFormListDetailRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetFormListDetailRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OwnerIDPIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="FormDefinitionSpecificationList" type="tns:ArrayOfFormDefinitionSpecification" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfFormDefinitionSpecification">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FormDefinitionSpecification" nillable="true" type="tns:FormDefinitionSpecification" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FormDefinitionSpecification">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DefinitionNumber" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFormListDetailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFormListDetailResult" type="tns:GetFormListDetailResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetFormListDetailResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessagePIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Forms" type="tns:ArrayOfFormDefinition" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfFormDefinition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FormDefinition" nillable="true" type="tns:FormDefinition" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FormDefinition">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Fields" type="tns:ArrayOfBaseField" />
+          <s:element minOccurs="0" maxOccurs="1" name="Actions" type="tns:ArrayOfBaseAction" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CanBeSentBy" type="tns:FormSentBy" />
+          <s:element minOccurs="1" maxOccurs="1" name="FormNumber" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefinitionNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FormsLinkedTo" type="tns:ArrayOfFormDefinition" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBaseField">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BaseField" nillable="true" type="tns:BaseField" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BaseField" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsHeader" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsOptional" type="tns:FieldUseEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsParam" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FieldUseEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Required" />
+          <s:enumeration value="Optional" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="DateField">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseField" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TimeField">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseField" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="StringField">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseField">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Size" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SelectField">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseField">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Options" type="tns:ArrayOfSelectFieldOption" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfSelectFieldOption">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SelectFieldOption" nillable="true" type="tns:SelectFieldOption" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SelectFieldOption">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Selected" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DecimalField">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseField">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Precision" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="Scale" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DateTimeField">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseField" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AddressField">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseField">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Size" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfBaseAction">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BaseAction" nillable="true" type="tns:BaseAction" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BaseAction" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LinkFormAction">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseAction">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="LinkFormParams" type="tns:ArrayOfLinkFormParam" />
+              <s:element minOccurs="1" maxOccurs="1" name="DefIdRef" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="FormIdRef" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="AutoDelete" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfLinkFormParam">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LinkFormParam" nillable="true" type="tns:LinkFormParam" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LinkFormParam">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Index" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RouteToAction">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseAction">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Index" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetForms">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetFormsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetFormsRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OwnerIDPIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="VehicleIds" type="tns:ArrayOfGuid" />
+              <s:element minOccurs="0" maxOccurs="1" name="FormNumbers" type="tns:ArrayOfInt" />
+              <s:element minOccurs="1" maxOccurs="1" name="StartDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="EndDate" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="SentBy" type="tns:FormSentBy" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetFormsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFormsResult" type="tns:GetFormsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFormsDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetFormsDetailsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetFormsDetailsRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GetFormsRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="FormInstanceIds" type="tns:ArrayOfGuid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetFormsDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFormsDetailsResult" type="tns:GetFormsDetailsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGeofences">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetGeofencesRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetGeofencesRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OwnerCacheMessageRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GetGeofencesV20Request">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GetGeofencesRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetGeofencesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGeofencesResult" type="tns:GetGeofencesResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetGeofencesResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Geofences" type="tns:ArrayOfGeofence" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfGeofence">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Geofence" nillable="true" type="tns:Geofence" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Geofence">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseGeofence">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="ShowOnMDT" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseGeofence">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GeofenceHeader">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GeofenceHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="GeofenceID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShapeType" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxLat" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxLon" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MinLat" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MinLon" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumberOfPoints" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="GeofencePoints" type="tns:ArrayOfLocationPoint" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLocationPoint">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LocationPoint" nillable="true" type="tns:LocationPoint" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LocationPoint">
+        <s:attribute name="OrderNumber" type="s:int" use="required" />
+        <s:attribute name="Latitude" type="s:double" use="required" />
+        <s:attribute name="Longitude" type="s:double" use="required" />
+      </s:complexType>
+      <s:complexType name="GeofenceV20">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:Geofence">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="OverspeedAlertEnabled" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="OverspeedThreshold" nillable="true" type="s:float" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GetGeofencesV20Response">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GetGeofencesResponse" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetMessages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetMessagesRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetMessagesRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OwnerIDPIRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="FromDateTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="ToDateTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="MaxMessageTypeAllowed" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetMessagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMessagesResult" type="tns:GetMessagesResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOwners">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetOwnersRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetOwnersRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessageRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetOwnersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOwnersResult" type="tns:GetOwnersResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetOwnersResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Owners" type="tns:ArrayOfOwnerInfo" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfOwnerInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OwnerInfo" nillable="true" type="tns:OwnerInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OwnerInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="OwnerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressLine1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressLine2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressLine3" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddressLine4" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Active" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SystemOwner" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="StrongPassword" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BrandId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Language" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CountryCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TemperatureSolution" type="tns:SupportedTemperatureSolutions" />
+          <s:element minOccurs="1" maxOccurs="1" name="DashboardEnabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DefaultVehicleTimeZone" type="tns:VehicleTimeZone" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="SupportedTemperatureSolutions">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unknown" />
+          <s:enumeration value="Euroscan" />
+          <s:enumeration value="IDEM" />
+          <s:enumeration value="CoolTrax" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="VehicleTimeZone">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleTimeZoneId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplyDayLightSavings" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StandardName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StandardTime" type="tns:SystemTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="DaylightName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DayLightTime" type="tns:SystemTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Bias" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="StandardBias" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DaylightBias" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SystemTime">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Month" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DayOfWeek" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Day" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Hour" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Minute" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Second" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Milliseconds" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPeriodActivity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetPeriodActivityRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetPeriodActivityRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OwnerVehicleMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="StartTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="EndTime" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="MaximumSerializableEventSubType" type="tns:EventMessageSubTypeEnum" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="EventMessageSubTypeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="SMDP_EVENT_UNKNOWN" />
+          <s:enumeration value="SMDP_EVENT_IN_GEOFENCE" />
+          <s:enumeration value="SMDP_EVENT_OUT_GEOFENCE" />
+          <s:enumeration value="SMDP_EVENT_IGNITION_ON" />
+          <s:enumeration value="SMDP_EVENT_IGNITION_OFF" />
+          <s:enumeration value="SMDP_EVENT_QUERY" />
+          <s:enumeration value="SMDP_EVENT_TIME_OR_DISTANCE" />
+          <s:enumeration value="SMDP_EVENT_AUXILIARY_DIGITAL_INPUT_ON" />
+          <s:enumeration value="SMDP_EVENT_AUXILIARY_DIGITAL_INPUT_OFF" />
+          <s:enumeration value="SMDP_EVENT_AUXILIARY_ANALOGUE_INPUT_ABOVE_THRESHOLD" />
+          <s:enumeration value="SMDP_EVENT_AUXILIARY_ANALOGUE_INPUT_BELOW_THRESHOLD" />
+          <s:enumeration value="SMDP_EVENT_AUXILIARY_SERIAL_DATA" />
+          <s:enumeration value="SMDP_EVENT_MDT_ONLINE" />
+          <s:enumeration value="SMDP_EVENT_MDT_OFFLINE" />
+          <s:enumeration value="SMDP_EVENT_VEHICLE_MOVED_WITH_IGIOFF" />
+          <s:enumeration value="SMDP_EVENT_COLD_POWER_ON" />
+          <s:enumeration value="SMDP_EVENT_GPS_AERIAL_RECONNECTED" />
+          <s:enumeration value="SMDP_EVENT_GPS_AERIAL_REMOVED" />
+          <s:enumeration value="SMDP_DRIVER_EVENT" />
+          <s:enumeration value="SMDP_EVENT_LOGON_OK" />
+          <s:enumeration value="SMDP_EVENT_MANUAL_LOGOFF" />
+          <s:enumeration value="SMDP_EVENT_AUTO_LOGOFF" />
+          <s:enumeration value="SMDP_EVENT_UNKNOWN_DRIVER" />
+          <s:enumeration value="SMDP_EVENT_UNKNOWN_PIN" />
+          <s:enumeration value="SMDP_EVENT_PIN_IN_USE" />
+          <s:enumeration value="SMDP_EVENT_FORCE_DRIVER_LOGOFF" />
+          <s:enumeration value="SMDP_EVENT_NON_PRODUCTIVITY" />
+          <s:enumeration value="SMDP_EVENT_UNAUTHORISED_MOVEMENT" />
+          <s:enumeration value="SMDP_EVENT_DRIVER_STATUS_CHANGE" />
+          <s:enumeration value="SMDP_EVENT_DRIVER_STATUS_DRIVING" />
+          <s:enumeration value="SMDP_EVENT_DRIVER_STATUS_OTHER_WORK" />
+          <s:enumeration value="SMDP_EVENT_DRIVER_STATUS_POA" />
+          <s:enumeration value="SMDP_EVENT_DRIVER_STATUS_REST_BREAK" />
+          <s:enumeration value="SMDP_EVENT_DRIVER_STATUS_REST_BREAK_FIRST_ALERT" />
+          <s:enumeration value="SMDP_EVENT_DRIVER_STATUS_REST_BREAK_FIRST_ALERT_ACKNOWLEDGED" />
+          <s:enumeration value="SMDP_EVENT_DRIVER_STATUS_REST_BREAK_SECOND_ALERT" />
+          <s:enumeration value="SMDP_EVENT_DRIVER_STATUS_REST_BREAK_SECOND_ALERT_ACKNOWLEDGED" />
+          <s:enumeration value="SMDP_EVENT_DRIVER_STATUS_REST_BREAK_ALERT" />
+          <s:enumeration value="SMDP_EVENT_EMS" />
+          <s:enumeration value="SMDP_EVENT_EMS_SPEEDING_START" />
+          <s:enumeration value="SMDP_EVENT_EMS_SPEEDING_END" />
+          <s:enumeration value="SMDP_EVENT_EMS_OVER_RPM_START" />
+          <s:enumeration value="SMDP_EVENT_EMS_OVER_RPM_END" />
+          <s:enumeration value="SMDP_EVENT_EMS_OVER_TEMPERATURE" />
+          <s:enumeration value="SMDP_EVENT_EMS_OIL_PRESSURE" />
+          <s:enumeration value="SMDP_EVENT_EMS_FUEL_CHANGED" />
+          <s:enumeration value="SMDP_EVENT_EMS_PTO_START" />
+          <s:enumeration value="SMDP_EVENT_EMS_PTO_END" />
+          <s:enumeration value="SMDP_EVENT_EMS_HEAVY_BRAKING" />
+          <s:enumeration value="SMDP_EVENT_EMS_EXCESSIVE_IDLE" />
+          <s:enumeration value="SMDP_EVENT_EMS_INCIDENT" />
+          <s:enumeration value="SMDP_EVENT_OTASP" />
+          <s:enumeration value="SMDP_EVENT_PRL" />
+          <s:enumeration value="SMDP_EVENT_HALO_POWER_ABOVE_THRESHOLD" />
+          <s:enumeration value="SMDP_EVENT_HALO_POWER_BELOW_THRESHOLD" />
+          <s:enumeration value="SMDP_EVENT_NEW_MDT_CONNECTED" />
+          <s:enumeration value="SMDP_EVENT_MANUAL_ALARMACTIVATION" />
+          <s:enumeration value="SMDP_EVENT_MANUAL_ALARMCANCELLATION" />
+          <s:enumeration value="SMDP_EVENT_OVERSPEED" />
+          <s:enumeration value="SMDP_EVENT_THATCHAM" />
+          <s:enumeration value="SMDP_EVENT_THATCHAM_ALERT_UNAUTHORIZED" />
+          <s:enumeration value="SMDP_EVENT_THATCHAM_ALERT_POWER_SUPPLY" />
+          <s:enumeration value="SMDP_EVENT_THATCHAM_ALARM_CONFIRMED" />
+          <s:enumeration value="SMDP_EVENT_THATCHAM_TIME_UPDATE" />
+          <s:enumeration value="SMDP_EVENT_THATCHAM_ALARM_LEVEL_TWO" />
+          <s:enumeration value="SMDP_EVENT_IDLE" />
+          <s:enumeration value="SMDP_EVENT_TEMPERATURE" />
+          <s:enumeration value="SMDP_EVENT_TEMPERATURE_CHANGE" />
+          <s:enumeration value="SMDP_EVENT_TEMPERATURE_CHANGE_END" />
+          <s:enumeration value="SMDP_EVENT_INTERNAL_BATTERY_CHARGE_START" />
+          <s:enumeration value="SMDP_EVENT_INTERNAL_BATTERY_CHARGE_END_NORMAL" />
+          <s:enumeration value="SMDP_EVENT_INTERNAL_BATTERY_CHARGE_END_ERROR" />
+          <s:enumeration value="SMDP_EVENT_TAMPER_SWITCH_CLOSED" />
+          <s:enumeration value="SMDP_EVENT_TAMPER_SWITCH_OPEN" />
+          <s:enumeration value="SMDP_EVENT_BUSINESS_PRIVATE_USAGE" />
+          <s:enumeration value="SMDP_EVENT_BUSINESS_PRIVATE_USAGE_BUSINESS" />
+          <s:enumeration value="SMDP_EVENT_BUSINESS_PRIVATE_USAGE_PRIVATE" />
+          <s:enumeration value="SMDP_EVENT_OVERSPEED_END" />
+          <s:enumeration value="SMDP_EVENT_MOVE_TO_STATIONARY" />
+          <s:enumeration value="SMDP_EVENT_MOVE_TO_STATIONARY_EVENT" />
+          <s:enumeration value="SMDP_EVENT_STATIONARY_TO_MOVE_EVENT" />
+          <s:enumeration value="SMDP_EVENT_ASSET_STATUS" />
+          <s:enumeration value="SMDP_EVENT_ASSET_STATUS_IDLE" />
+          <s:enumeration value="SMDP_EVENT_ASSET_STATUS_INUSE" />
+          <s:enumeration value="SMDP_EVENT_HEALTH_CHECK" />
+          <s:enumeration value="SMDP_TEMPERATURE_ACTIVITY" />
+          <s:enumeration value="SMDP_TEMPERATURE_REEFER_DOOR_ACTIVITY" />
+          <s:enumeration value="SMDP_EVENT_TEMPERATURE_MESSAGE" />
+          <s:enumeration value="SMDP_EVENT_TEMPERATURE_OUT_OF_BOUNDS_MESSAGE" />
+          <s:enumeration value="SMDP_EVENT_TEMPERATURE_SETPOINT_MESSAGE" />
+          <s:enumeration value="SMDP_EVENT_TEMPERATURE_IN_BOUNDS_MESSAGE" />
+          <s:enumeration value="SMDP_EVENT_TEMPERATURE_CHANGE_MESSAGE" />
+          <s:enumeration value="SMDP_EVENT_DOOR_OPENED_MESSAGE" />
+          <s:enumeration value="SMDP_EVENT_DOOR_CLOSED_MESSAGE" />
+          <s:enumeration value="SMDP_EVENT_POWER_STATE_ON" />
+          <s:enumeration value="SMDP_EVENT_POWER_STATE_OFF" />
+          <s:enumeration value="SMDP_EVENT_ALARM_STATUS_MESSAGE" />
+          <s:enumeration value="SMDP_EVENT_DIGITAL_INPUT_ON_MESSAGE" />
+          <s:enumeration value="SMDP_EVENT_DIGITAL_INPUT_OFF_MESSAGE" />
+          <s:enumeration value="SMDP_EVENT_POWER_STATE_MESSAGE" />
+          <s:enumeration value="SMDP_EVENT_DOOR_MESSAGE" />
+          <s:enumeration value="SMDP_EVENT_TEMPERATURE_SETPOINT_IN_BOUNDS_MESSAGE" />
+          <s:enumeration value="SMDP_EVENT_GEOFENCE_OVERSPEED_START" />
+          <s:enumeration value="SMDP_EVENT_GEOFENCE_OVERSPEED_END" />
+          <s:enumeration value="SMDP_EVENT_POSTED_SPEED_START" />
+          <s:enumeration value="SMDP_EVENT_POSTED_SPEED_END" />
+          <s:enumeration value="SMDP_EVENT_EXTERNAL_POWER_REMOVED" />
+          <s:enumeration value="SMDP_EVENT_INTERNAL_BATTERY_CHARGE_NO_BATTERY" />
+          <s:enumeration value="SMDP_EVENT_TAMPER_SIM_REMOVED" />
+          <s:enumeration value="SMDP_EVENT_TAMPER_SIM_INSERTED" />
+          <s:enumeration value="SMDP_EVENT_EMS_OFFLINE" />
+          <s:enumeration value="SMDP_EVENT_EMS_ONLINE" />
+          <s:enumeration value="SMDP_EVENT_HARSH_ACCELERATION" />
+          <s:enumeration value="SMDP_EVENT_HARSH_BRAKING" />
+          <s:enumeration value="SMDP_EVENT_HARSH_LEFT_CORNERING" />
+          <s:enumeration value="SMDP_EVENT_HARSH_RIGHT_CORNERING" />
+          <s:enumeration value="SMDP_EVENT_HARSH_EVENT" />
+          <s:enumeration value="SMDP_EVENT_DRIVER_STATUS_INACTIVE" />
+          <s:enumeration value="SMDP_EVENT_LOGON_WITH_INVALID_LICENCE" />
+          <s:enumeration value="SMDP_EVENT_OVER_RPM_START" />
+          <s:enumeration value="SMDP_EVENT_OVER_RPM_END" />
+          <s:enumeration value="SMDP_EVENT_HARSH_IMPACT_DETECTION" />
+          <s:enumeration value="SMDP_EVENT_PREAUTH_LOGON_OK" />
+          <s:enumeration value="SMDP_EVENT_REVALIDATE_PREAUTH_LOGON" />
+          <s:enumeration value="SMDP_EVENT_IMMOBILISATION_ENGAGE" />
+          <s:enumeration value="SMDP_EVENT_IMMOBILISATION_DISENGAGE" />
+          <s:enumeration value="SMDP_EVENT_HARSH_ROLLOVER" />
+          <s:enumeration value="SMDP_EVENT_CUSTOM_EVENT_START" />
+          <s:enumeration value="SMDP_EVENT_CUSTOM_EVENT_END" />
+          <s:enumeration value="SMDP_EVENT_RPM_ROUTE_STARTED" />
+          <s:enumeration value="SMDP_EVENT_RPM_ARRIVE_STOP_AUTO" />
+          <s:enumeration value="SMDP_EVENT_RPM_ARRIVE_STOP_MANUAL" />
+          <s:enumeration value="SMDP_EVENT_RPM_DEPART_STOP_MANUAL" />
+          <s:enumeration value="SMDP_EVENT_RPM_DEPART_STOP_AUTO" />
+          <s:enumeration value="SMDP_EVENT_RPM_ROUTE_FINISHED" />
+          <s:enumeration value="SMDP_EVENT_RPM_ARRIVED_EARLY" />
+          <s:enumeration value="SMDP_EVENT_RPM_ARRIVED_LATE" />
+          <s:enumeration value="SMDP_EVENT_RPM_DEPARTED_EARLY" />
+          <s:enumeration value="SMDP_EVENT_RPM_DEPARTED_LATE" />
+          <s:enumeration value="SMDP_EVENT_RPM_OVERSTAYED" />
+          <s:enumeration value="SMDP_EVENT_RPM_MISSED_STOP" />
+          <s:enumeration value="SMDP_EVENT_RPM_STOP_OUTOFSEQUENCE" />
+          <s:enumeration value="SMDP_EVENT_RPM_ROUTE_CANCELLED" />
+          <s:enumeration value="SMDP_EVENT_RPM_EQUIPMENT_CONFIRMED" />
+          <s:enumeration value="SMDP_EVENT_RPM_STATUS_SET" />
+          <s:enumeration value="SMDP_EVENT_GRACEFUL_SHUTDOWN" />
+          <s:enumeration value="SMDP_EVENT_GOING_TO_SLEEP" />
+          <s:enumeration value="SMDP_EVENT_WOKE_UP" />
+          <s:enumeration value="SMDP_EVENT_EMS_VEHICLE_DIAGNOSTIC" />
+          <s:enumeration value="SMDP_EVENT_EMS_CRUISE_START" />
+          <s:enumeration value="SMDP_EVENT_EMS_CRUISE_END" />
+          <s:enumeration value="SMDP_EVENT_EMS_HARSH_ACCEL" />
+          <s:enumeration value="SMDP_EVENT_EMS_DRIVER_DEMAND" />
+          <s:enumeration value="SMDP_EVENT_EMS_MIL_START" />
+          <s:enumeration value="SMDP_EVENT_EMS_MIL_END" />
+          <s:enumeration value="SMDP_EVENT_EMS_EXCESS_SPEED_START" />
+          <s:enumeration value="SMDP_EVENT_EMS_EXCESS_SPEED_END" />
+          <s:enumeration value="SMDP_EVENT_EMS_IDLE_START" />
+          <s:enumeration value="SMDP_EVENT_EMS_IDLE_END" />
+          <s:enumeration value="SMDP_EVENT_EMS_IN_MOTION_START" />
+          <s:enumeration value="SMDP_EVENT_EMS_IN_MOTION_END" />
+          <s:enumeration value="SMDP_EVENT_FIRMWARE_UPGRADE_BEGIN" />
+          <s:enumeration value="SMDP_EVENT_FIRMWARE_UPGRADE_END" />
+          <s:enumeration value="SMDP_EVENT_INTERNAL_HALO_POWER_BELOW_THRESHOLD" />
+          <s:enumeration value="SMDP_EVENT_EXTERNAL_HALO_POWER_BELOW_THRESHOLD" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="GetPeriodActivityV20Request">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GetPeriodActivityRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetPeriodActivityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPeriodActivityResult" type="tns:GetPeriodActivityResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetPeriodActivityResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Activities" type="tns:ArrayOfVehicleActivity" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfVehicleActivity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VehicleActivity" nillable="true" type="tns:VehicleActivity" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VehicleActivity">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ActivityDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="GPSValid" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="OnSiteTime" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IgnitionOn" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="HDG" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Speed" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="EventSubType" type="tns:EventMessageSubTypeEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="IncrementalDistance" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ODOMeter" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TripDistance" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReceivedDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxSpeed" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsUnauthorised" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="HDOP" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumSatellites" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="SiteID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DriverID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DriverHourStatusID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActivityLogID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomData" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OffRoadMetres" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="DegreesBearing" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocationType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegionCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AreaCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NamedArea" type="tns:NamedAreaEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="EventPriority" type="tns:AlertingEventPriorityEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Private" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="NamedAreaEnum">
+        <s:list>
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="Undefined" />
+              <s:enumeration value="LondonCongestionZone" />
+              <s:enumeration value="LCZ" />
+              <s:enumeration value="LEZ" />
+            </s:restriction>
+          </s:simpleType>
+        </s:list>
+      </s:simpleType>
+      <s:simpleType name="AlertingEventPriorityEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unknown" />
+          <s:enumeration value="Low" />
+          <s:enumeration value="LowWithAlarm" />
+          <s:enumeration value="Medium" />
+          <s:enumeration value="MediumWithAlarm" />
+          <s:enumeration value="High" />
+          <s:enumeration value="HighWithAlarm" />
+          <s:enumeration value="Urgent" />
+          <s:enumeration value="UrgentWithAlarm" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="GetPeriodActivityV20Response">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GetPeriodActivityResponse" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetSendRouteMessagesStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetSendRouteMessagesStatusRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetSendRouteMessagesStatusRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="OperationStatusGuid" nillable="true" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetSendRouteMessagesStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSendRouteMessagesStatusResult" type="tns:GetSendRouteMessagesStatusResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetSendRouteMessagesStatusResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="BatchProcessRunning" nillable="true" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="OperationState" type="tns:BatchOperationState" />
+              <s:element minOccurs="1" maxOccurs="1" name="OperationStatusGuid" nillable="true" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="BatchOperationStartTime" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="BatchOperationEndTime" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="RequestedOperationsCount" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="OperationsProcessed" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="SuccessfulOperationsCount" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="FailedOperationsCount" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="DoSendRouteMessageResponses" type="tns:ArrayOfDoSendRouteMessageResponse" />
+              <s:element minOccurs="0" maxOccurs="1" name="WebServerName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="BatchProcessId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="StatusUpdateTime" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="BatchExecutionServerName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="BatchRequestPickupTime" nillable="true" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="BatchOperationState">
+        <s:restriction base="s:string">
+          <s:enumeration value="NotStarted" />
+          <s:enumeration value="Started" />
+          <s:enumeration value="InProgress" />
+          <s:enumeration value="Completed" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfDoSendRouteMessageResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DoSendRouteMessageResponse" nillable="true" type="tns:DoSendRouteMessageResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSentFormsStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetSentFormsStatusRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetSentFormsStatusRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OwnerIDPIRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="FormInstanceIDs" type="tns:ArrayOfGuid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetSentFormsStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSentFormsStatusResult" type="tns:GetSentFormsStatusResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetSentFormsStatusResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessagePIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="SentFormsStatuses" type="tns:ArrayOfSentFormsStatus" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfSentFormsStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SentFormsStatus" nillable="true" type="tns:SentFormsStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SentFormsStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="FormInstanceID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Statuses" type="tns:ArrayOfFormInstanceStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFormInstanceStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FormInstanceStatus" nillable="true" type="tns:FormInstanceStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FormInstanceStatus">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:FormStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusDateTime" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FormStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="NotReceivedbyDriver" />
+          <s:enumeration value="ReceivedbyDriver" />
+          <s:enumeration value="ReadbyDriver" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetSites">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetSitesRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetSitesRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OwnerCacheMessageRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetSitesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSitesResult" type="tns:GetSitesResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetSitesResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Sites" type="tns:ArrayOfSite" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfSite">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Site" nillable="true" type="tns:Site" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Site">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseSite" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseSite">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SiteHeader">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AddressLine1" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AddressLine2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AddressLine3" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="AddressLine4" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SiteHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SiteID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="SiteTypeID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShapeType" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxLat" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MaxLon" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MinLat" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MinLon" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumberOfPoints" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SitePoints" type="tns:ArrayOfLocationPoint" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDateTime" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="SiteTypeName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EndDate" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVehicleGroups">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetVehicleGroupsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetVehicleGroupsRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OwnerIDPIRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetVehicleGroupsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehicleGroupsResult" type="tns:GetVehicleGroupsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetVehicleGroupsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessagePIResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="VehicleGroups" type="tns:ArrayOfVehicleGroup" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfVehicleGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VehicleGroup" nillable="true" type="tns:VehicleGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VehicleGroup">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleGroupId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ParentVehicleGroupId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVehicles">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetVehiclesRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetVehiclesRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OwnerCacheMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IsProfile" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetVehiclesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehiclesResult" type="tns:GetVehiclesResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetVehiclesResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Vehicles" type="tns:ArrayOfVehicleInfo" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfVehicleInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VehicleInfo" nillable="true" type="tns:VehicleInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VehicleInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseVehicle">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TypeDisplayName" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="BaseVehicle" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultDriverId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="DisplayName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Registration" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleTypeId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleProfileId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="NotifyDriverOfGeofenceAlert" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsProfile" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleGroupId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueVehicleID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefaultVehicleStateID" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="GISCulture" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVehiclesActivityDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetVehiclesActivityDetailsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetVehiclesActivityDetailsRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ActivityLogIDs" type="tns:ArrayOfGuid" />
+              <s:element minOccurs="1" maxOccurs="1" name="ActivityLogIDVersion" type="s:long" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetVehiclesActivityDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehiclesActivityDetailsResult" type="tns:GetVehiclesActivityDetailsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetVehiclesActivityDetailsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:BaseMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="VehiclesActivityDetails" type="tns:ArrayOfVehicleActivityDetail" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfVehicleActivityDetail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VehicleActivityDetail" nillable="true" type="tns:VehicleActivityDetail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VehicleActivityDetail">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ActivityLogExtID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActivityLogID" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="RawExtendedData" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVehicleSnapShots">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="request" type="tns:GetVehicleSnapShotsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetVehicleSnapShotsRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:OwnerCacheMessageRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="MaximumSerializableEventSubType" type="tns:EventMessageSubTypeEnum" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GetVehicleSnapShotsV20Request">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GetVehicleSnapShotsRequest" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetVehicleSnapShotsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVehicleSnapShotsResult" type="tns:GetVehicleSnapShotsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetVehicleSnapShotsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CacheMessageResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="SnapShots" type="tns:ArrayOfVehicleSnapShot" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfVehicleSnapShot">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VehicleSnapShot" nillable="true" type="tns:VehicleSnapShot" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VehicleSnapShot">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EventSubType" type="tns:EventMessageSubTypeEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActivityDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="GPSValid" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Location" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IgnitionOn" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="HDG" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Speed" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="ODOMeter" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="HDOP" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumSatellites" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="SiteID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DriverID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DriverHourStatusID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="IgnitionStartTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IgnitionEndTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="IgnitionStartOdometer" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="OwnerID" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomType" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomData" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OffRoadMetres" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="DegreesBearing" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LocationType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NamedArea" type="tns:NamedAreaEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="EventPriority" type="tns:AlertingEventPriorityEnum" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastTemperatureId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="DriverLoggedInViaPin" type="tns:PinType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Private" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="AssetStatus" type="tns:AssetStatus" />
+          <s:element minOccurs="1" maxOccurs="1" name="DriverStatusSetWhileIgnitionOff" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="TripDistance" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PinType">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="MDTPin" />
+          <s:enumeration value="DallasPin" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="AssetStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="Idle" />
+          <s:enumeration value="InUse" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="VehicleSnapShotV20">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:VehicleSnapShot">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="CommunicationChannel" type="tns:CommunicationChannelType" />
+              <s:element minOccurs="1" maxOccurs="1" name="LastActivityLogID" type="s1:guid" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="CommunicationChannelType">
+        <s:list>
+          <s:simpleType>
+            <s:restriction base="s:string">
+              <s:enumeration value="Default" />
+              <s:enumeration value="Cellular" />
+              <s:enumeration value="Satellite" />
+            </s:restriction>
+          </s:simpleType>
+        </s:list>
+      </s:simpleType>
+      <s:complexType name="GetVehicleSnapShotsV20Response">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GetVehicleSnapShotsResponse" />
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AssignToVehicleGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:AssignToVehicleGroup" />
+  </wsdl:message>
+  <wsdl:message name="AssignToVehicleGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:AssignToVehicleGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:DoLogin" />
+  </wsdl:message>
+  <wsdl:message name="DoLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:DoLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoLogoffSoapIn">
+    <wsdl:part name="parameters" element="tns:DoLogoff" />
+  </wsdl:message>
+  <wsdl:message name="DoLogoffSoapOut">
+    <wsdl:part name="parameters" element="tns:DoLogoffResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoSendDeleteTextMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:DoSendDeleteTextMessage" />
+  </wsdl:message>
+  <wsdl:message name="DoSendDeleteTextMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:DoSendDeleteTextMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoSendFormsSoapIn">
+    <wsdl:part name="parameters" element="tns:DoSendForms" />
+  </wsdl:message>
+  <wsdl:message name="DoSendFormsSoapOut">
+    <wsdl:part name="parameters" element="tns:DoSendFormsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoSendRouteMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:DoSendRouteMessage" />
+  </wsdl:message>
+  <wsdl:message name="DoSendRouteMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:DoSendRouteMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoSendRouteMessagesSoapIn">
+    <wsdl:part name="parameters" element="tns:DoSendRouteMessages" />
+  </wsdl:message>
+  <wsdl:message name="DoSendRouteMessagesSoapOut">
+    <wsdl:part name="parameters" element="tns:DoSendRouteMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoSendTextMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:DoSendTextMessage" />
+  </wsdl:message>
+  <wsdl:message name="DoSendTextMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:DoSendTextMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="DoSetDeviceOutputsSoapIn">
+    <wsdl:part name="parameters" element="tns:DoSetDeviceOutputs" />
+  </wsdl:message>
+  <wsdl:message name="DoSetDeviceOutputsSoapOut">
+    <wsdl:part name="parameters" element="tns:DoSetDeviceOutputsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConExConfigurationsByVehiclesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetConExConfigurationsByVehicles" />
+  </wsdl:message>
+  <wsdl:message name="GetConExConfigurationsByVehiclesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetConExConfigurationsByVehiclesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDriversSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDrivers" />
+  </wsdl:message>
+  <wsdl:message name="GetDriversSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDriversResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEMSPeriodActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetEMSPeriodActivity" />
+  </wsdl:message>
+  <wsdl:message name="GetEMSPeriodActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetEMSPeriodActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFormListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFormList" />
+  </wsdl:message>
+  <wsdl:message name="GetFormListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFormListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFormListDetailSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFormListDetail" />
+  </wsdl:message>
+  <wsdl:message name="GetFormListDetailSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFormListDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFormsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetForms" />
+  </wsdl:message>
+  <wsdl:message name="GetFormsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFormsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFormsDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFormsDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetFormsDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFormsDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGeofencesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGeofences" />
+  </wsdl:message>
+  <wsdl:message name="GetGeofencesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGeofencesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMessagesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMessages" />
+  </wsdl:message>
+  <wsdl:message name="GetMessagesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOwnersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOwners" />
+  </wsdl:message>
+  <wsdl:message name="GetOwnersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOwnersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPeriodActivitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetPeriodActivity" />
+  </wsdl:message>
+  <wsdl:message name="GetPeriodActivitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetPeriodActivityResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSendRouteMessagesStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSendRouteMessagesStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetSendRouteMessagesStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSendRouteMessagesStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSentFormsStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSentFormsStatus" />
+  </wsdl:message>
+  <wsdl:message name="GetSentFormsStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSentFormsStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSitesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSites" />
+  </wsdl:message>
+  <wsdl:message name="GetSitesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleGroupsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVehicleGroups" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleGroupsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVehicleGroupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVehiclesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVehicles" />
+  </wsdl:message>
+  <wsdl:message name="GetVehiclesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVehiclesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVehiclesActivityDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVehiclesActivityDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetVehiclesActivityDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVehiclesActivityDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleSnapShotsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVehicleSnapShots" />
+  </wsdl:message>
+  <wsdl:message name="GetVehicleSnapShotsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVehicleSnapShotsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="AssignToVehicleGroup">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method assigns vehicle to given vehicle group display name.</wsdl:documentation>
+      <wsdl:input message="tns:AssignToVehicleGroupSoapIn" />
+      <wsdl:output message="tns:AssignToVehicleGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoLogin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method is used to authenticate a client application with the Published Interface web service. This method returns a session id/ token which must be supplied with all subsequent API calls.</wsdl:documentation>
+      <wsdl:input message="tns:DoLoginSoapIn" />
+      <wsdl:output message="tns:DoLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoLogoff">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method disconnects the session for the supplied session id.</wsdl:documentation>
+      <wsdl:input message="tns:DoLogoffSoapIn" />
+      <wsdl:output message="tns:DoLogoffSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoSendDeleteTextMessage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides a mechanism for the client application to instruct the Vehicle MDT to delete all text messages on the device.</wsdl:documentation>
+      <wsdl:input message="tns:DoSendDeleteTextMessageSoapIn" />
+      <wsdl:output message="tns:DoSendDeleteTextMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoSendForms">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method sends list of form instance messages to the specified vehicles.</wsdl:documentation>
+      <wsdl:input message="tns:DoSendFormsSoapIn" />
+      <wsdl:output message="tns:DoSendFormsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoSendRouteMessage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides a mechanism for the client application to send a single Route-To Message to the MDT's on the supplied Vehicle(s).</wsdl:documentation>
+      <wsdl:input message="tns:DoSendRouteMessageSoapIn" />
+      <wsdl:output message="tns:DoSendRouteMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoSendRouteMessages">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides a mechanism for the client application to send multiple Route-To Messages to the MDT's on the supplied Vehicle(s). Note that the batch operation is done asynchronously. This method returns as soon as a batch execution process has been created to perform the batch operation.</wsdl:documentation>
+      <wsdl:input message="tns:DoSendRouteMessagesSoapIn" />
+      <wsdl:output message="tns:DoSendRouteMessagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoSendTextMessage">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides a mechanism for the client application to send a text message to one or more of the supplied Vehicles.</wsdl:documentation>
+      <wsdl:input message="tns:DoSendTextMessageSoapIn" />
+      <wsdl:output message="tns:DoSendTextMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DoSetDeviceOutputs">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides a mechanism for the client application to set the new state of a single ConEx output port of an individual vehicle. This method can only be invoked for one vehicle at a time.</wsdl:documentation>
+      <wsdl:input message="tns:DoSetDeviceOutputsSoapIn" />
+      <wsdl:output message="tns:DoSetDeviceOutputsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConExConfigurationsByVehicles">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides the current configuration of Conex equipment installed on the supplied Vehicle(s).</wsdl:documentation>
+      <wsdl:input message="tns:GetConExConfigurationsByVehiclesSoapIn" />
+      <wsdl:output message="tns:GetConExConfigurationsByVehiclesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDrivers">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides a list of Drivers associated with the specified Owner/ Fleet accessible by the user.</wsdl:documentation>
+      <wsdl:input message="tns:GetDriversSoapIn" />
+      <wsdl:output message="tns:GetDriversSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEMSPeriodActivity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets EMS trip information for a list of fleets or vehicles, for a specific time period</wsdl:documentation>
+      <wsdl:input message="tns:GetEMSPeriodActivitySoapIn" />
+      <wsdl:output message="tns:GetEMSPeriodActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFormList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets a list of form definitions</wsdl:documentation>
+      <wsdl:input message="tns:GetFormListSoapIn" />
+      <wsdl:output message="tns:GetFormListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFormListDetail">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method returns a list of form definitions.</wsdl:documentation>
+      <wsdl:input message="tns:GetFormListDetailSoapIn" />
+      <wsdl:output message="tns:GetFormListDetailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetForms">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of form instances for given owner or vehicless or form numbers</wsdl:documentation>
+      <wsdl:input message="tns:GetFormsSoapIn" />
+      <wsdl:output message="tns:GetFormsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFormsDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides a list of form instance detail for given message ids or vehicle ids or form number.</wsdl:documentation>
+      <wsdl:input message="tns:GetFormsDetailsSoapIn" />
+      <wsdl:output message="tns:GetFormsDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGeofences">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides a list of Geofences associated with the specified Owner/ Fleet accessible by the user.</wsdl:documentation>
+      <wsdl:input message="tns:GetGeofencesSoapIn" />
+      <wsdl:output message="tns:GetGeofencesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides all text messages sent from Vehicles for a specified Fleet during a specified time period.</wsdl:documentation>
+      <wsdl:input message="tns:GetMessagesSoapIn" />
+      <wsdl:output message="tns:GetMessagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOwners">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides information on the Owners (Fleets) which are accessible by the user.</wsdl:documentation>
+      <wsdl:input message="tns:GetOwnersSoapIn" />
+      <wsdl:output message="tns:GetOwnersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPeriodActivity">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides the current status of all vehicles belonging to the supplied Owner/ Fleet accessible by the user.</wsdl:documentation>
+      <wsdl:input message="tns:GetPeriodActivitySoapIn" />
+      <wsdl:output message="tns:GetPeriodActivitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSendRouteMessagesStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides a mechanism for the client application to request a status update for the batch route-to messages request which was sent to the server using the DoSendRouteMessages() web service method.</wsdl:documentation>
+      <wsdl:input message="tns:GetSendRouteMessagesStatusSoapIn" />
+      <wsdl:output message="tns:GetSendRouteMessagesStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSentFormsStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method send list of sent forms for knowing their status.</wsdl:documentation>
+      <wsdl:input message="tns:GetSentFormsStatusSoapIn" />
+      <wsdl:output message="tns:GetSentFormsStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSites">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides a list of Sites associated with the specified Owner/ Fleet accessible by the user.</wsdl:documentation>
+      <wsdl:input message="tns:GetSitesSoapIn" />
+      <wsdl:output message="tns:GetSitesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleGroups">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method retrieves list of vehicle group for given owner.</wsdl:documentation>
+      <wsdl:input message="tns:GetVehicleGroupsSoapIn" />
+      <wsdl:output message="tns:GetVehicleGroupsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicles">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides a list of Vehicles for the supplied Owner/ Fleet.</wsdl:documentation>
+      <wsdl:input message="tns:GetVehiclesSoapIn" />
+      <wsdl:output message="tns:GetVehiclesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehiclesActivityDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides extended information for the supplied Vehicle activity record.</wsdl:documentation>
+      <wsdl:input message="tns:GetVehiclesActivityDetailsSoapIn" />
+      <wsdl:output message="tns:GetVehiclesActivityDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleSnapShots">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">This method provides the current status of all vehicles belonging to the supplied Owner/ Fleet accessible by the user.</wsdl:documentation>
+      <wsdl:input message="tns:GetVehicleSnapShotsSoapIn" />
+      <wsdl:output message="tns:GetVehicleSnapShotsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AssignToVehicleGroup">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/AssignToVehicleGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoLogin">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoLogoff">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoLogoff" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSendDeleteTextMessage">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoSendDeleteTextMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSendForms">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoSendForms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSendRouteMessage">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoSendRouteMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSendRouteMessages">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoSendRouteMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSendTextMessage">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoSendTextMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSetDeviceOutputs">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoSetDeviceOutputs" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConExConfigurationsByVehicles">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetConExConfigurationsByVehicles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDrivers">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetDrivers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEMSPeriodActivity">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetEMSPeriodActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormList">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetFormList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormListDetail">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetFormListDetail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetForms">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetForms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormsDetails">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetFormsDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGeofences">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetGeofences" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOwners">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetOwners" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPeriodActivity">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetPeriodActivity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSendRouteMessagesStatus">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetSendRouteMessagesStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSentFormsStatus">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetSentFormsStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSites">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetSites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleGroups">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetVehicleGroups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicles">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetVehicles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehiclesActivityDetails">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetVehiclesActivityDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleSnapShots">
+      <soap:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetVehicleSnapShots" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AssignToVehicleGroup">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/AssignToVehicleGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoLogin">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoLogoff">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoLogoff" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSendDeleteTextMessage">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoSendDeleteTextMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSendForms">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoSendForms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSendRouteMessage">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoSendRouteMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSendRouteMessages">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoSendRouteMessages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSendTextMessage">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoSendTextMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DoSetDeviceOutputs">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/DoSetDeviceOutputs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConExConfigurationsByVehicles">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetConExConfigurationsByVehicles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDrivers">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetDrivers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEMSPeriodActivity">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetEMSPeriodActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormList">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetFormList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormListDetail">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetFormListDetail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetForms">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetForms" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormsDetails">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetFormsDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGeofences">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetGeofences" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessages">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetMessages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOwners">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetOwners" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPeriodActivity">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetPeriodActivity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSendRouteMessagesStatus">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetSendRouteMessagesStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSentFormsStatus">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetSentFormsStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSites">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetSites" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleGroups">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetVehicleGroups" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicles">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetVehicles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehiclesActivityDetails">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetVehiclesActivityDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVehicleSnapShots">
+      <soap12:operation soapAction="http://onlineavl2.navmanwireless.com/0907/GetVehicleSnapShots" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">&lt;h1&gt;Welcome to the OnlineAVL 2 Published Interface WSDL&lt;/h1&gt;The Published Interface is designed to provide programmatic access via the internet to the Navman Wireless OnlineAVL2 Vehicle Tracking and Fleet Management product. The Published Interface to the OnlineAVL2 system consists of a set of web-methods made available over the internet to authenticated users of the Published Interface.  It provides the ability to send information to vehicles e.g. Text Messages and asserting Auxiliary Outputs (ConEx), and retrieve information from the Vehicles e.g. GPS Activity, Auxiliary Inputs (ConEx), Engine Management data (EMS) and Text Messaging (MDT/MNav). It is assumed the reader is somewhat familiar with the Navman Fleet Tracking system.</wsdl:documentation>
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="https://onlineavl2api-mx02.navmanwireless.com/onlineavl/api/V1.0/service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="https://onlineavl2api-mx02.navmanwireless.com/onlineavl/api/V1.0/service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

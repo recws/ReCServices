@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WS_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="WS_CONTEXT" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="WS_GPS_ConsultaHistoricoUTC" ReturnType="Collection(WS_Model.WS_GPS_ConsultaHistoricoUTC_Result)">
+      <Parameter Name="IMEI" Mode="In" Type="String" />
+      <Parameter Name="FechaInicioUTC" Mode="In" Type="DateTime" />
+      <Parameter Name="FechaFinUTC" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="WS_GPS_ConsultaIncidenciasAutomaticas" ReturnType="Collection(WS_Model.WS_GPS_ConsultaIncidenciasAutomaticas_Result)">
+      <Parameter Name="Usuario" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WS_GPS_ConsultaUltimaPosicion" ReturnType="Collection(WS_Model.WS_GPS_ConsultaUltimaPosicion_Result)">
+      <Parameter Name="IMEI" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WS_GPS_ConsultaxUsuarioUTC" ReturnType="Collection(WS_Model.WS_GPS_ConsultaxUsuarioUTC_Result)">
+      <Parameter Name="Usuario" Mode="In" Type="String" />
+      <Parameter Name="FechaInicioUTC" Mode="In" Type="DateTime" />
+      <Parameter Name="FechaFinUTC" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="WS_GPS_InsertaSimple" ReturnType="Collection(WS_Model.WS_GPS_InsertaSimple_Result)">
+      <Parameter Name="Usuario" Mode="In" Type="String" />
+      <Parameter Name="IMEI" Mode="In" Type="String" />
+      <Parameter Name="CodigoEvento" Mode="In" Type="String" />
+      <Parameter Name="Lat" Mode="In" Type="Decimal" />
+      <Parameter Name="Lng" Mode="In" Type="Decimal" />
+      <Parameter Name="Ubicacion" Mode="In" Type="String" />
+      <Parameter Name="GPSValido" Mode="In" Type="Boolean" />
+      <Parameter Name="Velocidad" Mode="In" Type="Int32" />
+      <Parameter Name="Direccion" Mode="In" Type="Int32" />
+      <Parameter Name="NivelBateria" Mode="In" Type="Int32" />
+      <Parameter Name="KMOdometro" Mode="In" Type="Int32" />
+      <Parameter Name="FechaHoraGeneracion" Mode="In" Type="DateTime" />
+      <Parameter Name="FechaHoraRecepcion" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="WS_GPS_ListaGPSxProveedor" ReturnType="Collection(WS_Model.WS_GPS_ListaGPSxProveedor_Result)">
+      <Parameter Name="IdTransportista" Mode="In" Type="Int32" />
+      <Parameter Name="Proveedor" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WS_GPS_SincronizaGPS" />
+    <FunctionImport Name="WS_GPS_SincronizaUsuario" />
+    <FunctionImport Name="WS_GPS_ValidaUsuario" ReturnType="Collection(WS_Model.WS_GPS_ValidaUsuario_Result)">
+      <Parameter Name="Usuario" Mode="In" Type="String" />
+      <Parameter Name="IMEI" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="WS_GPS_ValidaUsuarioyPassword" ReturnType="Collection(WS_Model.WS_GPS_ValidaUsuarioyPassword_Result)">
+      <Parameter Name="Usuario" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="IMEI" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="WS_GPS_ConsultaHistoricoUTC_Result">
+    <Property Type="String" Name="CodigoEvento" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="NombreEvento" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="Lat" Nullable="true" Precision="12" Scale="9" />
+    <Property Type="Decimal" Name="Lng" Nullable="true" Precision="12" Scale="9" />
+    <Property Type="Boolean" Name="GPSValido" Nullable="true" />
+    <Property Type="Int32" Name="Velocidad" Nullable="true" />
+    <Property Type="Int32" Name="NivelBateria" Nullable="true" />
+    <Property Type="Int32" Name="KMOdometro" Nullable="true" />
+    <Property Type="DateTime" Name="FechaHoraGeneracion" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FechaHoraRecepcion" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="WS_GPS_ConsultaIncidenciasAutomaticas_Result">
+    <Property Type="Int32" Name="IdEventoGPS" Nullable="true" />
+    <Property Type="String" Name="Incidencia" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Usuario" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="IMEI" Nullable="true" MaxLength="40" />
+    <Property Type="Decimal" Name="Lat" Nullable="true" Precision="12" Scale="9" />
+    <Property Type="Decimal" Name="Lng" Nullable="true" Precision="12" Scale="9" />
+    <Property Type="Int32" Name="Velocidad" Nullable="true" />
+    <Property Type="Int32" Name="NivelBateria" Nullable="true" />
+    <Property Type="DateTime" Name="FechaHora" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="CorreoEnviado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="WS_GPS_ConsultaUltimaPosicion_Result">
+    <Property Type="String" Name="IMEI" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="CodigoEvento" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="NombreEvento" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="Lat" Nullable="true" Precision="12" Scale="9" />
+    <Property Type="Decimal" Name="Lng" Nullable="true" Precision="12" Scale="9" />
+    <Property Type="String" Name="Ubicacion" Nullable="true" MaxLength="1000" />
+    <Property Type="Boolean" Name="GPSValido" Nullable="true" />
+    <Property Type="Int32" Name="Velocidad" Nullable="true" />
+    <Property Type="Int32" Name="Direccion" Nullable="true" />
+    <Property Type="Int32" Name="NivelBateria" Nullable="true" />
+    <Property Type="Int32" Name="KMOdometro" Nullable="true" />
+    <Property Type="DateTime" Name="FechaHoraGeneracion" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FechaHoraRecepcion" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FechaHoraRecibidoWS" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="WS_GPS_ConsultaxUsuarioUTC_Result">
+    <Property Type="String" Name="IMEI" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="CodigoEvento" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="NombreEvento" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="Lat" Nullable="true" Precision="12" Scale="9" />
+    <Property Type="Decimal" Name="Lng" Nullable="true" Precision="12" Scale="9" />
+    <Property Type="Boolean" Name="GPSValido" Nullable="true" />
+    <Property Type="Int32" Name="Velocidad" Nullable="true" />
+    <Property Type="Int32" Name="Direccion" Nullable="true" />
+    <Property Type="Int32" Name="NivelBateria" Nullable="true" />
+    <Property Type="Int32" Name="KMOdometro" Nullable="true" />
+    <Property Type="DateTime" Name="FechaHoraGeneracion" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FechaHoraRecepcion" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="WS_GPS_InsertaSimple_Result">
+    <Property Type="Int32" Name="Indicador" Nullable="false" />
+    <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="16" />
+    <Property Type="Int32" Name="IdRegistroAfectado" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="WS_GPS_ListaGPSxProveedor_Result">
+    <Property Type="String" Name="Economico" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="IMEI" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="WS_GPS_ValidaUsuario_Result">
+    <Property Type="Int32" Name="Indicador" Nullable="false" />
+    <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="IdRegistroAfectado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="WS_GPS_ValidaUsuarioyPassword_Result">
+    <Property Type="Int32" Name="Indicador" Nullable="false" />
+    <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="IdRegistroAfectado" Nullable="true" />
+  </ComplexType>
+</Schema>

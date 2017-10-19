@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://dews.astus.com/2010/11/EventService.asmx?wsdl" docRef="http://dews.astus.com/2010/11/EventService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://dews.astus.com/2010/11/EventService.asmx" xmlns:q1="http://astus.com/service/event/2010/11" binding="q1:EventContract" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://dews.astus.com/2010/11/EventService.asmx" xmlns:q2="http://astus.com/service/event/2010/11" binding="q2:EventContract1" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

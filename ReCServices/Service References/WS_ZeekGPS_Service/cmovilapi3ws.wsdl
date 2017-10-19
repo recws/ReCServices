@@ -1,0 +1,1691 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://cmovil.coordenada.info/CMovilApi3WS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://cmovil.coordenada.info/CMovilAutentificacionWS/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s2="http://cmovil.coordenada.info/CMovilRastreoEstaticoWS/" xmlns:s3="http://cmovil.coordenada.info/CMovilApi3WS/AbstractTypes" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://cmovil.coordenada.info/CMovilApi3WS/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://cmovil.coordenada.info/CMovilApi3WS/">
+      <s:import namespace="http://cmovil.coordenada.info/CMovilAutentificacionWS/" />
+      <s:import namespace="http://cmovil.coordenada.info/CMovilRastreoEstaticoWS/" />
+      <s:element name="AutentificaUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contrasenya" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="licencia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AutentificaUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AutentificaUsuarioResult" type="s1:UsuarioAutorizado" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UltimasUbicaciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="token" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="licencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="unidades" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UltimasUbicacionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UltimasUbicacionesResult" type="tns:ArrayOfUbicacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUbicacion">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Ubicacion" nillable="true" type="s2:Ubicacion" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UltimaUbicacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="token" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="licencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="unidad" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UltimaUbicacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UltimaUbicacionResult" type="tns:ArrayOfUbicacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Historial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="token" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="licencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="unidad" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fechaini" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="fechafin" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HistorialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HistorialResult" type="tns:ArrayOfUbicacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Historial2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="token" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="licencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="unidad" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fechaini" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="fechafin" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Historial2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Historial2Result" type="tns:ArrayOfUbicacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerEventosServicio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="token" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="licencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="unidad" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="top_ultimos" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerEventosServicioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerEventosServicioResult" type="tns:ArrayOfUbicacion" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerCuentas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="licencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sCliente" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerCuentasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerCuentasResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GeocercaZeek">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="listaVertices" type="tns:ArrayOfPointF" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPointF">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PointF" type="tns:PointF" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PointF">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="X" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Y" type="s:float" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Ubicacion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Latitud" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitud" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="iRangoTipoReporte" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="dispensadorTipo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="dispensadorNumServicio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="dispensadorFolio" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="dispensadorEntrega" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="dispensadorIdCliente" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="dispensadorPrecio" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="dispensadorTipoDocumento" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="dispensadorAcumulado" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="dispensadorDensidad" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="dispensadorTemperatura" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="dispensadorEsn" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dispensadorTipoVenta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dispensadorTrama" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SequenceNumber" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EstadoSalidas" type="tns:ArrayOfInt" />
+          <s:element minOccurs="0" maxOccurs="1" name="EstadoEntradas" type="tns:ArrayOfInt" />
+          <s:element minOccurs="1" maxOccurs="1" name="EstadoIgnicion" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="TemperaturasCombustible" type="tns:ArrayOfInt" />
+          <s:element minOccurs="0" maxOccurs="1" name="VolumenesCombustible" type="tns:ArrayOfInt" />
+          <s:element minOccurs="0" maxOccurs="1" name="VolumenesCombustibleCrudos" type="tns:ArrayOfInt" />
+          <s:element minOccurs="0" maxOccurs="1" name="NivelesCombustible" type="tns:ArrayOfInt" />
+          <s:element minOccurs="1" maxOccurs="1" name="CombustibleGlobal" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PosicionSensorCombustible" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MagnitudCambioCombustible" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MagnitudEventoAcumuladoCombustible" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Unidad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vehiculo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Velocidad" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="GPSIO" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="Version" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorSensor" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoReporte" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Limite" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoSensor" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Aceleracion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RPM" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Direccion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Millaje" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MillasGalon" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Voltaje" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SenialGSM" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Odometro_CB1" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="CombustibleTotal_CB2" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Velocidad_CB3" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="CombustibleIdle_CB4" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Temperatura_CB5" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Presion_CB6" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RPM_CB7" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="TiempoCruiseActivo_CB8" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="DCT_CB9" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TiempoMotorIdle_CB10" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="ECO_CB11" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="Orientacion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContadorArriba" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ContadorAbajo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="defOdometro" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefOrientacion" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefVoltBattExt" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefPerBattInt" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ignicion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Calle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Colonia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ciudad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Detalles" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UsuarioAutorizado">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PreguntaEncuesta" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="MensajePersonal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MensajeGlobal" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Zona" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClienteNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Token" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoraRegistro" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TiempoPrestamo" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Permisos" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vehiculos" type="tns:ArrayOfVehiculo" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estatus" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfVehiculo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Vehiculo" nillable="true" type="tns:Vehiculo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Vehiculo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Capacidad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rendimiento" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Precio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Etiquetas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Chofer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Carga" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Detalle" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EstadoLimite" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Limite" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoVehiculo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmisionCO2" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdlingCost" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Unidad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumeroSerie" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Marca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modelo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Anio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Placas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoPlaca" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUnidadesDeCuenta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="licencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sCliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sId_subcuenta" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUnidadesDeCuentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUnidadesDeCuentaResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarUnidadDeCuenta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="licencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sCliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sId_subcuenta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sId_unidad" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarUnidadDeCuentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminarUnidadDeCuentaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsignarUnidadACuenta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="licencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sCliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sId_subcuenta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sDescripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sId_unidad" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsignarUnidadACuentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AsignarUnidadACuentaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarInfoVehiculo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="licencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="sCliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vehiculo_nuevo" type="s1:Vehiculo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarInfoVehiculoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarInfoVehiculoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ComandoDispensador">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="token" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="licencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="cliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="unidad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contenido_comando" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ComandoDispensadorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ComandoDispensadorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTipoCuenta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id_cliente" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTipoCuentaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTipoCuentaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetKilometrajeOdometro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id_cliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="id_unidad" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fechaini" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="fechafin" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="licencia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetKilometrajeOdometroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetKilometrajeOdometroResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCoordenadasGeocerca">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id_geocerca" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="licencia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCoordenadasGeocercaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCoordenadasGeocercaResult" type="tns:GeocercaZeek" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListaGeocercas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id_cliente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="licencia" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GeocercaLista">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="id_geocerca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre_geocerca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfGeocercaLista">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="GeocercaLista" type="tns:GeocercaLista" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetListaGeocercasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListaGeocercasResult" type="tns:ArrayOfGeocercaLista" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UsuarioAutorizado" nillable="true" type="s1:UsuarioAutorizado" />
+      <s:element name="ArrayOfUbicacion" nillable="true" type="tns:ArrayOfUbicacion" />
+      <s:element name="ArrayOfAnyType" nillable="true" type="tns:ArrayOfAnyType" />
+      <s:element name="boolean" type="s:boolean" />
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="int" type="s:int" />
+      <s:element name="GeocercaZeek" type="tns:GeocercaZeek" />
+      <s:element name="ArrayOfGeocercaLista" nillable="true" type="tns:ArrayOfGeocercaLista" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://cmovil.coordenada.info/CMovilAutentificacionWS/">
+      <s:complexType name="UsuarioAutorizado">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PreguntaEncuesta" type="s1:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="MensajePersonal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MensajeGlobal" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Zona" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClienteNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Token" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoraRegistro" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TiempoPrestamo" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Permisos" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vehiculos" type="s1:ArrayOfVehiculo" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estatus" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfVehiculo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Vehiculo" nillable="true" type="s1:Vehiculo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Vehiculo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Capacidad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Rendimiento" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Precio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Etiquetas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Chofer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Carga" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Detalle" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EstadoLimite" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Limite" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Estado" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoVehiculo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmisionCO2" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdlingCost" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Unidad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumeroSerie" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Marca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modelo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Color" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Anio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Placas" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipoPlaca" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://cmovil.coordenada.info/CMovilRastreoEstaticoWS/">
+      <s:complexType name="Ubicacion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Latitud" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitud" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Unidad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vehiculo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Velocidad" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="GPSIO" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="dispensadorTipo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="dispensadorNumServicio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="dispensadorFolio" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="dispensadorEntrega" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="dispensadorIdCliente" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="dispensadorPrecio" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="dispensadorTipoDocumento" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="dispensadorAcumulado" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="dispensadorDensidad" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="dispensadorTemperatura" type="s:float" />
+          <s:element minOccurs="0" maxOccurs="1" name="dispensadorEsn" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="dispensadorTipoVenta" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="defOdometro" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DefOrientacion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ignicion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema targetNamespace="http://cmovil.coordenada.info/CMovilApi3WS/AbstractTypes">
+      <s:import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+      <s:complexType name="StringArray">
+        <s:complexContent mixed="false">
+          <s:restriction base="soapenc:Array">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="unbounded" name="String" type="s:string" />
+            </s:sequence>
+          </s:restriction>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AutentificaUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:AutentificaUsuario" />
+  </wsdl:message>
+  <wsdl:message name="AutentificaUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:AutentificaUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="UltimasUbicacionesSoapIn">
+    <wsdl:part name="parameters" element="tns:UltimasUbicaciones" />
+  </wsdl:message>
+  <wsdl:message name="UltimasUbicacionesSoapOut">
+    <wsdl:part name="parameters" element="tns:UltimasUbicacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UltimaUbicacionSoapIn">
+    <wsdl:part name="parameters" element="tns:UltimaUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="UltimaUbicacionSoapOut">
+    <wsdl:part name="parameters" element="tns:UltimaUbicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="HistorialSoapIn">
+    <wsdl:part name="parameters" element="tns:Historial" />
+  </wsdl:message>
+  <wsdl:message name="HistorialSoapOut">
+    <wsdl:part name="parameters" element="tns:HistorialResponse" />
+  </wsdl:message>
+  <wsdl:message name="Historial2SoapIn">
+    <wsdl:part name="parameters" element="tns:Historial2" />
+  </wsdl:message>
+  <wsdl:message name="Historial2SoapOut">
+    <wsdl:part name="parameters" element="tns:Historial2Response" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerEventosServicioSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerEventosServicio" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerEventosServicioSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerEventosServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerCuentasSoapIn">
+    <wsdl:part name="parameters" element="tns:VerCuentas" />
+  </wsdl:message>
+  <wsdl:message name="VerCuentasSoapOut">
+    <wsdl:part name="parameters" element="tns:VerCuentasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUnidadesDeCuentaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUnidadesDeCuenta" />
+  </wsdl:message>
+  <wsdl:message name="GetUnidadesDeCuentaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUnidadesDeCuentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarUnidadDeCuentaSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarUnidadDeCuenta" />
+  </wsdl:message>
+  <wsdl:message name="EliminarUnidadDeCuentaSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarUnidadDeCuentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="AsignarUnidadACuentaSoapIn">
+    <wsdl:part name="parameters" element="tns:AsignarUnidadACuenta" />
+  </wsdl:message>
+  <wsdl:message name="AsignarUnidadACuentaSoapOut">
+    <wsdl:part name="parameters" element="tns:AsignarUnidadACuentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarInfoVehiculoSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarInfoVehiculo" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarInfoVehiculoSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarInfoVehiculoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ComandoDispensadorSoapIn">
+    <wsdl:part name="parameters" element="tns:ComandoDispensador" />
+  </wsdl:message>
+  <wsdl:message name="ComandoDispensadorSoapOut">
+    <wsdl:part name="parameters" element="tns:ComandoDispensadorResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTipoCuentaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTipoCuenta" />
+  </wsdl:message>
+  <wsdl:message name="GetTipoCuentaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTipoCuentaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetKilometrajeOdometroSoapIn">
+    <wsdl:part name="parameters" element="tns:GetKilometrajeOdometro" />
+  </wsdl:message>
+  <wsdl:message name="GetKilometrajeOdometroSoapOut">
+    <wsdl:part name="parameters" element="tns:GetKilometrajeOdometroResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCoordenadasGeocercaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCoordenadasGeocerca" />
+  </wsdl:message>
+  <wsdl:message name="GetCoordenadasGeocercaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCoordenadasGeocercaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetListaGeocercasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListaGeocercas" />
+  </wsdl:message>
+  <wsdl:message name="GetListaGeocercasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListaGeocercasResponse" />
+  </wsdl:message>
+  <wsdl:message name="AutentificaUsuarioHttpGetIn">
+    <wsdl:part name="usuario" type="s:string" />
+    <wsdl:part name="contrasenya" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AutentificaUsuarioHttpGetOut">
+    <wsdl:part name="Body" element="tns:UsuarioAutorizado" />
+  </wsdl:message>
+  <wsdl:message name="UltimasUbicacionesHttpGetIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="cliente" type="s:string" />
+    <wsdl:part name="unidades" type="s3:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="UltimasUbicacionesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="UltimaUbicacionHttpGetIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="cliente" type="s:string" />
+    <wsdl:part name="unidad" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UltimaUbicacionHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="HistorialHttpGetIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="cliente" type="s:string" />
+    <wsdl:part name="unidad" type="s:string" />
+    <wsdl:part name="fechaini" type="s:string" />
+    <wsdl:part name="fechafin" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="HistorialHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="Historial2HttpGetIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="cliente" type="s:string" />
+    <wsdl:part name="unidad" type="s:string" />
+    <wsdl:part name="fechaini" type="s:string" />
+    <wsdl:part name="fechafin" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Historial2HttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerEventosServicioHttpGetIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="cliente" type="s:string" />
+    <wsdl:part name="unidad" type="s:string" />
+    <wsdl:part name="top_ultimos" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerEventosServicioHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="VerCuentasHttpGetIn">
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="sCliente" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="VerCuentasHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAnyType" />
+  </wsdl:message>
+  <wsdl:message name="GetUnidadesDeCuentaHttpGetIn">
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="sCliente" type="s:string" />
+    <wsdl:part name="sId_subcuenta" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUnidadesDeCuentaHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAnyType" />
+  </wsdl:message>
+  <wsdl:message name="EliminarUnidadDeCuentaHttpGetIn">
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="sCliente" type="s:string" />
+    <wsdl:part name="sId_subcuenta" type="s:string" />
+    <wsdl:part name="sId_unidad" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EliminarUnidadDeCuentaHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="AsignarUnidadACuentaHttpGetIn">
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="sCliente" type="s:string" />
+    <wsdl:part name="sId_subcuenta" type="s:string" />
+    <wsdl:part name="sDescripcion" type="s:string" />
+    <wsdl:part name="sId_unidad" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AsignarUnidadACuentaHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ComandoDispensadorHttpGetIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="cliente" type="s:string" />
+    <wsdl:part name="unidad" type="s:string" />
+    <wsdl:part name="contenido_comando" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ComandoDispensadorHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTipoCuentaHttpGetIn">
+    <wsdl:part name="id_cliente" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTipoCuentaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetKilometrajeOdometroHttpGetIn">
+    <wsdl:part name="id_cliente" type="s:string" />
+    <wsdl:part name="id_unidad" type="s:string" />
+    <wsdl:part name="fechaini" type="s:string" />
+    <wsdl:part name="fechafin" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetKilometrajeOdometroHttpGetOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="GetCoordenadasGeocercaHttpGetIn">
+    <wsdl:part name="id_geocerca" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCoordenadasGeocercaHttpGetOut">
+    <wsdl:part name="Body" element="tns:GeocercaZeek" />
+  </wsdl:message>
+  <wsdl:message name="GetListaGeocercasHttpGetIn">
+    <wsdl:part name="id_cliente" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetListaGeocercasHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfGeocercaLista" />
+  </wsdl:message>
+  <wsdl:message name="AutentificaUsuarioHttpPostIn">
+    <wsdl:part name="usuario" type="s:string" />
+    <wsdl:part name="contrasenya" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AutentificaUsuarioHttpPostOut">
+    <wsdl:part name="Body" element="tns:UsuarioAutorizado" />
+  </wsdl:message>
+  <wsdl:message name="UltimasUbicacionesHttpPostIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="cliente" type="s:string" />
+    <wsdl:part name="unidades" type="s3:StringArray" />
+  </wsdl:message>
+  <wsdl:message name="UltimasUbicacionesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="UltimaUbicacionHttpPostIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="cliente" type="s:string" />
+    <wsdl:part name="unidad" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="UltimaUbicacionHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="HistorialHttpPostIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="cliente" type="s:string" />
+    <wsdl:part name="unidad" type="s:string" />
+    <wsdl:part name="fechaini" type="s:string" />
+    <wsdl:part name="fechafin" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="HistorialHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="Historial2HttpPostIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="cliente" type="s:string" />
+    <wsdl:part name="unidad" type="s:string" />
+    <wsdl:part name="fechaini" type="s:string" />
+    <wsdl:part name="fechafin" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Historial2HttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerEventosServicioHttpPostIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="cliente" type="s:string" />
+    <wsdl:part name="unidad" type="s:string" />
+    <wsdl:part name="top_ultimos" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerEventosServicioHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="VerCuentasHttpPostIn">
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="sCliente" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="VerCuentasHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAnyType" />
+  </wsdl:message>
+  <wsdl:message name="GetUnidadesDeCuentaHttpPostIn">
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="sCliente" type="s:string" />
+    <wsdl:part name="sId_subcuenta" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetUnidadesDeCuentaHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfAnyType" />
+  </wsdl:message>
+  <wsdl:message name="EliminarUnidadDeCuentaHttpPostIn">
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="sCliente" type="s:string" />
+    <wsdl:part name="sId_subcuenta" type="s:string" />
+    <wsdl:part name="sId_unidad" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="EliminarUnidadDeCuentaHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="AsignarUnidadACuentaHttpPostIn">
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="sCliente" type="s:string" />
+    <wsdl:part name="sId_subcuenta" type="s:string" />
+    <wsdl:part name="sDescripcion" type="s:string" />
+    <wsdl:part name="sId_unidad" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AsignarUnidadACuentaHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="ComandoDispensadorHttpPostIn">
+    <wsdl:part name="token" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+    <wsdl:part name="cliente" type="s:string" />
+    <wsdl:part name="unidad" type="s:string" />
+    <wsdl:part name="contenido_comando" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ComandoDispensadorHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTipoCuentaHttpPostIn">
+    <wsdl:part name="id_cliente" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTipoCuentaHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetKilometrajeOdometroHttpPostIn">
+    <wsdl:part name="id_cliente" type="s:string" />
+    <wsdl:part name="id_unidad" type="s:string" />
+    <wsdl:part name="fechaini" type="s:string" />
+    <wsdl:part name="fechafin" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetKilometrajeOdometroHttpPostOut">
+    <wsdl:part name="Body" element="tns:int" />
+  </wsdl:message>
+  <wsdl:message name="GetCoordenadasGeocercaHttpPostIn">
+    <wsdl:part name="id_geocerca" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetCoordenadasGeocercaHttpPostOut">
+    <wsdl:part name="Body" element="tns:GeocercaZeek" />
+  </wsdl:message>
+  <wsdl:message name="GetListaGeocercasHttpPostIn">
+    <wsdl:part name="id_cliente" type="s:string" />
+    <wsdl:part name="licencia" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetListaGeocercasHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfGeocercaLista" />
+  </wsdl:message>
+  <wsdl:portType name="CMovilApi3WSSoap">
+    <wsdl:operation name="AutentificaUsuario">
+      <wsdl:input message="tns:AutentificaUsuarioSoapIn" />
+      <wsdl:output message="tns:AutentificaUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UltimasUbicaciones">
+      <wsdl:input message="tns:UltimasUbicacionesSoapIn" />
+      <wsdl:output message="tns:UltimasUbicacionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UltimaUbicacion">
+      <wsdl:input message="tns:UltimaUbicacionSoapIn" />
+      <wsdl:output message="tns:UltimaUbicacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Historial">
+      <wsdl:input message="tns:HistorialSoapIn" />
+      <wsdl:output message="tns:HistorialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Historial2">
+      <wsdl:input message="tns:Historial2SoapIn" />
+      <wsdl:output message="tns:Historial2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEventosServicio">
+      <wsdl:input message="tns:ObtenerEventosServicioSoapIn" />
+      <wsdl:output message="tns:ObtenerEventosServicioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerCuentas">
+      <wsdl:input message="tns:VerCuentasSoapIn" />
+      <wsdl:output message="tns:VerCuentasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnidadesDeCuenta">
+      <wsdl:input message="tns:GetUnidadesDeCuentaSoapIn" />
+      <wsdl:output message="tns:GetUnidadesDeCuentaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUnidadDeCuenta">
+      <wsdl:input message="tns:EliminarUnidadDeCuentaSoapIn" />
+      <wsdl:output message="tns:EliminarUnidadDeCuentaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsignarUnidadACuenta">
+      <wsdl:input message="tns:AsignarUnidadACuentaSoapIn" />
+      <wsdl:output message="tns:AsignarUnidadACuentaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarInfoVehiculo">
+      <wsdl:input message="tns:ActualizarInfoVehiculoSoapIn" />
+      <wsdl:output message="tns:ActualizarInfoVehiculoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ComandoDispensador">
+      <wsdl:input message="tns:ComandoDispensadorSoapIn" />
+      <wsdl:output message="tns:ComandoDispensadorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoCuenta">
+      <wsdl:input message="tns:GetTipoCuentaSoapIn" />
+      <wsdl:output message="tns:GetTipoCuentaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKilometrajeOdometro">
+      <wsdl:input message="tns:GetKilometrajeOdometroSoapIn" />
+      <wsdl:output message="tns:GetKilometrajeOdometroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoordenadasGeocerca">
+      <wsdl:input message="tns:GetCoordenadasGeocercaSoapIn" />
+      <wsdl:output message="tns:GetCoordenadasGeocercaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListaGeocercas">
+      <wsdl:input message="tns:GetListaGeocercasSoapIn" />
+      <wsdl:output message="tns:GetListaGeocercasSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CMovilApi3WSHttpGet">
+    <wsdl:operation name="AutentificaUsuario">
+      <wsdl:input message="tns:AutentificaUsuarioHttpGetIn" />
+      <wsdl:output message="tns:AutentificaUsuarioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UltimasUbicaciones">
+      <wsdl:input message="tns:UltimasUbicacionesHttpGetIn" />
+      <wsdl:output message="tns:UltimasUbicacionesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UltimaUbicacion">
+      <wsdl:input message="tns:UltimaUbicacionHttpGetIn" />
+      <wsdl:output message="tns:UltimaUbicacionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Historial">
+      <wsdl:input message="tns:HistorialHttpGetIn" />
+      <wsdl:output message="tns:HistorialHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Historial2">
+      <wsdl:input message="tns:Historial2HttpGetIn" />
+      <wsdl:output message="tns:Historial2HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEventosServicio">
+      <wsdl:input message="tns:ObtenerEventosServicioHttpGetIn" />
+      <wsdl:output message="tns:ObtenerEventosServicioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerCuentas">
+      <wsdl:input message="tns:VerCuentasHttpGetIn" />
+      <wsdl:output message="tns:VerCuentasHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnidadesDeCuenta">
+      <wsdl:input message="tns:GetUnidadesDeCuentaHttpGetIn" />
+      <wsdl:output message="tns:GetUnidadesDeCuentaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUnidadDeCuenta">
+      <wsdl:input message="tns:EliminarUnidadDeCuentaHttpGetIn" />
+      <wsdl:output message="tns:EliminarUnidadDeCuentaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsignarUnidadACuenta">
+      <wsdl:input message="tns:AsignarUnidadACuentaHttpGetIn" />
+      <wsdl:output message="tns:AsignarUnidadACuentaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ComandoDispensador">
+      <wsdl:input message="tns:ComandoDispensadorHttpGetIn" />
+      <wsdl:output message="tns:ComandoDispensadorHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoCuenta">
+      <wsdl:input message="tns:GetTipoCuentaHttpGetIn" />
+      <wsdl:output message="tns:GetTipoCuentaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKilometrajeOdometro">
+      <wsdl:input message="tns:GetKilometrajeOdometroHttpGetIn" />
+      <wsdl:output message="tns:GetKilometrajeOdometroHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoordenadasGeocerca">
+      <wsdl:input message="tns:GetCoordenadasGeocercaHttpGetIn" />
+      <wsdl:output message="tns:GetCoordenadasGeocercaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListaGeocercas">
+      <wsdl:input message="tns:GetListaGeocercasHttpGetIn" />
+      <wsdl:output message="tns:GetListaGeocercasHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="CMovilApi3WSHttpPost">
+    <wsdl:operation name="AutentificaUsuario">
+      <wsdl:input message="tns:AutentificaUsuarioHttpPostIn" />
+      <wsdl:output message="tns:AutentificaUsuarioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UltimasUbicaciones">
+      <wsdl:input message="tns:UltimasUbicacionesHttpPostIn" />
+      <wsdl:output message="tns:UltimasUbicacionesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UltimaUbicacion">
+      <wsdl:input message="tns:UltimaUbicacionHttpPostIn" />
+      <wsdl:output message="tns:UltimaUbicacionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Historial">
+      <wsdl:input message="tns:HistorialHttpPostIn" />
+      <wsdl:output message="tns:HistorialHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Historial2">
+      <wsdl:input message="tns:Historial2HttpPostIn" />
+      <wsdl:output message="tns:Historial2HttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEventosServicio">
+      <wsdl:input message="tns:ObtenerEventosServicioHttpPostIn" />
+      <wsdl:output message="tns:ObtenerEventosServicioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerCuentas">
+      <wsdl:input message="tns:VerCuentasHttpPostIn" />
+      <wsdl:output message="tns:VerCuentasHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnidadesDeCuenta">
+      <wsdl:input message="tns:GetUnidadesDeCuentaHttpPostIn" />
+      <wsdl:output message="tns:GetUnidadesDeCuentaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUnidadDeCuenta">
+      <wsdl:input message="tns:EliminarUnidadDeCuentaHttpPostIn" />
+      <wsdl:output message="tns:EliminarUnidadDeCuentaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsignarUnidadACuenta">
+      <wsdl:input message="tns:AsignarUnidadACuentaHttpPostIn" />
+      <wsdl:output message="tns:AsignarUnidadACuentaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ComandoDispensador">
+      <wsdl:input message="tns:ComandoDispensadorHttpPostIn" />
+      <wsdl:output message="tns:ComandoDispensadorHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoCuenta">
+      <wsdl:input message="tns:GetTipoCuentaHttpPostIn" />
+      <wsdl:output message="tns:GetTipoCuentaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKilometrajeOdometro">
+      <wsdl:input message="tns:GetKilometrajeOdometroHttpPostIn" />
+      <wsdl:output message="tns:GetKilometrajeOdometroHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoordenadasGeocerca">
+      <wsdl:input message="tns:GetCoordenadasGeocercaHttpPostIn" />
+      <wsdl:output message="tns:GetCoordenadasGeocercaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListaGeocercas">
+      <wsdl:input message="tns:GetListaGeocercasHttpPostIn" />
+      <wsdl:output message="tns:GetListaGeocercasHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CMovilApi3WSSoap" type="tns:CMovilApi3WSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AutentificaUsuario">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/AutentificaUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UltimasUbicaciones">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/UltimasUbicaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UltimaUbicacion">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/UltimaUbicacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Historial">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/Historial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Historial2">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/Historial2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEventosServicio">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/ObtenerEventosServicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerCuentas">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/VerCuentas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnidadesDeCuenta">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/GetUnidadesDeCuenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUnidadDeCuenta">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/EliminarUnidadDeCuenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsignarUnidadACuenta">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/AsignarUnidadACuenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarInfoVehiculo">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/ActualizarInfoVehiculo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComandoDispensador">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/ComandoDispensador" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoCuenta">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/GetTipoCuenta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKilometrajeOdometro">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/GetKilometrajeOdometro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoordenadasGeocerca">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/GetCoordenadasGeocerca" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListaGeocercas">
+      <soap:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/GetListaGeocercas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CMovilApi3WSSoap12" type="tns:CMovilApi3WSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AutentificaUsuario">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/AutentificaUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UltimasUbicaciones">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/UltimasUbicaciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UltimaUbicacion">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/UltimaUbicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Historial">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/Historial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Historial2">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/Historial2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEventosServicio">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/ObtenerEventosServicio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerCuentas">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/VerCuentas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnidadesDeCuenta">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/GetUnidadesDeCuenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUnidadDeCuenta">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/EliminarUnidadDeCuenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsignarUnidadACuenta">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/AsignarUnidadACuenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarInfoVehiculo">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/ActualizarInfoVehiculo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComandoDispensador">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/ComandoDispensador" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoCuenta">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/GetTipoCuenta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKilometrajeOdometro">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/GetKilometrajeOdometro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoordenadasGeocerca">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/GetCoordenadasGeocerca" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListaGeocercas">
+      <soap12:operation soapAction="http://cmovil.coordenada.info/CMovilApi3WS/GetListaGeocercas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CMovilApi3WSHttpGet" type="tns:CMovilApi3WSHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="AutentificaUsuario">
+      <http:operation location="/AutentificaUsuario" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UltimasUbicaciones">
+      <http:operation location="/UltimasUbicaciones" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UltimaUbicacion">
+      <http:operation location="/UltimaUbicacion" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Historial">
+      <http:operation location="/Historial" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Historial2">
+      <http:operation location="/Historial2" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEventosServicio">
+      <http:operation location="/ObtenerEventosServicio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerCuentas">
+      <http:operation location="/VerCuentas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnidadesDeCuenta">
+      <http:operation location="/GetUnidadesDeCuenta" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUnidadDeCuenta">
+      <http:operation location="/EliminarUnidadDeCuenta" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsignarUnidadACuenta">
+      <http:operation location="/AsignarUnidadACuenta" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComandoDispensador">
+      <http:operation location="/ComandoDispensador" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoCuenta">
+      <http:operation location="/GetTipoCuenta" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKilometrajeOdometro">
+      <http:operation location="/GetKilometrajeOdometro" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoordenadasGeocerca">
+      <http:operation location="/GetCoordenadasGeocerca" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListaGeocercas">
+      <http:operation location="/GetListaGeocercas" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CMovilApi3WSHttpPost" type="tns:CMovilApi3WSHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="AutentificaUsuario">
+      <http:operation location="/AutentificaUsuario" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UltimasUbicaciones">
+      <http:operation location="/UltimasUbicaciones" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UltimaUbicacion">
+      <http:operation location="/UltimaUbicacion" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Historial">
+      <http:operation location="/Historial" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Historial2">
+      <http:operation location="/Historial2" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerEventosServicio">
+      <http:operation location="/ObtenerEventosServicio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerCuentas">
+      <http:operation location="/VerCuentas" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnidadesDeCuenta">
+      <http:operation location="/GetUnidadesDeCuenta" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarUnidadDeCuenta">
+      <http:operation location="/EliminarUnidadDeCuenta" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsignarUnidadACuenta">
+      <http:operation location="/AsignarUnidadACuenta" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ComandoDispensador">
+      <http:operation location="/ComandoDispensador" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoCuenta">
+      <http:operation location="/GetTipoCuenta" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKilometrajeOdometro">
+      <http:operation location="/GetKilometrajeOdometro" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoordenadasGeocerca">
+      <http:operation location="/GetCoordenadasGeocerca" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListaGeocercas">
+      <http:operation location="/GetListaGeocercas" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CMovilApi3WS">
+    <wsdl:port name="CMovilApi3WSSoap" binding="tns:CMovilApi3WSSoap">
+      <soap:address location="http://apps.zeekgps.com/cmovilapi3ws/cmovilapi3ws.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CMovilApi3WSSoap12" binding="tns:CMovilApi3WSSoap12">
+      <soap12:address location="http://apps.zeekgps.com/cmovilapi3ws/cmovilapi3ws.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CMovilApi3WSHttpGet" binding="tns:CMovilApi3WSHttpGet">
+      <http:address location="http://apps.zeekgps.com/cmovilapi3ws/cmovilapi3ws.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CMovilApi3WSHttpPost" binding="tns:CMovilApi3WSHttpPost">
+      <http:address location="http://apps.zeekgps.com/cmovilapi3ws/cmovilapi3ws.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

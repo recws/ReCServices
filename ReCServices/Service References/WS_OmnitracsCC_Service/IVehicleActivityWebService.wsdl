@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://sei.rest.services.client.maya.omnitracs.mx/" name="IVehicleActivityWebService" targetNamespace="http://sei.rest.services.client.maya.omnitracs.mx/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:tns="http://sei.rest.services.client.maya.omnitracs.mx/" elementFormDefault="unqualified" targetNamespace="http://sei.rest.services.client.maya.omnitracs.mx/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="getAlerts" type="tns:getAlerts" />
+      <xs:element name="getAlertsResponse" type="tns:getAlertsResponse" />
+      <xs:element name="getGeofenceVisits" type="tns:getGeofenceVisits" />
+      <xs:element name="getGeofenceVisitsResponse" type="tns:getGeofenceVisitsResponse" />
+      <xs:element name="getPositions" type="tns:getPositions" />
+      <xs:element name="getPositionsResponse" type="tns:getPositionsResponse" />
+      <xs:complexType name="getGeofenceVisits">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="request" type="tns:vehicleActivityRequestDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="vehicleActivityRequestDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="clientCode" type="xs:string" />
+          <xs:element minOccurs="0" name="endDate" type="xs:string" />
+          <xs:element minOccurs="0" name="password" type="xs:string" />
+          <xs:element minOccurs="0" name="startDate" type="xs:string" />
+          <xs:element minOccurs="0" name="userName" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getGeofenceVisitsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:vehicleActivityGeoreferenceResponseDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="vehicleActivityGeoreferenceResponseDTO">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:responseDTO">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="geoActivity" nillable="true" type="tns:vehicleActivityGeoReferenceDTO" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="responseDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="responseCode" type="xs:int" />
+          <xs:element minOccurs="0" name="responseDescription" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="vehicleActivityGeoReferenceDTO">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:responseDTO">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="alias" type="xs:string" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="geofences" nillable="true" type="tns:georeferenceDTO" />
+              <xs:element minOccurs="0" name="idUnit" type="xs:int" />
+              <xs:element minOccurs="0" name="unitModel" type="xs:string" />
+              <xs:element minOccurs="0" name="unitPlate" type="xs:string" />
+              <xs:element minOccurs="0" name="vehicleType" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="georeferenceDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="alias" type="xs:string" />
+          <xs:element minOccurs="0" name="geoReferenceCategory" type="xs:string" />
+          <xs:element minOccurs="0" name="geofenceVisitDate" type="xs:string" />
+          <xs:element minOccurs="0" name="visitAction" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getPositions">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="request" type="tns:vehicleActivityRequestDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getPositionsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:listVehicleActivityPositionResponseDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="listVehicleActivityPositionResponseDTO">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:responseDTO">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="vehicles" nillable="true" type="tns:vehicleActivityPositionResponseDTO" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="vehicleActivityPositionResponseDTO">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:responseDTO">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="alias" type="xs:string" />
+              <xs:element minOccurs="0" name="aliasShipper" type="xs:string" />
+              <xs:element minOccurs="0" name="clientCode" type="xs:string" />
+              <xs:element minOccurs="0" name="idUnit" type="xs:int" />
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="positions" nillable="true" type="tns:positionDTO" />
+              <xs:element minOccurs="0" name="unitModel" type="xs:string" />
+              <xs:element minOccurs="0" name="unitPlate" type="xs:string" />
+              <xs:element minOccurs="0" name="vehicleType" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="positionDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="city" type="xs:string" />
+          <xs:element minOccurs="0" name="date" type="xs:string" />
+          <xs:element minOccurs="0" name="deviceModel" type="xs:string" />
+          <xs:element minOccurs="0" name="deviceSerial" type="xs:string" />
+          <xs:element minOccurs="0" name="direction" type="xs:string" />
+          <xs:element minOccurs="0" name="georeference" type="xs:string" />
+          <xs:element minOccurs="0" name="hdop" type="xs:string" />
+          <xs:element minOccurs="0" name="idEvent" type="xs:long" />
+          <xs:element minOccurs="0" name="ignitionOn" type="xs:boolean" />
+          <xs:element minOccurs="0" name="latitude" type="xs:double" />
+          <xs:element minOccurs="0" name="location" type="xs:string" />
+          <xs:element minOccurs="0" name="longitude" type="xs:double" />
+          <xs:element minOccurs="0" name="odometer" type="xs:string" />
+          <xs:element minOccurs="0" name="posTS" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="productType" type="xs:string" />
+          <xs:element minOccurs="0" name="reason" type="xs:string" />
+          <xs:element minOccurs="0" name="receiveDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="satellites" type="xs:string" />
+          <xs:element minOccurs="0" name="speed" type="xs:string" />
+          <xs:element minOccurs="0" name="state" type="xs:string" />
+          <xs:element minOccurs="0" name="status" type="xs:string" />
+          <xs:element minOccurs="0" name="switches" type="xs:string" />
+          <xs:element minOccurs="0" name="unitStatus" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAlerts">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="request" type="tns:vehicleActivityRequestDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getAlertsResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="return" type="tns:vehicleActivityAlertResponseDTO" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="vehicleActivityAlertResponseDTO">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:responseDTO">
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="alertsActivity" nillable="true" type="tns:vehicleActivityAlertDTO" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="vehicleActivityAlertDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="alerts" nillable="true" type="tns:alertCustomerDTO" />
+          <xs:element minOccurs="0" name="alias" type="xs:string" />
+          <xs:element minOccurs="0" name="idUnit" type="xs:int" />
+          <xs:element minOccurs="0" name="serialnumber" type="xs:string" />
+          <xs:element minOccurs="0" name="unitModel" type="xs:string" />
+          <xs:element minOccurs="0" name="unitPlate" type="xs:string" />
+          <xs:element minOccurs="0" name="vehicleType" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="alertCustomerDTO">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="alertType" type="xs:string" />
+          <xs:element minOccurs="0" name="date" type="xs:string" />
+          <xs:element name="idalert" type="xs:long" />
+          <xs:element minOccurs="0" name="latitude" type="xs:double" />
+          <xs:element minOccurs="0" name="location" type="xs:string" />
+          <xs:element minOccurs="0" name="longitude" type="xs:double" />
+          <xs:element minOccurs="0" name="odometer" type="xs:float" />
+          <xs:element minOccurs="0" name="relevantInfo" type="xs:string" />
+          <xs:element minOccurs="0" name="speed" type="xs:float" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getPositions">
+    <wsdl:part name="parameters" element="ns1:getPositions" />
+  </wsdl:message>
+  <wsdl:message name="getGeofenceVisits">
+    <wsdl:part name="parameters" element="ns1:getGeofenceVisits" />
+  </wsdl:message>
+  <wsdl:message name="getPositionsResponse">
+    <wsdl:part name="parameters" element="ns1:getPositionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getGeofenceVisitsResponse">
+    <wsdl:part name="parameters" element="ns1:getGeofenceVisitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAlerts">
+    <wsdl:part name="parameters" element="ns1:getAlerts" />
+  </wsdl:message>
+  <wsdl:message name="getAlertsResponse">
+    <wsdl:part name="parameters" element="ns1:getAlertsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IVehicleActivityWebService">
+    <wsdl:operation name="getGeofenceVisits">
+      <wsdl:input name="getGeofenceVisits" message="ns1:getGeofenceVisits" />
+      <wsdl:output name="getGeofenceVisitsResponse" message="ns1:getGeofenceVisitsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getPositions">
+      <wsdl:input name="getPositions" message="ns1:getPositions" />
+      <wsdl:output name="getPositionsResponse" message="ns1:getPositionsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAlerts">
+      <wsdl:input name="getAlerts" message="ns1:getAlerts" />
+      <wsdl:output name="getAlertsResponse" message="ns1:getAlertsResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

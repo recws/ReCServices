@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WSPROD_Entities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PROD_WS" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="WS_GPS_InsertaSimple" ReturnType="Collection(WSPROD_Entities.WS_GPS_InsertaSimple_Result)">
+      <Parameter Name="Usuario" Mode="In" Type="String" />
+      <Parameter Name="IMEI" Mode="In" Type="String" />
+      <Parameter Name="CodigoEvento" Mode="In" Type="String" />
+      <Parameter Name="Lat" Mode="In" Type="Decimal" />
+      <Parameter Name="Lng" Mode="In" Type="Decimal" />
+      <Parameter Name="Ubicacion" Mode="In" Type="String" />
+      <Parameter Name="GPSValido" Mode="In" Type="Boolean" />
+      <Parameter Name="Velocidad" Mode="In" Type="Int32" />
+      <Parameter Name="Direccion" Mode="In" Type="Int32" />
+      <Parameter Name="NivelBateria" Mode="In" Type="Int32" />
+      <Parameter Name="KMOdometro" Mode="In" Type="Int32" />
+      <Parameter Name="FechaHoraGeneracion" Mode="In" Type="DateTime" />
+      <Parameter Name="FechaHoraRecepcion" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="WS_GPS_SincronizaGPS" />
+    <FunctionImport Name="WS_GPS_SincronizaUsuario" />
+    <FunctionImport Name="WS_GPS_ValidaUsuario" ReturnType="Collection(WSPROD_Entities.WS_GPS_ValidaUsuario_Result)">
+      <Parameter Name="Usuario" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+      <Parameter Name="IMEI" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="WS_GPS_InsertaSimple_Result">
+    <Property Type="Int32" Name="Indicador" Nullable="false" />
+    <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="16" />
+    <Property Type="Int32" Name="IdRegistroAfectado" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="WS_GPS_ValidaUsuario_Result">
+    <Property Type="Int32" Name="Indicador" Nullable="false" />
+    <Property Type="String" Name="Mensaje" Nullable="false" MaxLength="20" />
+    <Property Type="Int32" Name="IdRegistroAfectado" Nullable="true" />
+  </ComplexType>
+</Schema>

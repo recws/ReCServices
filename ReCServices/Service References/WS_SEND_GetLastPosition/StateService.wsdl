@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://astus.com/service/state/2010/11" xmlns:s1="http://astus.com/service/2010/11" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s2="http://astus.com/service/event/2010/11" xmlns:s3="http://astus.com/services/event/2010/11" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://astus.com/service/state/2010/11" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://astus.com/service/state/2010/11">
+      <s:import namespace="http://astus.com/service/2010/11" />
+      <s:import namespace="http://astus.com/service/event/2010/11" />
+      <s:element name="GetLastPositionEvent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StateRequest" type="tns:StateRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="StateRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:AuthenticatedRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Vehicles" nillable="true" type="tns:ArrayOfInt" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetLastPositionEventResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:GetPositionEventResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastState">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="StateRequest" type="tns:StateRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastStateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s2:GetStateResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://astus.com/service/2010/11">
+      <s:complexType name="AuthenticatedRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UnsafeToken" type="s1:Token" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MessageBase" abstract="true" />
+      <s:complexType name="Token">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://astus.com/service/event/2010/11">
+      <s:import namespace="http://astus.com/service/2010/11" />
+      <s:import namespace="http://astus.com/services/event/2010/11" />
+      <s:complexType name="GetPositionEventResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="PositionEvents" nillable="true" type="s2:ArrayOfPositionEvent" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfPositionEvent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PositionEvent" nillable="true" type="s3:PositionEvent" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="VehicleState">
+        <s:restriction base="s:string">
+          <s:enumeration value="Moving" />
+          <s:enumeration value="Disarmed" />
+          <s:enumeration value="Armed" />
+          <s:enumeration value="Idle" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetPositionEventResponse" type="s2:GetPositionEventResponse" />
+      <s:element name="GetStateResponse" type="s2:GetStateResponse" />
+      <s:complexType name="GetStateResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="LastStateEvent" nillable="true" type="s2:ArrayOfLastStateEvent" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfLastStateEvent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LastStateEvent" nillable="true" type="s3:LastStateEvent" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://astus.com/services/event/2010/11">
+      <s:import namespace="http://astus.com/service/event/2010/11" />
+      <s:complexType name="PositionEvent">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TripEventID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="GPSDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Heading" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Speed" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsGPSValid" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeSpan" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleState" type="s2:VehicleState" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsOverSpeed" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleName" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ClosestLocation" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmployeeID" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LastStateEvent">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TripEventID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Distance" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="GPSDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Heading" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Speed" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsGPSValid" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="TimeSpan" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleState" type="s2:VehicleState" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsOverSpeed" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DeviceType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastConnectionDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Odometer" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="MotorHour" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmployeeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleAvailabilityStateID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleAvailabilityStateName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleCustomStateID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleCustomStateName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StateRuleGroupIDs" type="s3:ArrayOfInt" />
+          <s:element minOccurs="0" maxOccurs="1" name="StateRuleGroupNames" type="s3:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccessoryNameList" type="s3:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetLastPositionEventSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLastPositionEvent" />
+  </wsdl:message>
+  <wsdl:message name="GetLastPositionEventSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLastPositionEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLastStateSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLastState" />
+  </wsdl:message>
+  <wsdl:message name="GetLastStateSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLastStateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="StateContract">
+    <wsdl:operation name="GetLastPositionEvent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Permet d'obtenir la dernière position de véhicules // Get the la know position of vehicles</wsdl:documentation>
+      <wsdl:input message="tns:GetLastPositionEventSoapIn" />
+      <wsdl:output message="tns:GetLastPositionEventSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastState">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Obtenir les dernières informations sur l'état du véhicule // Get the latest information of the vehicle state</wsdl:documentation>
+      <wsdl:input message="tns:GetLastStateSoapIn" />
+      <wsdl:output message="tns:GetLastStateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="StateContract" type="tns:StateContract">
+    <wsdl:documentation>
+      <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" />
+    </wsdl:documentation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLastPositionEvent">
+      <soap:operation soapAction="http://astus.com/service/state/2010/11/StateContract/GetCurrentVehiclePosition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastState">
+      <soap:operation soapAction="http://astus.com/service/state/2010/11/StateContract/GetCurrentVehicleState" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="StateContract1" type="tns:StateContract">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetLastPositionEvent">
+      <soap12:operation soapAction="http://astus.com/service/state/2010/11/StateContract/GetCurrentVehiclePosition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastState">
+      <soap12:operation soapAction="http://astus.com/service/state/2010/11/StateContract/GetCurrentVehicleState" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="StateService">
+    <wsdl:port name="StateContract" binding="tns:StateContract">
+      <soap:address location="http://dews.astus.com/2010/11/StateService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="StateContract1" binding="tns:StateContract1">
+      <soap12:address location="http://dews.astus.com/2010/11/StateService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

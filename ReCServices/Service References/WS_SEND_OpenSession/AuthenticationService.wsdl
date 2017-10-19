@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://astus.com/services/2010/11" xmlns:s1="http://astus.com/service/2010/11" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://astus.com/services/2010/11" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://astus.com/services/2010/11">
+      <s:import namespace="http://astus.com/service/2010/11" />
+      <s:element name="IsTokenValid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:AuthenticatedRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsTokenValidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:IsTokenValidResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OpenSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:OpenSessionRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OpenSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:OpenSessionResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CloseSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" ref="s1:AuthenticatedRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CloseSessionResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://astus.com/service/2010/11">
+      <s:element name="AuthenticatedRequest" nillable="true" type="s1:AuthenticatedRequest" />
+      <s:complexType name="AuthenticatedRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UnsafeToken" type="s1:Token" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MessageBase" abstract="true" />
+      <s:complexType name="IsTokenValidResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IsValid" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Token">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IsTokenValidResponse" type="s1:IsTokenValidResponse" />
+      <s:element name="OpenSessionRequest" type="s1:OpenSessionRequest" />
+      <s:complexType name="OpenSessionRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="OpenSessionResponse" type="s1:OpenSessionResponse" />
+      <s:complexType name="OpenSessionResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="s1:MessageBase">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IsAuthenticated" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="Token" type="s1:Token" />
+              <s:element minOccurs="1" maxOccurs="1" name="FleetOwnerID" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="IsTokenValidSoapIn">
+    <wsdl:part name="parameters" element="tns:IsTokenValid" />
+  </wsdl:message>
+  <wsdl:message name="IsTokenValidSoapOut">
+    <wsdl:part name="parameters" element="tns:IsTokenValidResponse" />
+  </wsdl:message>
+  <wsdl:message name="OpenSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:OpenSession" />
+  </wsdl:message>
+  <wsdl:message name="OpenSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:OpenSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="CloseSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:CloseSession" />
+  </wsdl:message>
+  <wsdl:message name="CloseSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:CloseSessionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AuthorizationContract">
+    <wsdl:operation name="IsTokenValid">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Indique si un Ticket est valide // Validate a Ticket</wsdl:documentation>
+      <wsdl:input message="tns:IsTokenValidSoapIn" />
+      <wsdl:output message="tns:IsTokenValidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OpenSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Authentification de l'usager, retourner un Ticket // Authentificate user, return a Ticket</wsdl:documentation>
+      <wsdl:input message="tns:OpenSessionSoapIn" />
+      <wsdl:output message="tns:OpenSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CloseSession">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Close your session // Ferme la session</wsdl:documentation>
+      <wsdl:input message="tns:CloseSessionSoapIn" />
+      <wsdl:output message="tns:CloseSessionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AuthorizationContract" type="tns:AuthorizationContract">
+    <wsdl:documentation>
+      <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" />
+    </wsdl:documentation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsTokenValid">
+      <soap:operation soapAction="http://astus.com/service/2010/11/AuthorizationContract/IsTokenValid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenSession">
+      <soap:operation soapAction="http://astus.com/service/2010/11/AuthorizationContract/OpenSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseSession">
+      <soap:operation soapAction="http://astus.com/service/2010/11/AuthorizationContract/CloseSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AuthorizationContract1" type="tns:AuthorizationContract">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsTokenValid">
+      <soap12:operation soapAction="http://astus.com/service/2010/11/AuthorizationContract/IsTokenValid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OpenSession">
+      <soap12:operation soapAction="http://astus.com/service/2010/11/AuthorizationContract/OpenSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CloseSession">
+      <soap12:operation soapAction="http://astus.com/service/2010/11/AuthorizationContract/CloseSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthenticationService">
+    <wsdl:port name="AuthorizationContract" binding="tns:AuthorizationContract">
+      <soap:address location="https://dews.astus.com/2010/11/AuthenticationService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AuthorizationContract1" binding="tns:AuthorizationContract1">
+      <soap12:address location="https://dews.astus.com/2010/11/AuthenticationService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

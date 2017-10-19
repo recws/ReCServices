@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<configurationSnapshot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-microsoft-com:xml-wcfconfigurationsnapshot">
+  <behaviors />
+  <bindings>
+    <binding digest="System.ServiceModel.Configuration.BasicHttpBindingElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089:&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data name=&quot;StaticContract&quot; /&gt;" bindingType="basicHttpBinding" name="StaticContract" />
+  </bindings>
+  <endpoints>
+    <endpoint normalizedDigest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://dews.astus.com/2010/11/StaticService.asmx&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;StaticContract&quot; contract=&quot;WS_SEND_StaticService.StaticContract&quot; name=&quot;StaticContract&quot; /&gt;" digest="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-16&quot;?&gt;&lt;Data address=&quot;http://dews.astus.com/2010/11/StaticService.asmx&quot; binding=&quot;basicHttpBinding&quot; bindingConfiguration=&quot;StaticContract&quot; contract=&quot;WS_SEND_StaticService.StaticContract&quot; name=&quot;StaticContract&quot; /&gt;" contractName="WS_SEND_StaticService.StaticContract" name="StaticContract" />
+  </endpoints>
+</configurationSnapshot>
