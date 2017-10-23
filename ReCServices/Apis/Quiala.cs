@@ -22,7 +22,7 @@ namespace ReCServices.Apis
             {
                 using (var client = new HttpClient())
                 {
-                    //setup client
+                    //setup client.
                     client.BaseAddress = new Uri("http://www.rastreo.blac.com.mx");
                     client.DefaultRequestHeaders.Accept.Clear();
                     //client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
