@@ -14,7 +14,7 @@ namespace ReCServices.Apis
     public static class Wialon
     {
 
-        //El token se obtiene en la siguiente url con el usuario y contraseña. Este token no caduca
+        //El token se obtiene en la siguiente url con el usuario y contraseña. Este token no caduca.
         //https://hosting.wialon.com/login.html?client_id=wialon&access_type=-1&activation_time=0&duration=2592000&flags=6&response_type=token&svc_error=1011
         //La documentacion se encuentra en el siguiente url
         //https://sdk.wialon.com/wiki/en/kit/remoteapi/apiref/core/search_items
