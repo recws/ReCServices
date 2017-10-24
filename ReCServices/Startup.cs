@@ -246,7 +246,7 @@ namespace ReCServices
         public void Execute(IJobExecutionContext context)
         {
 #if !DEBUG            
-            //PRUEBA 2
+            //PRUEBA 3
             Apis.Omnitracs.Omnitracs_ObtenerPosicion("WS_Masetto", "", ""); //COOPERTIRES  (el usuario y contraseña lo lleva en web.config, en headers del endpoint)
             Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Elola", "mx80566", "29205mx80566", ">4#/synn8UxZ");
             Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_UsaMex", "mxfa811", "29244mxfa811", "Abcd1234");
