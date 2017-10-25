@@ -2,10 +2,6 @@
 <Schema Namespace="MonitoreoReC" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="Monitoreo" annotation:LazyLoadingEnabled="true">
     <FunctionImport Name="Color_Consulta" ReturnType="Collection(MonitoreoReC.Color_Consulta_Result)" />
-    <FunctionImport Name="MonitoreoAutomatico_CargaSiguienteViaje" ReturnType="Collection(MonitoreoReC.MonitoreoAutomatico_CargaSiguienteViaje_Result)">
-      <Parameter Name="IdUsuario" Mode="In" Type="Int32" />
-      <Parameter Name="IMEI" Mode="In" Type="String" />
-    </FunctionImport>
     <FunctionImport Name="NotificacionIncidencia_CargaHTML" ReturnType="Collection(MonitoreoReC.NotificacionIncidencia_CargaHTML_Result)">
       <Parameter Name="IMEI" Mode="In" Type="String" />
       <Parameter Name="Usuario" Mode="In" Type="String" />
@@ -15,37 +11,6 @@
   <ComplexType Name="Color_Consulta_Result">
     <Property Type="Int32" Name="IdColor" Nullable="true" />
     <Property Type="String" Name="Nombre" Nullable="true" MaxLength="30" />
-  </ComplexType>
-  <ComplexType Name="MonitoreoAutomatico_CargaSiguienteViaje_Result">
-    <Property Type="Int32" Name="IdViaje" Nullable="false" />
-    <Property Type="Int32" Name="IdGrupo" Nullable="false" />
-    <Property Type="String" Name="Grupo" Nullable="true" MaxLength="30" />
-    <Property Type="Int32" Name="IdOperacion" Nullable="false" />
-    <Property Type="String" Name="Operacion" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="FolioCliente" Nullable="true" MaxLength="100" />
-    <Property Type="String" Name="Operador" Nullable="false" MaxLength="171" />
-    <Property Type="Int32" Name="IdUnidad" Nullable="true" />
-    <Property Type="String" Name="Unidad" Nullable="false" MaxLength="30" />
-    <Property Type="String" Name="Transportista" Nullable="true" MaxLength="100" />
-    <Property Type="DateTime" Name="FechaHoraViaje" Nullable="true" Precision="23" />
-    <Property Type="DateTime" Name="FechaHoraCarga" Nullable="true" Precision="23" />
-    <Property Type="DateTime" Name="FechaHoraCargaReal" Nullable="true" Precision="23" />
-    <Property Type="DateTime" Name="FechaHoraSalida" Nullable="true" Precision="23" />
-    <Property Type="DateTime" Name="FechaHoraSalidaReal" Nullable="true" Precision="23" />
-    <Property Type="DateTime" Name="FechaHoraCita" Nullable="true" Precision="23" />
-    <Property Type="Int32" Name="IdEstatusViaje" Nullable="true" />
-    <Property Type="String" Name="EstatusViaje" Nullable="true" MaxLength="102" />
-    <Property Type="String" Name="TipoViaje" Nullable="true" MaxLength="30" />
-    <Property Type="Int32" Name="FrecuenciaMonitoreo" Nullable="false" />
-    <Property Type="DateTime" Name="FechaUltimoMonitoreo" Nullable="true" Precision="23" />
-    <Property Type="String" Name="Incidencia" Nullable="false" MaxLength="68" />
-    <Property Type="String" Name="Color" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="Destinos" Nullable="true" />
-    <Property Type="Int32" Name="RetrasoMinutos" Nullable="true" />
-    <Property Type="String" Name="GPS" Nullable="true" MaxLength="20" />
-    <Property Type="String" Name="IMEI" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="Plataforma" Nullable="true" MaxLength="30" />
-    <Property Type="String" Name="TipoGPS" Nullable="true" MaxLength="20" />
   </ComplexType>
   <ComplexType Name="NotificacionIncidencia_CargaHTML_Result">
     <Property Type="String" Name="FolioCliente" Nullable="true" MaxLength="100" />

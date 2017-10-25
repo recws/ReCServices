@@ -216,7 +216,7 @@ namespace ReCServices
             //Apis.Soltrack.Soltrack_ObtenerPosicion("WS_THernandez", "", "");
             //return;
 
-            
+            //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_Trameriv", "trameriv", "mexico321");  //Transportes TRAMERIV
 
         }
     }

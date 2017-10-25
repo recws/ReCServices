@@ -9,41 +9,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="MonitoreoAutomatico_CargaSiguienteViaje" FunctionName="MonitoreoReC.Store.MonitoreoAutomatico_CargaSiguienteViaje">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="MonitoreoReC.MonitoreoAutomatico_CargaSiguienteViaje_Result">
-          <ScalarProperty Name="IdViaje" ColumnName="IdViaje" />
-          <ScalarProperty Name="IdGrupo" ColumnName="IdGrupo" />
-          <ScalarProperty Name="Grupo" ColumnName="Grupo" />
-          <ScalarProperty Name="IdOperacion" ColumnName="IdOperacion" />
-          <ScalarProperty Name="Operacion" ColumnName="Operacion" />
-          <ScalarProperty Name="FolioCliente" ColumnName="FolioCliente" />
-          <ScalarProperty Name="Operador" ColumnName="Operador" />
-          <ScalarProperty Name="IdUnidad" ColumnName="IdUnidad" />
-          <ScalarProperty Name="Unidad" ColumnName="Unidad" />
-          <ScalarProperty Name="Transportista" ColumnName="Transportista" />
-          <ScalarProperty Name="FechaHoraViaje" ColumnName="FechaHoraViaje" />
-          <ScalarProperty Name="FechaHoraCarga" ColumnName="FechaHoraCarga" />
-          <ScalarProperty Name="FechaHoraCargaReal" ColumnName="FechaHoraCargaReal" />
-          <ScalarProperty Name="FechaHoraSalida" ColumnName="FechaHoraSalida" />
-          <ScalarProperty Name="FechaHoraSalidaReal" ColumnName="FechaHoraSalidaReal" />
-          <ScalarProperty Name="FechaHoraCita" ColumnName="FechaHoraCita" />
-          <ScalarProperty Name="IdEstatusViaje" ColumnName="IdEstatusViaje" />
-          <ScalarProperty Name="EstatusViaje" ColumnName="EstatusViaje" />
-          <ScalarProperty Name="TipoViaje" ColumnName="TipoViaje" />
-          <ScalarProperty Name="FrecuenciaMonitoreo" ColumnName="FrecuenciaMonitoreo" />
-          <ScalarProperty Name="FechaUltimoMonitoreo" ColumnName="FechaUltimoMonitoreo" />
-          <ScalarProperty Name="Incidencia" ColumnName="Incidencia" />
-          <ScalarProperty Name="Color" ColumnName="Color" />
-          <ScalarProperty Name="Destinos" ColumnName="Destinos" />
-          <ScalarProperty Name="RetrasoMinutos" ColumnName="RetrasoMinutos" />
-          <ScalarProperty Name="GPS" ColumnName="GPS" />
-          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
-          <ScalarProperty Name="Plataforma" ColumnName="Plataforma" />
-          <ScalarProperty Name="TipoGPS" ColumnName="TipoGPS" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="NotificacionIncidencia_CargaHTML" FunctionName="MonitoreoReC.Store.NotificacionIncidencia_CargaHTML">
       <ResultMapping>
         <ComplexTypeMapping TypeName="MonitoreoReC.NotificacionIncidencia_CargaHTML_Result">

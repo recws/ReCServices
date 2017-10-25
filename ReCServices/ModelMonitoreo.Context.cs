@@ -33,19 +33,6 @@ namespace ReCServices
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Color_Consulta_Result>("Color_Consulta");
         }
     
-        public virtual ObjectResult<MonitoreoAutomatico_CargaSiguienteViaje_Result> MonitoreoAutomatico_CargaSiguienteViaje(Nullable<int> idUsuario, string iMEI)
-        {
-            var idUsuarioParameter = idUsuario.HasValue ?
-                new ObjectParameter("IdUsuario", idUsuario) :
-                new ObjectParameter("IdUsuario", typeof(int));
-    
-            var iMEIParameter = iMEI != null ?
-                new ObjectParameter("IMEI", iMEI) :
-                new ObjectParameter("IMEI", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<MonitoreoAutomatico_CargaSiguienteViaje_Result>("MonitoreoAutomatico_CargaSiguienteViaje", idUsuarioParameter, iMEIParameter);
-        }
-    
         public virtual ObjectResult<NotificacionIncidencia_CargaHTML_Result> NotificacionIncidencia_CargaHTML(string iMEI, string usuario, string incidencia)
         {
             var iMEIParameter = iMEI != null ?
