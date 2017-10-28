@@ -216,8 +216,16 @@ namespace ReCServices
             //Apis.Soltrack.Soltrack_ObtenerPosicion("WS_THernandez", "", "");
             //return;
 
+            //Agregar a sincronia
+            //Trameriv - Panalpina
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_Trameriv", "trameriv", "mexico321");  //Transportes TRAMERIV
 
+            //Gomez - Panalpina
+            //Apis.Boson.BOSON_ObtenerPosicion("WS_TIslas__", "monitoreo@recsolutions.tech", "TraNsp0rtesGMZ_2");  //Transportes T. ISLAS  //No lleva token
+
+            //Agregar a sincroniza
+            //RBA - Panalpina
+            //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
         }
     }
 
