@@ -221,7 +221,7 @@ namespace ReCServices
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_Trameriv", "trameriv", "mexico321");  //Transportes TRAMERIV
 
             //Gomez - Panalpina
-            //Apis.Boson.BOSON_ObtenerPosicion("WS_TIslas__", "monitoreo@recsolutions.tech", "TraNsp0rtesGMZ_2");  //Transportes T. ISLAS  //No lleva token
+            //Apis.Boson.BOSON_ObtenerPosicion("WS_TIslas__", "monitoreo@recsolutions.tech", "TraNsp0rGMZ2");  //Transportes T. ISLAS  //No lleva token
 
             //Agregar a sincroniza
             //RBA - Panalpina
