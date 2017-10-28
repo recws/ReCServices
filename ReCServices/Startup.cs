@@ -226,6 +226,12 @@ namespace ReCServices
             //Agregar a sincroniza
             //RBA - Panalpina
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
+
+            //Seinext
+            Apis.Seinext.Seinext_ObtenerPosicion("TMP_USR___-", "AVENSICA", "BavensicaA");
+
+            //Example
+            //Apis.GrupoUDA.GrupoUDA_ObtenerPosicion("WS_SID_", "WBS_PAN-SUVI", "123456");
         }
     }
 
