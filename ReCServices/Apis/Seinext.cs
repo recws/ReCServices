@@ -12,7 +12,7 @@ using System.Xml;
 
 namespace ReCServices.Apis
 {
-    public class Seinext
+    public static class Seinext
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
@@ -53,14 +53,17 @@ namespace ReCServices.Apis
                     json2 = System.Text.RegularExpressions.Regex.Replace(json2, "@", "");
 
                     var result = JsonConvert.DeserializeObject<RootObject>(json2);
+
+                    //var result = JsonConvert.DeserializeObject<List<RootObject>>(json2);
                     //--
 
 
-                    if(result.otros == null)
+                    if (result.otros == null)
                     {
                         return;
                     }
-
+                    
+                    //result[0].otros.equipo[0].fechahorag
                     var res = result.otros.equipo;
 
                     for (int i = 0; i < res.Count; i++)
@@ -79,9 +82,9 @@ namespace ReCServices.Apis
                         string bateria = "0";
                         string direccion = res[i].direccionv.ToString();
                         //2017 / 07 / 07 20:37:06
-                        var fechahoragps = DateTime.ParseExact(res[i].fechahorag, "yyyy/MM/dd HH:mm:ss", CultureInfo.InvariantCulture);
+                        var fechahoragps = DateTime.ParseExact(res[i].fechahorag, "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture);
                         fechahoragps = fechahoragps.ToUniversalTime();
-                        var fechahoraserver = DateTime.ParseExact(res[i].fechahorav, "yyyy/MM/dd HH:mm:ss", CultureInfo.InvariantCulture);
+                        var fechahoraserver = DateTime.ParseExact(res[i].fechahorav, "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture);
                         fechahoraserver = fechahoraserver.ToUniversalTime();
                         ////Validaciones
 
@@ -126,41 +129,39 @@ namespace ReCServices.Apis
             }
         }
 
+        public class Xml
+        {
+            public string version { get; set; }
+            public string encoding { get; set; }
+        }
+
+        public class Equipo
+        {
+            public string neconomicov { get; set; }
+            public string unitidv { get; set; }
+            public string latitudv { get; set; }
+            public string longitudv { get; set; }
+            public string velocidadv { get; set; }
+            public string direccionv { get; set; }
+            public string gasolinav { get; set; }
+            public string ubicacionv { get; set; }
+            public string poiv { get; set; }
+            public string fechahorag { get; set; }
+            public string fechahorav { get; set; }
+            public string mensajev { get; set; }
+            public string temperaturav { get; set; }
+        }
+
+        public class Otros
+        {
+            public List<Equipo> equipo { get; set; }
+        }
+
+        public class RootObject
+        {
+            public Xml xml { get; set; }
+            public Otros otros { get; set; }
+        }
 
     }
-
-    public class Xml
-    {
-        public string version { get; set; }
-        public string encoding { get; set; }
-    }
-
-    public class Equipo
-    {
-        public string neconomicov { get; set; }
-        public string unitidv { get; set; }
-        public string latitudv { get; set; }
-        public string longitudv { get; set; }
-        public string velocidadv { get; set; }
-        public string direccionv { get; set; }
-        public string gasolinav { get; set; }
-        public string ubicacionv { get; set; }
-        public string poiv { get; set; }
-        public string fechahorag { get; set; }
-        public string fechahorav { get; set; }
-        public string mensajev { get; set; }
-        public string temperaturav { get; set; }
-    }
-
-    public class Otros
-    {
-        public List<Equipo> equipo { get; set; }
-    }
-
-    public class RootObject
-    {
-        public Xml xml { get; set; }
-        public Otros otros { get; set; }
-    }
-
 }

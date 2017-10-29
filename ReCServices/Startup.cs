@@ -216,19 +216,22 @@ namespace ReCServices
             //Apis.Soltrack.Soltrack_ObtenerPosicion("WS_THernandez", "", "");
             //return;
 
-            //Agregar a sincronia
+            //Agregar a sincronia -> ok
             //Trameriv - Panalpina
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_Trameriv", "trameriv", "mexico321");  //Transportes TRAMERIV
 
-            //Gomez - Panalpina
+            //Gomez - Panalpina -> ok -> falta usuario
             //Apis.Boson.BOSON_ObtenerPosicion("WS_TIslas__", "monitoreo@recsolutions.tech", "TraNsp0rGMZ2");  //Transportes T. ISLAS  //No lleva token
 
             //Agregar a sincroniza
-            //RBA - Panalpina
+            //RBA - Panalpina -> ok
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
 
-            //Seinext
-            Apis.Seinext.Seinext_ObtenerPosicion("TMP_USR___-", "AVENSICA", "BavensicaA");
+            //Seinext -> Revisar, en ocaciones responde vacio
+            //Apis.Seinext.Seinext_ObtenerPosicion("TMP_USR___-", "AVENSICA", "BavensicaA");
+
+            //GPS Total -> ok
+            //Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_SID-_", "ETI Logistica", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");
 
             //Example
             //Apis.GrupoUDA.GrupoUDA_ObtenerPosicion("WS_SID_", "WBS_PAN-SUVI", "123456");

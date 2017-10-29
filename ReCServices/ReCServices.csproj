@@ -215,6 +215,7 @@
     <Compile Include="Apis\Astus.cs" />
     <Compile Include="Apis\Boson.cs" />
     <Compile Include="Apis\Cybermapa.cs" />
+    <Compile Include="Apis\GpsTotal.cs" />
     <Compile Include="Apis\GrupoGCP.cs" />
     <Compile Include="Apis\GrupoUDA.cs" />
     <Compile Include="Apis\Moving.cs" />
