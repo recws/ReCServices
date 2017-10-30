@@ -218,6 +218,7 @@
     <Compile Include="Apis\GpsTotal.cs" />
     <Compile Include="Apis\GrupoGCP.cs" />
     <Compile Include="Apis\GrupoUDA.cs" />
+    <Compile Include="Apis\MonitoreoYRastereo.cs" />
     <Compile Include="Apis\Moving.cs" />
     <Compile Include="Apis\Omnitracs.cs" />
     <Compile Include="Apis\OmnitracsCC.cs" />

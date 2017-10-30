@@ -228,10 +228,13 @@ namespace ReCServices
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
 
             //Seinext -> Revisar, en ocaciones responde vacio
-            //Apis.Seinext.Seinext_ObtenerPosicion("TMP_USR___-", "AVENSICA", "BavensicaA");
+            Apis.Seinext.Seinext_ObtenerPosicion("TMP_USR___-", "AVENSICA", "BavensicaA");
 
             //GPS Total -> ok
             //Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_SID-_", "ETI Logistica", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");
+
+            //Monitoreo y Rastreo
+            //Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_SID-_", "webservice", "Gtslo98_213#");
 
             //Example
             //Apis.GrupoUDA.GrupoUDA_ObtenerPosicion("WS_SID_", "WBS_PAN-SUVI", "123456");

@@ -81,6 +81,8 @@ namespace ReCServices.Apis
                         string velocidad = res[i].velocidadv.ToString().Split('.')[0];
                         string bateria = "0";
                         string direccion = res[i].direccionv.ToString();
+                        direccion = System.Text.RegularExpressions.Regex.Replace(direccion, "[^0-9]+", "");
+
                         //2017 / 07 / 07 20:37:06
                         var fechahoragps = DateTime.ParseExact(res[i].fechahorag, "MM/dd/yyyy HH:mm", CultureInfo.InvariantCulture);
                         fechahoragps = fechahoragps.ToUniversalTime();
