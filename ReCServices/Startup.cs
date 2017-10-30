@@ -230,7 +230,7 @@ namespace ReCServices
             //Seinext -> Revisar, en ocaciones responde vacio
             Apis.Seinext.Seinext_ObtenerPosicion("TMP_USR___-", "AVENSICA", "BavensicaA");
 
-            //GPS Total -> ok
+            //ETI GPS Total -> ok
             //Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_SID-_", "ETI Logistica", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");
 
             //Monitoreo y Rastreo
