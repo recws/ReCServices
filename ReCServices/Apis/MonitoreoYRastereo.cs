@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Globalization;
 using System.Net.Http;
-using System.Web.Http;
-using System.Net.Http.Headers;
+
 using System.Xml.Linq;
 using Newtonsoft.Json;
+using System.Net;
+using System.Xml;
+using System.IO;
 
 namespace ReCServices.Apis
 {
@@ -20,28 +22,28 @@ namespace ReCServices.Apis
             var responseJson = "";
             try
             {
-                using (var client = new HttpClient())
+                XmlDocument doc = new XmlDocument();
+                doc.Load(@"C:\documents\projects\test_ws.txt");
+                string xmlcontents = doc.InnerXml;
+
+
+                HttpWebRequest request = CreateWebRequest();
+                XmlDocument soapEnvelopeXml = new XmlDocument();
+                soapEnvelopeXml.LoadXml(xmlcontents);
+
+                using (Stream stream = request.GetRequestStream())
                 {
-
-                    client.BaseAddress = new Uri("http://45.55.209.120");
-                    client.DefaultRequestHeaders.Accept.Clear();
-                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/html"));
-
-                    //send request
-                    //HttpResponseMessage responseMessage = await client.GetAsync("/sistema/soap/query.php/ultimaposicion?wsdl&op=UltimaPosicion&usuario=" + Usuario + "&clave=" + Password + "&placa=800WT6&op=UltimaPosicion");
-                    //HttpResponseMessage responseMessage = await client.GetAsync("/sistema/soap/query.php?wsdl&op=UltimaPosicion&usuario=" + Usuario + "&clave=" + Password + "&placa=800WT6&op=UltimaPosicion");
-                    HttpResponseMessage responseMessage = await client.GetAsync("/sistema/soap/query.php?wsdl&usuario=" + Usuario + "&clave=" + Password + "&placa=800WT6&op=UltimaPosicion");
-                    //HttpResponseMessage responseMessage = await client.PostAsync("/web%20services/ws_last_position/ws_last_position.asmx/GetLastPosition_02?User=" + Usuario  + "&Password=" + Password + "&Page=", formContent);
-
-                    //get access token from response body
-                    responseJson = await responseMessage.Content.ReadAsStringAsync();
-
-
-
-                   
-
+                    soapEnvelopeXml.Save(stream);
                 }
 
+                using (WebResponse response = request.GetResponse())
+                {
+                    using (StreamReader rd = new StreamReader(response.GetResponseStream()))
+                    {
+                        string soapResult = rd.ReadToEnd();
+                        //Console.WriteLine(soapResult);
+                    }
+                }
 
 
             }
@@ -56,6 +58,16 @@ namespace ReCServices.Apis
                     log.Error("Error GrupoUDA_ObtenerPosicion: " + UsuarioReC + ". " + responseJson + ". " + Ex.Message);
                 }
             }
+        }
+
+        public static HttpWebRequest CreateWebRequest()
+        {
+            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(@" http://45.55.209.120/sistema/soap/query.php?wsdl");
+            webRequest.Headers.Add(@"SOAP:Action");
+            webRequest.ContentType = "text/xml;charset=\"utf-8\"";
+            webRequest.Accept = "text/xml";
+            webRequest.Method = "POST";
+            return webRequest;
         }
     }
 }
