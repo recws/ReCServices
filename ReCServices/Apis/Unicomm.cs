@@ -48,9 +48,10 @@ namespace ReCServices.Apis
 
                     for (int i = 0; i < result.vehicle_states.Count; i++)
                     {
+                        string imei = "";
                         try
                         {
-                            string imei = result.vehicle_states[i].Vehicle_ID.ToString();
+                                   imei = result.vehicle_states[i].Vehicle_ID.ToString();
                             string codigoevento = result.vehicle_states[i].Event.ToString();
                             string lat = result.vehicle_states[i].Latitude.ToString();
                             string lng = result.vehicle_states[i].Longitude.ToString();
@@ -64,12 +65,12 @@ namespace ReCServices.Apis
                             ////Validaciones
 
                             ////Conversiones de datos
-                            var LAT = decimal.Parse(lat);
-                            var LNG = decimal.Parse(lng);
-                            var ODOMETRO = int.Parse(odometro);
-                            var VELOCIDAD = int.Parse(velocidad);
-                            var DIRECCION = int.Parse(direccion);
-                            var BATERIA = int.Parse(bateria);
+                            var LAT = decimal.Parse(lat == null || lat == "" ? "0" : lat);
+                            var LNG = decimal.Parse(lng == null || lng == "" ? "0" : lng);
+                            var ODOMETRO = int.Parse(odometro == null || odometro == "" ? "0" : odometro);
+                            var VELOCIDAD = int.Parse(velocidad == null || velocidad == "" ? "0" : velocidad);
+                            var DIRECCION = int.Parse(direccion == null || direccion == "" ? "0" : direccion);
+                            var BATERIA = int.Parse(bateria == null || bateria == "" ? "0" : bateria);
 
 
                             //Si no es repetida la inserta
@@ -89,7 +90,7 @@ namespace ReCServices.Apis
                         }
                         catch (Exception Ex)
                         {
-                            log.Error("Error Unicomm_ObtenerPosicion: " + UsuarioReC + ". " + responseJson + ". " + Ex.Message);
+                            log.Error("Error Unicomm_ObtenerPosicion: " + UsuarioReC + ". IMEI: " + imei + ". " + Ex.Message);
                         }
                     }
 

@@ -211,33 +211,23 @@ namespace ReCServices
             //Apis.Astus.ObtenereInsertar("WS_SEND", "webservices1@send.com", "1qaz2345");
 
 
-            //Apis.Moving.Moving_ObtenerPosicion("WS_Moving", "api_moving", "p83XAfHG");
+            //Apis.Moving.Moving_ObtenerPosicion("WS_Moving", "api_moving", "p83XAfHG");  //FALTA TERMINAR EL DESARROLLO
 
-            //Apis.Soltrack.Soltrack_ObtenerPosicion("WS_THernandez", "", "");
+            //Apis.Soltrack.Soltrack_ObtenerPosicion("WS_THernandez", "", "");  //FALTA QUE NOS DEN EL LISTADO DE IMEI
             //return;
 
-            //Agregar a sincronia -> ok
-            //Trameriv - Panalpina
-            //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_Trameriv", "trameriv", "mexico321");  //Transportes TRAMERIV
-
-            //Gomez - Panalpina -> ok -> falta usuario
-            //Apis.Boson.BOSON_ObtenerPosicion("WS_TIslas__", "monitoreo@recsolutions.tech", "TraNsp0rGMZ2");  //Transportes T. ISLAS  //No lleva token
-
-            //Agregar a sincroniza
-            //RBA - Panalpina -> ok
-            //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
 
             //Seinext -> Revisar, en ocaciones responde vacio.
-            //Apis.Seinext.Seinext_ObtenerPosicion("TMP_USR___-", "AVENSICA", "BavensicaA");
+            //Apis.Seinext.Seinext_ObtenerPosicion("TMP_USR___-", "AVENSICA", "BavensicaA");  //YA FUNCIONA PERO RESPONDE VACIOS LA MAYORIA DE LAS VECES
 
-            //ETI GPS Total -> ok
-            //Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_SID-_", "ETI Logistica", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");
 
-            //Monitoreo y Rastreo SOAP -> POST
-            //Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_SID-_", "webservice", "Gtslo98_213#");
+            //Monitoreo y Rastreo SOAP -> POST  TRANSPORTES DIEZ
+            //Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_DIEZ", "webservice", "Gtslo98_213#");  // YA NOS ARROJA UN ENVELOPE SOLO FALTA CONVERTIRLO A OBJETO
 
-            //Example
-            //Apis.GrupoUDA.GrupoUDA_ObtenerPosicion("WS_SID_", "WBS_PAN-SUVI", "123456");
+
+            //Apis.Wialon.WIALON_ObtenerPosicion("WS_AVLLogic", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA
+            //Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "ETI Logistica", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI
+            
         }
     }
 
@@ -294,8 +284,8 @@ namespace ReCServices
 
             Apis.Boson.BOSON_ObtenerPosicion("WS_TIslas", "trans.log.is@hotmail.com", "Es29Htj8M5");  //Transportes T. ISLAS  //No lleva token
             Apis.Boson.BOSON_ObtenerPosicion("WS_TLIT", "a.rivera@interestatalit.com", "panalpinalit");  //Transportes T. LIT  //No lleva token
-            APIS.REESER_ObtenerPosicion("WS_IMTAutoT", "FELIPE-AGUILAR", "U2FsdGVkX1+GHY1Z/SObeDjZCZ4ARuSUN80EtrPOn54=");            
-            Apis.Wialon.WIALON_ObtenerPosicion("WS_AVLLogic", "huawei", "huawei2016");  //Transportes LEYVA
+            APIS.REESER_ObtenerPosicion("WS_IMTAutoT", "FELIPE-AGUILAR", "U2FsdGVkX1+GHY1Z/SObeDjZCZ4ARuSUN80EtrPOn54=");
+            Apis.Wialon.WIALON_ObtenerPosicion("WS_AVLLogic", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA
             Apis.Quiala.QUIALA_ObtenerPosicion("WS_Quiala", "ws-quiala", "Qui2kdh*bn6");
             Apis.Vectro.VECTRO_ObtenerPosicion("WS_TPina", "", "");
             Apis.Troncalnet.Troncalnet_ObtenerPosicion("WS_TOrtiz", "", ""); //COOPERTIRES 
@@ -303,7 +293,7 @@ namespace ReCServices
             Apis.Boson.BOSON_ObtenerPosicion("WS_UsaMex", "monitoreo@usamexcarrier.com", "UsaMexCa2017");  //COOPERTIRES  //Transportes USAMEX CARRIER  //No lleva token
             Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "cooper@transportesnewpick.com.mx", "CooperTire17");  //COOPERTIRES  //Transportes USAMEX CARRIER  //No lleva token
             
-            
+            Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
 #endif
         }
     }
@@ -321,6 +311,8 @@ namespace ReCServices
             Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
             Apis.Boson.BOSON_ObtenerPosicion("WS_Transcar", "panalpina@transcar.com.mx", "Panalpin2017");  //Transportes TRANSCAR  //No lleva token
             Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Jaguar", "mx4b4b3", "29162mx4b4b3", "123456");
+            Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_Trameriv", "trameriv", "mexico321");  //Transportes TRAMERIV
+            Apis.Boson.BOSON_ObtenerPosicion("WS_Gomez", "monitoreo@recsolutions.tech", "TraNsp0rGMZ2");  //Transportes GOMEZ  //No lleva token
 #endif
         }
     }

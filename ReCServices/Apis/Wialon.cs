@@ -23,10 +23,12 @@ namespace ReCServices.Apis
 
 
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        public static string Token { get; set; }
+        public static string EID { get; set; }
+        public static string TOKEN { get; set; }
 
-        public static async void WIALON_ObtenerToken(string UsuarioReC)
+        public static async void WIALON_ObtenerToken(string UsuarioReC,string Token)
         {
+            
             var responseJson = "";
             try
             {
@@ -41,7 +43,7 @@ namespace ReCServices.Apis
                     {
                     //new KeyValuePair<string, string>("grant_type", "password"),
                     new KeyValuePair<string, string>("svc", "token/login"),
-                    new KeyValuePair<string, string>("params", "{ \"token\":\"b16a120f3fdab34dade89383ee0712cbB447300E86431D9766CBAD0B992A4DA1CB68AB06\"}")
+                    new KeyValuePair<string, string>("params", "{ \"token\":\"" + TOKEN + "\"}")
                 });
 
                     //send request
@@ -51,9 +53,14 @@ namespace ReCServices.Apis
                     //get access token from response body
                     responseJson = await responseMessage.Content.ReadAsStringAsync();
 
+                    if (responseJson == "{\"error\":8, \"reason\":\"INVALID_AUTH_TOKEN\"}\n")
+                    {
+                        log.Error("Error WIALON_ObtenerPosicion: " + UsuarioReC + ". " + responseJson + ". " );
+                    }
+
                     var result = JsonConvert.DeserializeObject<LoginObject>(responseJson);
 
-                    Token = result.eid;
+                    EID = result.eid;
                     log.Info("WebService WIALON Autenticado: " + UsuarioReC + ". ");
                 }
             }
@@ -67,17 +74,18 @@ namespace ReCServices.Apis
                 {
                     log.Error("Error WIALON_ObtenerPosicion: " + UsuarioReC + ". " + responseJson + ". " + Ex.Message);
                 }
-                Token = "";
+                EID = "";
             }
         }
-        public static async void WIALON_ObtenerPosicion(string UsuarioReC, string Usuario, string Password)
+        public static async void WIALON_ObtenerPosicion(string UsuarioReC, string Usuario, string Password, string Token)
         {
+            TOKEN = Token;
             var responseJson = "";
             try
             {
-                if (Token == null || Token == "")
+                if (TOKEN == null || TOKEN == "")
                 {
-                    WIALON_ObtenerToken(UsuarioReC);
+                    WIALON_ObtenerToken(UsuarioReC, TOKEN);
                     return;
                 }
 
@@ -93,7 +101,7 @@ namespace ReCServices.Apis
                     {
                     new KeyValuePair<string, string>("svc", "core/search_items"),
                     new KeyValuePair<string, string>("params", "{ \"spec\":{ \"itemsType\":\"avl_unit\",\"propName\":\"sys_name\",\"propValueMask\":\"*\",\"sortType\":\"sys_name\"},\"force\":1,\"flags\":1025,\"from\":0,\"to\":0}"),                    
-                    new KeyValuePair<string, string>("sid", Token)
+                    new KeyValuePair<string, string>("sid", EID)
                     });
 
                     //send request
@@ -105,8 +113,8 @@ namespace ReCServices.Apis
 
                     if (responseJson.Contains("error"))
                     {
-                        Token = "";
-                        WIALON_ObtenerToken(UsuarioReC);
+                        //TOKEN = "";
+                        WIALON_ObtenerToken(UsuarioReC, TOKEN);
                         return;
                     }
 
