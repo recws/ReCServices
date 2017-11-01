@@ -29,6 +29,7 @@ namespace ReCServices.Apis
         {
 
             var responseJson = "";
+            string imei = "";
             try
             {
                 
@@ -52,7 +53,7 @@ namespace ReCServices.Apis
                     for (int i = 0; i < result.Count; i++)
                     {
                         //Consulta si ya existe la posicion, por si es repetida y no ha actualizado el equipo
-                        string imei = result[i].gps.ToString();
+                               imei = result[i].gps.ToString();
                         string codigoevento = result[i].evento.ToString();
 
                         string lat = result[i].latitud.ToString();
@@ -105,7 +106,8 @@ namespace ReCServices.Apis
                 }
                 else
                 {
-                    log.Error("Error RedGPS_ObtenerPosicion: " + UsuarioReC + ". " + responseJson + ". " + Ex.Message);
+                    log.Error("Error RedGPS_ObtenerPosicion: " + UsuarioReC + ". " + imei + ". " + Ex.Message);
+                    //log.Error("Error RedGPS_ObtenerPosicion: " + UsuarioReC + ". " + responseJson + ". " + Ex.Message);
                 }
             }
 
