@@ -230,7 +230,7 @@ namespace ReCServices
 
             //Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI
             Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_REC_USR", "webservice", "Gtslo98_213#");
-            
+            //comment
         }
     }
 
