@@ -29,7 +29,7 @@ namespace ReCServices.Apis
         {
 
             var responseJson = "";
-            string imei = "";
+            
             try
             {
                 
@@ -52,47 +52,55 @@ namespace ReCServices.Apis
 
                     for (int i = 0; i < result.Count; i++)
                     {
-                        //Consulta si ya existe la posicion, por si es repetida y no ha actualizado el equipo
-                               imei = result[i].gps.ToString();
-                        string codigoevento = result[i].evento.ToString();
-
-                        string lat = result[i].latitud.ToString();
-                        string lng = result[i].longitud.ToString();
-                        //string evento = result[i].status.ToString();
-                        string odometro = "0";
-                        ////string placas = ((dynamic)res[i]).Plates;
-                        string velocidad = result[i].velocidad.ToString();
-                        string bateria = "100";
-                        string direccion = result[i].sentido.ToString().Split('.')[0];
-
-                        var fechahoragps = DateTime.ParseExact(result[i].fecha, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-                        fechahoragps = fechahoragps.ToUniversalTime();
-                        ////Validaciones
-
-                        //////Conversiones de datos
-                        var LAT = decimal.Parse(lat);
-                        var LNG = decimal.Parse(lng);
-                        var ODOMETRO = int.Parse(odometro);
-                        ////var PLACAS = System.Text.RegularExpressions.Regex.Replace(placas, "-", "");
-                        ////PLACAS = System.Text.RegularExpressions.Regex.Replace(PLACAS, " ", "");
-                        var VELOCIDAD = int.Parse(velocidad);
-                        var DIRECCION = int.Parse(direccion);
-                        var BATERIA = int.Parse(bateria);
-
-
-                        //Si no es repetida la inserta
-                        List<WS_GPS_InsertaSimple_Result> WS_GPS_InsertaSimple;
-
-                        WS_CONTEXT db = new WS_CONTEXT("WS_CONTEXT_PROD");
-
-                        WS_GPS_InsertaSimple = db.WS_GPS_InsertaSimple(UsuarioReC, imei, codigoevento, LAT, LNG, "", true, VELOCIDAD, DIRECCION, BATERIA, ODOMETRO, fechahoragps, fechahoragps).ToList();
-                        if (WS_GPS_InsertaSimple[0].Indicador == 1)
+                        var imei = "";
+                        try
                         {
+                            //Consulta si ya existe la posicion, por si es repetida y no ha actualizado el equipo
+                            imei = result[i].gps.ToString();
+                            string codigoevento = result[i].evento.ToString();
 
+                            string lat = result[i].latitud.ToString();
+                            string lng = result[i].longitud.ToString();
+                            //string evento = result[i].status.ToString();
+                            string odometro = "0";
+                            ////string placas = ((dynamic)res[i]).Plates;
+                            string velocidad = result[i].velocidad.ToString();
+                            string bateria = "100";
+                            string direccion = result[i].sentido.ToString().Split('.')[0];
+
+                            var fechahoragps = DateTime.ParseExact(result[i].fecha, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                            fechahoragps = fechahoragps.ToUniversalTime();
+                            ////Validaciones
+
+                            //////Conversiones de datos
+                            var LAT = decimal.Parse(lat);
+                            var LNG = decimal.Parse(lng);
+                            var ODOMETRO = int.Parse(odometro);
+                            ////var PLACAS = System.Text.RegularExpressions.Regex.Replace(placas, "-", "");
+                            ////PLACAS = System.Text.RegularExpressions.Regex.Replace(PLACAS, " ", "");
+                            var VELOCIDAD = int.Parse(velocidad);
+                            var DIRECCION = int.Parse(direccion);
+                            var BATERIA = int.Parse(bateria);
+
+
+                            //Si no es repetida la inserta
+                            List<WS_GPS_InsertaSimple_Result> WS_GPS_InsertaSimple;
+
+                            WS_CONTEXT db = new WS_CONTEXT("WS_CONTEXT_PROD");
+
+                            WS_GPS_InsertaSimple = db.WS_GPS_InsertaSimple(UsuarioReC, imei, codigoevento, LAT, LNG, "", true, VELOCIDAD, DIRECCION, BATERIA, ODOMETRO, fechahoragps, fechahoragps).ToList();
+                            if (WS_GPS_InsertaSimple[0].Indicador == 1)
+                            {
+
+                            }
+                            else
+                            {
+                                log.Error("Error al Insertar evento de " + UsuarioReC + ". IMEI: " + imei + "  " + WS_GPS_InsertaSimple[0].Mensaje + ". " + responseJson);
+                            }
                         }
-                        else
+                        catch (Exception Ex)
                         {
-                            log.Error("Error al Insertar evento de " + UsuarioReC + ". IMEI: " + imei + "  " + WS_GPS_InsertaSimple[0].Mensaje + ". " + responseJson);
+                           log.Error("Error RedGPS_ObtenerPosicion: " + UsuarioReC + ". " + imei + ". " + Ex.Message);
                         }
                     }
 
@@ -106,7 +114,7 @@ namespace ReCServices.Apis
                 }
                 else
                 {
-                    log.Error("Error RedGPS_ObtenerPosicion: " + UsuarioReC + ". " + imei + ". " + Ex.Message);
+                    log.Error("Error RedGPS_ObtenerPosicion: " + UsuarioReC + ". " + Ex.Message);
                     //log.Error("Error RedGPS_ObtenerPosicion: " + UsuarioReC + ". " + responseJson + ". " + Ex.Message);
                 }
             }

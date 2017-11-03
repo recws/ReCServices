@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,8 @@ using Newtonsoft.Json;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Soap;
 
 namespace ReCServices.Apis
 {
@@ -149,6 +152,19 @@ namespace ReCServices.Apis
             {
                 
                 log.Error("Error Soltrack_ObtenerPosicion: " + UsuarioReC + ". " + responseJson + ". " + Ex.Message);
+            }
+        }
+
+        public static T SOAPToObject<T>(string SOAP)
+        {
+            if (string.IsNullOrEmpty(SOAP))
+            {
+                throw new ArgumentException("SOAP can not be null/empty");
+            }
+            using (MemoryStream Stream = new MemoryStream(UTF8Encoding.UTF8.GetBytes(SOAP)))
+            {
+                SoapFormatter Formatter = new SoapFormatter();
+                return (T)Formatter.Deserialize(Stream);
             }
         }
 

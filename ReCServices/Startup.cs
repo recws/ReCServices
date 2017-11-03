@@ -228,9 +228,9 @@ namespace ReCServices
             //Apis.Wialon.WIALON_ObtenerPosicion("WS_AVLLogic", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA
 
 
-            //Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI
-            Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_REC_USR", "webservice", "Gtslo98_213#");
-            //comment
+            
+            //Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_REC_USR", "webservice", "Gtslo98_213#");
+            
         }
     }
 
@@ -308,14 +308,17 @@ namespace ReCServices
 #if !DEBUG
             Apis.GrupoGCP.GrupoGCP_ObtenerPosicion("WS_GrupoGCP", "", ""); //La contraseña va dentro ya.
             Apis.RedGPS.RedGPS_ObtenerPosicion("WS_TIbarra", "panalpina", "transportesibarra");  //Transportes T. IBARRA 
-            Apis.Astus.ObtenereInsertar("WS_SEND", "webservices1@send.com", "1qaz2345");
-            Apis.ZeekGPS.ZeekGPS_ObtenerPosicion("WS_Panamericano", "Panalpina", "teHY6kak", "iPinssoMperPogm");  //Transportes PANAMERICANO 
+            Apis.Astus.ObtenereInsertar("WS_SEND", "webservices1@send.com", "1qaz2345");            
             Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "panalpina@transportesnewpick.com.mx", "Panalpin2017");  //Transportes NEWPICK  //No lleva token
             Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
             Apis.Boson.BOSON_ObtenerPosicion("WS_Transcar", "panalpina@transcar.com.mx", "Panalpin2017");  //Transportes TRANSCAR  //No lleva token
             Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Jaguar", "mx4b4b3", "29162mx4b4b3", "123456");
             Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_Trameriv", "trameriv", "mexico321");  //Transportes TRAMERIV
             Apis.Boson.BOSON_ObtenerPosicion("WS_Gomez", "monitoreo@recsolutions.tech", "TraNsp0rGMZ2");  //Transportes GOMEZ  //No lleva token
+            Apis.ZeekGPS.ZeekGPS_ObtenerPosicion("WS_Panamericano", "Panalpina", "teHY6kak", "iPinssoMperPogm");  //Transportes PANAMERICANO 
+
+            //Pendiente de validar las fechas, llegan con 2 horas de retraso
+            Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI
 #endif
         }
     }

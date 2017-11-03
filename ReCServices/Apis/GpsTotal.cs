@@ -78,7 +78,7 @@ namespace ReCServices.Apis
                             //var res = result.dataset.NewDataSet.Table;
 
 
-                            var res = result.Dataset.NewDataSet.Table; ;
+                            var res = result.Dataset.NewDataSet.Table;
                             //---
 
                             string imei = IMEIenCurso;
@@ -93,14 +93,15 @@ namespace ReCServices.Apis
                             string bateria = "0";
                             string direccion = res.Direction.ToString().Split('.')[0];
                             //2017 / 07 / 07 20:37:06
-                            var fechahoragps = res.Created;
+                            var fechahoragps = res.ActualDate;
                             //fechahoragps = fechahoragps.ToUniversalTime();
 
-                            var fechahoraserver = res.ActualDate;
+                            var fechahoraserver = res.Created;
                             //fechahoraserver = fechahoraserver.ToUniversalTime();
                             ////Validaciones
 
                             //////Conversiones de datos
+
                             var LAT = decimal.Parse(lat);
                             var LNG = decimal.Parse(lng);
                             var ODOMETRO = int.Parse(odometro);

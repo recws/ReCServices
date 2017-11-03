@@ -1,0 +1,10 @@
+<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:quer="query.php">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <quer:UltimaPosicion soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+         <UnitPlate xsi:type="xsd:string">[-placa-]</UnitPlate>
+         <Usuario xsi:type="xsd:string">[-user-]</Usuario>
+         <Password xsi:type="xsd:string">[-pwd-]</Password>
+      </quer:UltimaPosicion>
+   </soapenv:Body>
+</soapenv:Envelope>
