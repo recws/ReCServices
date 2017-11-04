@@ -227,10 +227,17 @@ namespace ReCServices
 
             //Apis.Wialon.WIALON_ObtenerPosicion("WS_AVLLogic", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA
 
+            //IMEI - Codigo evento?? - SAMA - Trapol
+            //Apis.Sama.Sama_ObtenerPosicion("WS_TMP", "panalpina-trapol", "Andromeda500");
 
+
+            //SGIT - Islas - falta agregar codigo, genera excepcion
+            //Apis.SGIT.SGIT_ObtenerPosicion("WS_TMP", "wsantonio", "wsantonio01");
             
-            Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_Diez", "webservice", "Gtslo98_213#");
-            
+
+            //Agregar await/async?
+            //Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_Diez", "webservice", "Gtslo98_213#");
+
         }
     }
 

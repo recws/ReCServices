@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:Localizacion" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="LocalizacionServicio" targetNamespace="urn:Localizacion" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types />
+  <wsdl:message name="AccesoPeticion">
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="contrasena" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="PosicionPeticion">
+    <wsdl:part name="usuario" type="xsd:string" />
+    <wsdl:part name="contrasena" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="AccesoRespuesta">
+    <wsdl:part name="resultado" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="PosicionRespuesta">
+    <wsdl:part name="arreglo" type="xsd:Array" />
+  </wsdl:message>
+  <wsdl:portType name="LocalizacionPort">
+    <wsdl:operation name="acceso">
+      <wsdl:input message="tns:AccesoPeticion" />
+      <wsdl:output message="tns:AccesoRespuesta" />
+    </wsdl:operation>
+    <wsdl:operation name="posicion">
+      <wsdl:input message="tns:PosicionPeticion" />
+      <wsdl:output message="tns:PosicionRespuesta" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LocalizacionBinding" type="tns:LocalizacionPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <wsdl:operation name="acceso">
+      <soap:operation soapAction="urn:Localizacion#acceso" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:Localizacion" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:Localizacion" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="posicion">
+      <soap:operation soapAction="urn:Localizacion#posicion" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="urn:Localizacion" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="urn:Localizacion" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LocalizacionServicio">
+    <wsdl:port name="LocalizacionPort" binding="tns:LocalizacionBinding">
+      <soap:address location="http://avl.homelinux.net/satelital/wsdl/service.php" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

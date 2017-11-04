@@ -225,7 +225,9 @@
     <Compile Include="Apis\OmnitracsCC.cs" />
     <Compile Include="Apis\Quiala.cs" />
     <Compile Include="Apis\RedGPS.cs" />
+    <Compile Include="Apis\Sama.cs" />
     <Compile Include="Apis\Seinext.cs" />
+    <Compile Include="Apis\SGIT.cs" />
     <Compile Include="Apis\Soltrack.cs" />
     <Compile Include="Apis\Troncalnet.cs" />
     <Compile Include="Apis\Unicomm.cs" />
@@ -341,6 +343,11 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Service References\WS_SEND_StaticService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WS_SGIT_Service\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -588,6 +595,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\WS_SGIT_Service\configuration91.svcinfo" />
+    <None Include="Service References\WS_SGIT_Service\configuration.svcinfo" />
+    <None Include="Service References\WS_SGIT_Service\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="SOAPENV\SOAPENV_DIEZ.txt" />
     <Content Include="WS_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -780,6 +793,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\WS_SEND_StaticService\StaticService1.wsdl" />
+    <None Include="Service References\WS_SGIT_Service\LocalizacionServicio.wsdl" />
     <None Include="Service References\WS_ZeekGPS_Service\cmovilapi3ws.disco" />
     <None Include="Service References\WS_ZeekGPS_Service\configuration91.svcinfo" />
     <None Include="Service References\WS_ZeekGPS_Service\configuration.svcinfo" />
@@ -880,6 +894,7 @@
     <WCFMetadataStorage Include="Service References\WS_SEND_OpenSession\" />
     <WCFMetadataStorage Include="Service References\WS_SEND_StateService\" />
     <WCFMetadataStorage Include="Service References\WS_SEND_StaticService\" />
+    <WCFMetadataStorage Include="Service References\WS_SGIT_Service\" />
     <WCFMetadataStorage Include="Service References\WS_ZeekGPS_Service\" />
   </ItemGroup>
   <PropertyGroup>
