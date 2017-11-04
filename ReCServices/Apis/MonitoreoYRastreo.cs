@@ -23,7 +23,7 @@ namespace ReCServices.Apis
     public class MonitoreoYRastereo
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        
         public static async void MonitoreoYRastreo_ObtenerPosicion(string UsuarioReC, string Usuario, string Password)
         {
             var ECOenCurso = "";
@@ -60,6 +60,7 @@ namespace ReCServices.Apis
                         xmlcontents = xmlcontents.Replace("[-pwd-]", Password);
                         xmlcontents = xmlcontents.Replace("[-user-]", Usuario);
 
+                        
 
                         HttpWebRequest request = CreateWebRequest();
                         XmlDocument soapEnvelopeXml = new XmlDocument();
@@ -75,25 +76,98 @@ namespace ReCServices.Apis
                             using (StreamReader rd = new StreamReader(response.GetResponseStream()))
                             {
                                 string soapResult = rd.ReadToEnd();
-
-                                
-                                
-                                XmlDocument document = new XmlDocument();
-                                document.LoadXml(soapResult);
-                                System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(SOAPClass.Envelope));
-                                SOAPClass.Envelope envelope = (SOAPClass.Envelope)serializer.Deserialize(new StringReader(document.OuterXml));
-
-
                                 var rawXML = XDocument.Parse(soapResult);
-                                SOAPClass.Envelope deserializedObject;
-                                using (var reader = rawXML.CreateReader(System.Xml.Linq.ReaderOptions.None))
+
+                                var returnResult = (from r in rawXML.Descendants("item") select r).ToList();
+
+                                foreach (XElement xElement in returnResult)
                                 {
-                                    var ser = new XmlSerializer(typeof(SOAPClass.Envelope));
-                                    deserializedObject = (SOAPClass.Envelope)ser.Deserialize(reader);
-                                    var z = deserializedObject;
+                                    var Imei = xElement.Element("idgps") != null ? xElement.Element("idgps").Value : "";
+                                    if (Imei == null) {
+                                        continue;
+                                    }
+                                    var Respuesta = xElement.Element("Respuesta") != null ? xElement.Element("Respuesta").Value : "";
+                                    var UnitPlate = xElement.Element("UnitPlate") != null ? xElement.Element("UnitPlate").Value : "";
+                                    var Latitude = xElement.Element("Latitude") != null ? xElement.Element("Latitude").Value : "";
+                                    var Longitude = xElement.Element("Longitude") != null ? xElement.Element("Longitude").Value : "";
+                                    var Odometer = xElement.Element("Odometer") != null ? xElement.Element("Odometer").Value : "";
+                                    var SpeedGps = xElement.Element("SpeedGps") != null ? xElement.Element("SpeedGps").Value : "";
+                                    var Course = xElement.Element("Course") != null ? xElement.Element("Course").Value : "";
+                                    var Ignition = xElement.Element("Ignition") != null ? xElement.Element("Ignition").Value : "";
+                                    var DateGps = xElement.Element("DateGps") != null ? xElement.Element("DateGps").Value : "";                                    
+                                    var PanicButton = xElement.Element("PanicButton") != null ? xElement.Element("PanicButton").Value : "";
+
+
+
+                                    try
+                                    {
+                                        //Consulta si ya existe la posicion, por si es repetida y no ha actualizado el equipo
+
+                                        //string imei = Imei; //este dato ya viene arriba
+
+                                        string lat = Latitude;
+                                        string lng = Longitude;
+                                        string codigoevento = PanicButton == "true" ? "panic" : "";
+                                        string odometro = Odometer.Split('.')[0];
+                                        ////string placas = ((dynamic)res[i]).Plates;
+                                        string velocidad = SpeedGps.Split('.')[0];
+                                        string bateria = "100";
+                                        string direccion = Course.Split('.')[0]; ;
+
+                                        var fechahoragps = DateTime.ParseExact(DateGps, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture); ;
+                                        //fechahoragps = fechahoragps.ToUniversalTime();
+
+                                        ////Validaciones
+
+                                        //////Conversiones de datos
+                                        var LAT = decimal.Parse(lat);
+                                        var LNG = decimal.Parse(lng);
+                                        var ODOMETRO = int.Parse(odometro);
+                                        ////var PLACAS = System.Text.RegularExpressions.Regex.Replace(placas, "-", "");
+                                        ////PLACAS = System.Text.RegularExpressions.Regex.Replace(PLACAS, " ", "");
+                                        var VELOCIDAD = int.Parse(velocidad);
+                                        var DIRECCION = int.Parse(direccion);
+                                        var BATERIA = int.Parse(bateria);
+
+
+                                        //Si no es repetida la inserta
+                                        List<WS_GPS_InsertaSimple_Result> WS_GPS_InsertaSimple;
+
+                                        WS_CONTEXT db = new WS_CONTEXT("WS_CONTEXT_PROD");
+
+                                        WS_GPS_InsertaSimple = db.WS_GPS_InsertaSimple(UsuarioReC, Imei, codigoevento, LAT, LNG, "", true, VELOCIDAD, DIRECCION, BATERIA, ODOMETRO, fechahoragps, fechahoragps).ToList();
+                                        if (WS_GPS_InsertaSimple[0].Indicador == 1)
+                                        {
+
+                                        }
+                                        else
+                                        {
+                                            log.Error("Error al Insertar evento de " + UsuarioReC + ". IMEI: " + (Imei != null ? Imei : "").ToString() + "  -  " + WS_GPS_InsertaSimple[0].Mensaje + ". " + responseJson);
+                                        }
+                                    }
+                                    catch (Exception Ex)
+                                    {
+                                        log.Error("Error ZeekGPS_ObtenerPosicion: " + UsuarioReC + ". " + xElement.ToString() + ". " + Ex.Message);
+                                    }
                                 }
 
-                                return;
+                                //FORMA 1 DE DESERIALIZAR
+                                //XmlDocument document = new XmlDocument();
+                                //document.LoadXml(soapResult);
+                                //System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(SOAPClass.Envelope));
+                                //SOAPClass.Envelope envelope = (SOAPClass.Envelope)serializer.Deserialize(new StringReader(document.OuterXml));
+
+
+                                //FORMA 2 DE DESERIALIZAR
+                                //SOAPClass.Envelope deserializedObject;
+                                //using (var reader = rawXML.CreateReader(System.Xml.Linq.ReaderOptions.None))
+                                //{
+                                //    var ser = new XmlSerializer(typeof(SOAPClass.Envelope));
+                                //    deserializedObject = (SOAPClass.Envelope)ser.Deserialize(reader);
+                                //    var z = deserializedObject;
+                                //}
+
+                                
                             }
                         }
 

@@ -98,3 +98,99 @@
 2017-11-02 17:53:08,929 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error GrupoUDA_ObtenerPosicion: WS_REC_USR. . Referencia a objeto no establecida como instancia de un objeto.
 2017-11-02 18:54:35,307 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.ZeekGPS - Error ZeekGPS_ObtenerPosicion: WS_Panamericano. . El índice y la longitud deben hacer referencia a una ubicación en la cadena.
 Nombre del parámetro: length
+2017-11-03 18:18:59,624 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error GrupoUDA_ObtenerPosicion: WS_REC_USR. . El carácter ':', con valor hexadecimal 0x3A, no puede incluirse en un nombre.
+2017-11-03 18:19:03,395 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error GrupoUDA_ObtenerPosicion: WS_REC_USR. . El carácter ':', con valor hexadecimal 0x3A, no puede incluirse en un nombre.
+2017-11-03 18:22:50,729 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error GrupoUDA_ObtenerPosicion: WS_REC_USR. . El carácter ':', con valor hexadecimal 0x3A, no puede incluirse en un nombre.
+2017-11-03 18:23:19,121 [DefaultQuartzScheduler_Worker-5] ERROR ReCServices.Apis.MonitoreoYRastereo - Error GrupoUDA_ObtenerPosicion: WS_REC_USR. . El carácter ' ', con valor hexadecimal 0x20, no puede incluirse en un nombre.
+2017-11-03 18:23:31,533 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error GrupoUDA_ObtenerPosicion: WS_REC_USR. . El carácter ' ', con valor hexadecimal 0x20, no puede incluirse en un nombre.
+2017-11-03 18:39:37,889 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error GrupoUDA_ObtenerPosicion: WS_REC_USR. . Referencia a objeto no establecida como instancia de un objeto.
+2017-11-03 18:39:43,527 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error ZeekGPS_ObtenerPosicion: WS_REC_USR. . No se puede reconocer la cadena como valor DateTime válido.
+2017-11-03 18:40:07,325 [DefaultQuartzScheduler_Worker-4] ERROR ReCServices.Apis.MonitoreoYRastereo - Error ZeekGPS_ObtenerPosicion: WS_REC_USR. . No se puede reconocer la cadena como valor DateTime válido.
+2017-11-03 18:40:15,119 [DefaultQuartzScheduler_Worker-3] ERROR ReCServices.Apis.MonitoreoYRastereo - Error ZeekGPS_ObtenerPosicion: WS_REC_USR. . Referencia a objeto no establecida como instancia de un objeto.
+2017-11-03 18:40:38,888 [DefaultQuartzScheduler_Worker-8] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:40:41,097 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:41:28,854 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:41:55,905 [DefaultQuartzScheduler_Worker-9] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:42:00,257 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:42:00,260 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:42:03,458 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:42:07,120 [DefaultQuartzScheduler_Worker-9] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:42:09,129 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:42:13,632 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:44:33,261 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:44:39,121 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.MonitoreoYRastereo - Error GrupoUDA_ObtenerPosicion: WS_REC_USR. . Error en el servidor remoto: (408) RequestTimeout.
+2017-11-03 18:44:43,889 [DefaultQuartzScheduler_Worker-9] ERROR ReCServices.Apis.MonitoreoYRastereo - Error GrupoUDA_ObtenerPosicion: WS_REC_USR. . No se puede leer la secuencia.
+2017-11-03 18:44:43,891 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:44:46,425 [DefaultQuartzScheduler_Worker-3] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:44:46,433 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:44:47,659 [DefaultQuartzScheduler_Worker-10] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:44:49,184 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:44:50,379 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:44:51,641 [DefaultQuartzScheduler_Worker-9] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:44:53,045 [DefaultQuartzScheduler_Worker-3] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:44:54,488 [DefaultQuartzScheduler_Worker-10] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:45:04,164 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:44:57,759 [DefaultQuartzScheduler_Worker-5] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:45:07,140 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:45:46,017 [DefaultQuartzScheduler_Worker-9] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI:   -  IMEI no reconocido. 
+2017-11-03 18:45:51,274 [DefaultQuartzScheduler_Worker-10] ERROR ReCServices.Apis.MonitoreoYRastereo - Error GrupoUDA_ObtenerPosicion: WS_REC_USR. . Error en el servidor remoto: (408) RequestTimeout.
+2017-11-03 18:45:51,282 [DefaultQuartzScheduler_Worker-3] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:45:53,161 [DefaultQuartzScheduler_Worker-2] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:45:54,501 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:45:56,272 [DefaultQuartzScheduler_Worker-9] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:45:59,120 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:00,536 [DefaultQuartzScheduler_Worker-10] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:01,966 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:03,300 [DefaultQuartzScheduler_Worker-9] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:45:59,128 [DefaultQuartzScheduler_Worker-3] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:04,696 [DefaultQuartzScheduler_Worker-2] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:05,998 [DefaultQuartzScheduler_Worker-10] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:07,482 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:09,759 [DefaultQuartzScheduler_Worker-9] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:12,959 [DefaultQuartzScheduler_Worker-2] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:12,961 [DefaultQuartzScheduler_Worker-3] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:14,192 [DefaultQuartzScheduler_Worker-10] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:15,594 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:16,998 [DefaultQuartzScheduler_Worker-2] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:18,168 [DefaultQuartzScheduler_Worker-10] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:19,226 [DefaultQuartzScheduler_Worker-3] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:20,241 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:20,259 [DefaultQuartzScheduler_Worker-5] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:21,330 [DefaultQuartzScheduler_Worker-10] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:22,539 [DefaultQuartzScheduler_Worker-2] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:24,376 [DefaultQuartzScheduler_Worker-3] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:25,964 [DefaultQuartzScheduler_Worker-2] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:27,218 [DefaultQuartzScheduler_Worker-3] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:29,040 [DefaultQuartzScheduler_Worker-2] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:41,045 [DefaultQuartzScheduler_Worker-2] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:43,585 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:43,740 [DefaultQuartzScheduler_Worker-5] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:43,843 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:44,119 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:44,379 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:49,800 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error GrupoUDA_ObtenerPosicion: WS_REC_USR. . Error en el servidor remoto: (403) Prohibido.
+2017-11-03 18:46:50,136 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:50,168 [DefaultQuartzScheduler_Worker-5] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:50,381 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:57,217 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.MonitoreoYRastereo - Error GrupoUDA_ObtenerPosicion: WS_REC_USR. . Error en el servidor remoto: (403) Prohibido.
+2017-11-03 18:46:57,884 [DefaultQuartzScheduler_Worker-5] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:46:59,006 [DefaultQuartzScheduler_Worker-5] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:47:00,139 [DefaultQuartzScheduler_Worker-5] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:47:01,404 [DefaultQuartzScheduler_Worker-5] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 18:51:18,002 [DefaultQuartzScheduler_Worker-9] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 19:20:50,177 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 19:20:59,252 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 19:21:03,259 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 19:21:07,771 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 19:21:11,912 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 19:24:38,272 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  IMEI no reconocido. 
+2017-11-03 19:24:42,700 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  Usuario no existe.. 
+2017-11-03 19:24:44,182 [DefaultQuartzScheduler_Worker-4] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  Usuario no existe.. 
+2017-11-03 19:24:47,402 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  Usuario no existe.. 
+2017-11-03 19:24:47,492 [DefaultQuartzScheduler_Worker-4] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  Usuario no existe.. 
+2017-11-03 19:24:47,832 [DefaultQuartzScheduler_Worker-4] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  Usuario no existe.. 
+2017-11-03 19:24:48,084 [DefaultQuartzScheduler_Worker-4] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  Usuario no existe.. 
+2017-11-03 19:24:48,330 [DefaultQuartzScheduler_Worker-4] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  Usuario no existe.. 
+2017-11-03 19:24:54,413 [DefaultQuartzScheduler_Worker-4] ERROR ReCServices.Apis.MonitoreoYRastereo - Error GrupoUDA_ObtenerPosicion: WS_REC_USR. . Error en el servidor remoto: (403) Prohibido.
+2017-11-03 19:24:54,762 [DefaultQuartzScheduler_Worker-4] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  Usuario no existe.. 
+2017-11-03 19:24:55,016 [DefaultQuartzScheduler_Worker-4] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  Usuario no existe.. 

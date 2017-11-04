@@ -1,7 +1,4 @@
-﻿
- 
-
-   /* 
+﻿   /* 
     Licensed under the Apache License, Version 2.0
     
     http://www.apache.org/licenses/LICENSE-2.0
@@ -176,7 +173,7 @@ namespace ReCServices.SOAPClass
     public class Return
     {
         [XmlElement(ElementName = "item")]
-        public List<Item> Item { get; set; }
+        public Item Item { get; set; }
         [XmlAttribute(AttributeName = "type", Namespace = "http://www.w3.org/2001/XMLSchema-instance")]
         public string Type { get; set; }
         [XmlAttribute(AttributeName = "arrayType", Namespace = "http://schemas.xmlsoap.org/soap/encoding/")]
@@ -217,4 +214,3 @@ namespace ReCServices.SOAPClass
     }
 
 }
-    

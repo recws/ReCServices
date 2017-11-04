@@ -229,7 +229,7 @@ namespace ReCServices
 
 
             
-            //Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_REC_USR", "webservice", "Gtslo98_213#");
+            Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_Diez", "webservice", "Gtslo98_213#");
             
         }
     }
