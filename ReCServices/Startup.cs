@@ -202,42 +202,14 @@ namespace ReCServices
     public class Pruebas : IJob
     {
         public void Execute(IJobExecutionContext context)
-        {
-            //MonitoreoAutomatico monitoreo = new MonitoreoAutomatico();
-
-            //monitoreo.MonitoreoAutomatico_SiguienteViaje();
-
-            //Apis.GrupoUDA.GrupoUDA_ObtenerPosicion("WS_SID", "WBS_PAN-SUVI", "123456");
-            //Apis.Astus.ObtenereInsertar("WS_SEND", "webservices1@send.com", "1qaz2345");
-
-
+        {            
+            //Apis.GrupoUDA.GrupoUDA_ObtenerPosicion("WS_SID", "WBS_PAN-SUVI", "123456");  //Cambiaron de plataforma... Ya no se va a contemplar este proveedor
             //Apis.Moving.Moving_ObtenerPosicion("WS_Moving", "api_moving", "p83XAfHG");  //FALTA TERMINAR EL DESARROLLO
-
             //Apis.Soltrack.Soltrack_ObtenerPosicion("WS_THernandez", "", "");  //FALTA QUE NOS DEN EL LISTADO DE IMEI
-            //return;
-
 
             //Seinext -> Revisar, en ocaciones responde vacio.
-            //Apis.Seinext.Seinext_ObtenerPosicion("TMP_USR___-", "AVENSICA", "BavensicaA");  //YA FUNCIONA PERO RESPONDE VACIOS LA MAYORIA DE LAS VECES
-
-
-            //Monitoreo y Rastreo SOAP -> POST  TRANSPORTES DIEZ
-            //Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_DIEZ", "webservice", "Gtslo98_213#");  // YA NOS ARROJA UN ENVELOPE SOLO FALTA CONVERTIRLO A OBJETO
-
-
-            //Apis.Wialon.WIALON_ObtenerPosicion("WS_AVLLogic", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA
-
-            //IMEI - Codigo evento?? - SAMA - Trapol
-            //Apis.Sama.Sama_ObtenerPosicion("WS_TMP", "panalpina-trapol", "Andromeda500");
-
-
-            //SGIT - Islas - falta agregar codigo, genera excepcion
-            Apis.SGIT.SGIT_ObtenerPosicion("WS_TMP", "wsantonio", "wsantonio01");
-
-
-            //Agregar await/async?
-            //Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_Diez", "webservice", "Gtslo98_213#");
-
+            //Apis.Seinext.Seinext_ObtenerPosicion("WS_Avensica-", "AVENSICA", "BavensicaA");  //YA FUNCIONA PERO RESPONDE VACIOS LA MAYORIA DE LAS VECES
+            
         }
     }
 
@@ -292,7 +264,8 @@ namespace ReCServices
         {
 #if !DEBUG
 
-            Apis.Boson.BOSON_ObtenerPosicion("WS_TIslas", "trans.log.is@hotmail.com", "Es29Htj8M5");  //Transportes T. ISLAS  //No lleva token
+            Apis.Boson.BOSON_ObtenerPosicion("WS_TIslas", "trans.log.is@hotmail.com", "Es29Htj8M5");  //Transportes T. ISLAS   Proveedor: KOSMOS
+            Apis.SGIT.SGIT_ObtenerPosicion("WS_TIslas", "wsantonio", "wsantonio01");  //Transportes T. ISLAS  Proveedor: SGIT
             Apis.Boson.BOSON_ObtenerPosicion("WS_TLIT", "a.rivera@interestatalit.com", "panalpinalit");  //Transportes T. LIT  //No lleva token
             APIS.REESER_ObtenerPosicion("WS_IMTAutoT", "FELIPE-AGUILAR", "U2FsdGVkX1+GHY1Z/SObeDjZCZ4ARuSUN80EtrPOn54=");
             Apis.Wialon.WIALON_ObtenerPosicion("WS_AVLLogic", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA
@@ -304,6 +277,10 @@ namespace ReCServices
             Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "cooper@transportesnewpick.com.mx", "CooperTire17");  //COOPERTIRES  //Transportes USAMEX CARRIER  //No lleva token
             
             Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
+
+            Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_Diez", "webservice", "Gtslo98_213#");
+
+            Apis.Sama.Sama_ObtenerPosicion("WS_Trapol", "panalpina-trapol", "Andromeda500");  //TRAPOL  ProveedorGPS: SAMA
 #endif
         }
     }

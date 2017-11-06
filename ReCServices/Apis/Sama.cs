@@ -38,8 +38,12 @@ namespace ReCServices.Apis
 
                     for (int i = 0; i < res.Count; i++)
                     {
+                        if (res[i].Device_Plate == "") {
+                            log.Error("Error al Insertar evento de " + UsuarioReC + ". " + " Unidad no tiene asignado valor en el campo placas: " + res[i].Device + " - " + res[i].Device_desc + " - " + res[i].Device_SimNumber );
+                            continue;
+                        }
                         //Consulta si ya existe la posicion, por si es repetida y no ha actualizado el equipo
-                        string imei = "000000";//Hecer query imei?  res[].EventData[0]. res[i].hst.Imei.cdatasection.ToString();
+                        string imei = System.Text.RegularExpressions.Regex.Replace(res[i].Device_Plate, "[^a-zA-Z0-9]", "").ToUpper();//Hecer query imei?  res[].EventData[0]. res[i].hst.Imei.cdatasection.ToString();
                         string codigoevento = res[i].EventData[0].StatusCode.ToString();
 
                         string lat = res[i].EventData[0].GPSPoint_lat.ToString();
@@ -80,7 +84,7 @@ namespace ReCServices.Apis
                         }
                         else
                         {
-                            log.Error("Error al Insertar evento de " + UsuarioReC + ". " + " IMEI: " + imei + ". " + WS_GPS_InsertaSimple[0].Mensaje + ". ");
+                            log.Error("Error al Insertar evento de " + UsuarioReC + ". " + " IMEI: " + res[i].Device_Plate + " - " + res[i].Device + " - " + res[i].Device_desc + " - " + ". " + WS_GPS_InsertaSimple[0].Mensaje + ". ");
                         }
                     }
                 }

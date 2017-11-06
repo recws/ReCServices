@@ -588,6 +588,8 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="SOAPENV\SOAPENV_DIEZ.txt" />
+    <Content Include="SOAPENV\SOAPENV_ISLAS.txt" />
     <Content Include="WS_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WS_Model.edmx</DependentUpon>

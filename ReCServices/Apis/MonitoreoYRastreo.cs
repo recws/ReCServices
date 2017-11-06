@@ -32,7 +32,7 @@ namespace ReCServices.Apis
             try
             {
                 //Carga los IMEI que se van a consultar
-                DT_Data = GetData_ListaGPSxProveedor("ETI"); //tmp para no modificar demaciado el codigo (x8)
+                DT_Data = GetData_ListaGPSxProveedor("DIEZ"); //tmp para no modificar demaciado el codigo (x8)
                 if (DT_Data.Rows.Count == 0)
                 {
                     return;
@@ -79,7 +79,7 @@ namespace ReCServices.Apis
                                 foreach (XElement xElement in returnResult)
                                 {
                                     var Imei = xElement.Element("idgps") != null ? xElement.Element("idgps").Value : "";
-                                    if (Imei == null) {
+                                    if (Imei == null || Imei =="") {
                                         continue;
                                     }
                                     var Respuesta = xElement.Element("Respuesta") != null ? xElement.Element("Respuesta").Value : "";
@@ -103,7 +103,7 @@ namespace ReCServices.Apis
 
                                         string lat = Latitude;
                                         string lng = Longitude;
-                                        string codigoevento = PanicButton == "true" ? "panic" : "";
+                                        string codigoevento = "";//PanicButton == "true" ? "panic" : "";
                                         string odometro = Odometer.Split('.')[0];
                                         ////string placas = ((dynamic)res[i]).Plates;
                                         string velocidad = SpeedGps.Split('.')[0];
@@ -111,7 +111,7 @@ namespace ReCServices.Apis
                                         string direccion = Course.Split('.')[0]; ;
 
                                         var fechahoragps = DateTime.ParseExact(DateGps, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture); ;
-                                        //fechahoragps = fechahoragps.ToUniversalTime();
+                                        fechahoragps = fechahoragps.ToUniversalTime();
 
                                         ////Validaciones
 
@@ -138,7 +138,7 @@ namespace ReCServices.Apis
                                         }
                                         else
                                         {
-                                            log.Error("Error al Insertar evento de " + UsuarioReC + ". IMEI: " + (Imei != null ? Imei : "").ToString() + "  -  " + WS_GPS_InsertaSimple[0].Mensaje + ". " + responseJson);
+                                            log.Error("Error al Insertar evento de " + UsuarioReC + ". IMEI: " + (Imei != null ? Imei : "") + ". PLACA: " + (UnitPlate != null ? UnitPlate : "")  + "  -  " + WS_GPS_InsertaSimple[0].Mensaje + ". " + responseJson);
                                         }
                                     }
                                     catch (Exception Ex)
@@ -170,6 +170,10 @@ namespace ReCServices.Apis
                     catch (Exception Ex)
                     {
                         if (Ex.Message == "'System.Dynamic.ExpandoObject' no contiene una definición para 'Latitude'.")
+                        {
+                            //No guarda nada en el log por que aveces no viene completa la trama
+                        }
+                        if (Ex.Message == "Error en el servidor remoto: (403) Prohibido.")
                         {
                             //No guarda nada en el log por que aveces no viene completa la trama
                         }
