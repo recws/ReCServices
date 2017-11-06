@@ -197,3 +197,29 @@ Nombre del parámetro: length
 2017-11-04 10:58:38,692 [22] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
 2017-11-05 22:14:06,973 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.SGIT - Error GrupoUDA_ObtenerPosicion: WS_TMP. . Error en el servidor remoto: (500) Error interno del servidor.
 2017-11-05 22:45:56,965 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.SGIT - Error GrupoUDA_ObtenerPosicion: WS_TMP. . Se ha terminado la conexión: La conexión ha terminado de forma inesperada.
+2017-11-06 10:52:50,530 [25] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:50,608 [26] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:50,637 [24] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:50,718 [24] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:50,745 [26] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:50,801 [24] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:50,882 [24] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:50,919 [26] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:51,015 [24] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:51,168 [25] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:51,225 [24] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:51,310 [24] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:51,393 [24] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:51,460 [26] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:51,475 [25] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:51,660 [26] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:51,688 [25] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:51,931 [26] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:51,956 [25] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:52,130 [26] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:52,141 [25] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:52,432 [26] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:52,434 [25] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:52:52,667 [25] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-06 10:53:51,395 [DefaultQuartzScheduler_Worker-2] ERROR ReCServices.Apis.SGIT - Error GrupoUDA_ObtenerPosicion: WS_TMP. . No se puede encontrar una parte de la ruta de acceso 'D:\VS2017\Projects\ReCServices\ReCServices\SOAPENV\SOAPENV_ISLAS.txt'.
+2017-11-06 10:54:54,156 [DefaultQuartzScheduler_Worker-10] ERROR ReCServices.Apis.SGIT - Error GrupoUDA_ObtenerPosicion: WS_TMP. . No se puede encontrar una parte de la ruta de acceso 'D:\VS2017\Projects\ReCServices\ReCServices\SOAPENV\SOAPENV_ISLAS.txt'.

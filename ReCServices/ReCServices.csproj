@@ -352,7 +352,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="SOAPClass\MonitoreoyRastreo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="WebService.svc.cs">
       <DependentUpon>WebService.svc</DependentUpon>
@@ -398,7 +397,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Apis\SOAPENV_DIEZ.txt" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Chat.html" />
     <Content Include="CodigoExtra.txt" />
@@ -590,7 +588,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="SOAPENV\SOAPENV_DIEZ.txt" />
     <Content Include="WS_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WS_Model.edmx</DependentUpon>

@@ -40,7 +40,7 @@ namespace ReCServices.Apis
                     {
                         //Consulta si ya existe la posicion, por si es repetida y no ha actualizado el equipo
                         string imei = "000000";//Hecer query imei?  res[].EventData[0]. res[i].hst.Imei.cdatasection.ToString();
-                        string codigoevento = res[i].EventData[0].StatusCode_desc.ToString();
+                        string codigoevento = res[i].EventData[0].StatusCode.ToString();
 
                         string lat = res[i].EventData[0].GPSPoint_lat.ToString();
                         string lng = res[i].EventData[0].GPSPoint_lon.ToString();
@@ -49,7 +49,7 @@ namespace ReCServices.Apis
                         ////string placas = ((dynamic)res[i]).Plates;
                         string velocidad = res[i].EventData[0].Speed.ToString().Split('.')[0];
                         string bateria = "0";
-                        string direccion = "0";
+                        string direccion = res[i].EventData[0].Heading.ToString().Split('.')[0];
                         //2017 / 07 / 07 20:37:06
                         var fechahoragps = DateTime.ParseExact(res[i].EventData[0].Timestamp_date + " " + res[i].EventData[0].Timestamp_time, "yyyy/MM/dd HH:mm:ss", CultureInfo.InvariantCulture);
                         fechahoragps = fechahoragps.ToUniversalTime();
