@@ -347,11 +347,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\WS_SGIT_Service\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\WS_ZeekGPS_Service\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -595,12 +590,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\WS_SGIT_Service\configuration91.svcinfo" />
-    <None Include="Service References\WS_SGIT_Service\configuration.svcinfo" />
-    <None Include="Service References\WS_SGIT_Service\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="SOAPENV\SOAPENV_DIEZ.txt" />
     <Content Include="WS_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -793,7 +782,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\WS_SEND_StaticService\StaticService1.wsdl" />
-    <None Include="Service References\WS_SGIT_Service\LocalizacionServicio.wsdl" />
     <None Include="Service References\WS_ZeekGPS_Service\cmovilapi3ws.disco" />
     <None Include="Service References\WS_ZeekGPS_Service\configuration91.svcinfo" />
     <None Include="Service References\WS_ZeekGPS_Service\configuration.svcinfo" />
@@ -894,7 +882,6 @@
     <WCFMetadataStorage Include="Service References\WS_SEND_OpenSession\" />
     <WCFMetadataStorage Include="Service References\WS_SEND_StateService\" />
     <WCFMetadataStorage Include="Service References\WS_SEND_StaticService\" />
-    <WCFMetadataStorage Include="Service References\WS_SGIT_Service\" />
     <WCFMetadataStorage Include="Service References\WS_ZeekGPS_Service\" />
   </ItemGroup>
   <PropertyGroup>

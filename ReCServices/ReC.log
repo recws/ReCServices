@@ -195,3 +195,5 @@ Nombre del parámetro: length
 2017-11-03 19:24:54,762 [DefaultQuartzScheduler_Worker-4] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  Usuario no existe.. 
 2017-11-03 19:24:55,016 [DefaultQuartzScheduler_Worker-4] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_REC_USR. IMEI: 864180032487725  -  Usuario no existe.. 
 2017-11-04 10:58:38,692 [22] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_TMP.  IMEI: 000000. IMEI no reconocido. 
+2017-11-05 22:14:06,973 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.SGIT - Error GrupoUDA_ObtenerPosicion: WS_TMP. . Error en el servidor remoto: (500) Error interno del servidor.
+2017-11-05 22:45:56,965 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.SGIT - Error GrupoUDA_ObtenerPosicion: WS_TMP. . Se ha terminado la conexión: La conexión ha terminado de forma inesperada.

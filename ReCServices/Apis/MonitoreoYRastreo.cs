@@ -56,7 +56,7 @@ namespace ReCServices.Apis
                         //doc.Load(@"\test_ws.txt");
                         //string xmlcontents = doc.InnerXml;
                         string xmlcontents = File.ReadAllText(sPath);
-                        xmlcontents = xmlcontents.Replace("[-placa-]", "933AT7");//ECOenCurso);
+                        xmlcontents = xmlcontents.Replace("[-placa-]", ECOenCurso);
                         xmlcontents = xmlcontents.Replace("[-pwd-]", Password);
                         xmlcontents = xmlcontents.Replace("[-user-]", Usuario);
 

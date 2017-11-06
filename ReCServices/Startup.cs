@@ -232,7 +232,7 @@ namespace ReCServices
 
 
             //SGIT - Islas - falta agregar codigo, genera excepcion
-            //Apis.SGIT.SGIT_ObtenerPosicion("WS_TMP", "wsantonio", "wsantonio01");
+           // Apis.SGIT.SGIT_ObtenerPosicion("WS_TMP", "wsantonio", "wsantonio01");
             
 
             //Agregar await/async?
