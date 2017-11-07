@@ -28,7 +28,8 @@ namespace ReCServices.Controllers
     {
         ///// <summary>
         ///// Application DB context
-        ///// </summary>
+        ///// </summary>.
+
         //protected ApplicationDbContext ApplicationDbContext = new ApplicationDbContext();
 
         ///// <summary>
