@@ -268,7 +268,7 @@ namespace ReCServices
             Apis.SGIT.SGIT_ObtenerPosicion("WS_TIslas", "wsantonio", "wsantonio01");  //Transportes T. ISLAS  Proveedor: SGIT
             Apis.Boson.BOSON_ObtenerPosicion("WS_TLIT", "a.rivera@interestatalit.com", "panalpinalit");  //Transportes T. LIT  //No lleva token
             APIS.REESER_ObtenerPosicion("WS_IMTAutoT", "FELIPE-AGUILAR", "U2FsdGVkX1+GHY1Z/SObeDjZCZ4ARuSUN80EtrPOn54=");
-            Apis.Wialon.WIALON_ObtenerPosicion("WS_AVLLogic", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA
+            Apis.Wialon.WIALON_ObtenerPosicion("WS_Leyva", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA  provedor WS_AVLLogic
             Apis.Quiala.QUIALA_ObtenerPosicion("WS_Quiala", "ws-quiala", "Qui2kdh*bn6");
             Apis.Vectro.VECTRO_ObtenerPosicion("WS_TPina", "", "");
             Apis.Troncalnet.Troncalnet_ObtenerPosicion("WS_TOrtiz", "", ""); //COOPERTIRES 
