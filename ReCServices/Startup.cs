@@ -213,7 +213,11 @@ namespace ReCServices
 
 
             //Apis.Moving.Moving_ObtenerPosicion("WS_Moving", "api_moving", "p83XAfHG");  //FALTA TERMINAR EL DESARROLLO
-            Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
+            //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
+
+
+            //Trapol - GPS Monitor
+            Apis.GpsMonitor.GGpsMonitor_ObtenerPosicion("WS_TMP");
         }
     }
 
