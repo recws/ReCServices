@@ -210,6 +210,7 @@ namespace ReCServices
             //Seinext -> Revisar, en ocaciones responde vacio.
             //Apis.Seinext.Seinext_ObtenerPosicion("WS_Avensica-", "AVENSICA", "BavensicaA");  //YA FUNCIONA PERO RESPONDE VACIOS LA MAYORIA DE LAS VECES
             
+            //Este es un comentario eric
         }
     }
 
