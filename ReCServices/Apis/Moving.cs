@@ -28,8 +28,11 @@ namespace ReCServices.Apis
                 dologin.UserCredential = new WS_Moving_Service.UserCredentialInfo();
                 dologin.UserCredential.UserName = "api_moving";
                 dologin.UserCredential.Password = "p83XAfHG";
+                dologin.UserCredential.ApplicationID = new Guid();
+                dologin.UserCredential.ClientID = new Guid();
+                dologin.UserCredential.ClientVersion = "0";
                 dologin.Session = new WS_Moving_Service.SessionInfo();
-                //dologin.Session.SessionId = new Guid();
+                dologin.Session.SessionId = new Guid();
                 var x = cliente.DoLogin(dologin);
 
                 var state = cliente.State;

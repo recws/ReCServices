@@ -30,7 +30,7 @@ namespace ReCServices.Apis
             try
             {
                 //Carga los IMEI que se van a consultar
-                DT_Data = GetData_ListaGPSxProveedor("T. Hernandez");
+                DT_Data = GetData_ListaGPSxProveedor("T. HERNANDEZ");
                 if (DT_Data.Rows.Count == 0)
                 {
                     return;

@@ -379,77 +379,77 @@ namespace ReCServices
             {
 
 
-                //Obtiene ahora el html del correo y contactos
-                Monitoreo db = new Monitoreo();
-                List<NotificacionIncidencia_CargaHTML_Result> HTML;
-                DataRow GPS = DT_Data.Rows[i];
-                HTML = db.NotificacionIncidencia_CargaHTML(DT_Data.Rows[i]["IMEI"].ToString(), "WS_EasyTrack", DT_Data.Rows[i]["Incidencia"].ToString()).ToList();
-                if (HTML.Count() == 1)
-                {
-                    var Asunto = ReemplazaTexto(GPS, HTML, HTML[0].Asunto.ToString());
-                    var Cuerpo = ReemplazaTexto(GPS, HTML, HTML[0].Cuerpo.ToString());
+                ////Obtiene ahora el html del correo y contactos
+                //Monitoreo db = new Monitoreo();
+                //List<NotificacionIncidencia_CargaHTML_Result> HTML;
+                //DataRow GPS = DT_Data.Rows[i];
+                //HTML = db.NotificacionIncidencia_CargaHTML(DT_Data.Rows[i]["IMEI"].ToString(), "WS_EasyTrack", DT_Data.Rows[i]["Incidencia"].ToString()).ToList();
+                //if (HTML.Count() == 1)
+                //{
+                //    var Asunto = ReemplazaTexto(GPS, HTML, HTML[0].Asunto.ToString());
+                //    var Cuerpo = ReemplazaTexto(GPS, HTML, HTML[0].Cuerpo.ToString());
 
-                    //Envia el correo
-                    EnviarCorreo(HTML[0].Para.ToString(), HTML[0].CC.ToString(), HTML[0].CCO.ToString(), Asunto, Cuerpo);
+                //    //Envia el correo
+                //    EnviarCorreo(HTML[0].Para.ToString(), HTML[0].CC.ToString(), HTML[0].CCO.ToString(), Asunto, Cuerpo);
 
-                    //Elimina el registro de la tabla
-                    WS_GPS_EliminaIncidencia((int)GPS["IdEventoGPS"]);
-                }
+                //    //Elimina el registro de la tabla
+                //    WS_GPS_EliminaIncidencia((int)GPS["IdEventoGPS"]);
+                //}
             }
         }
 
-        private string ReemplazaTexto(DataRow GPS, List<NotificacionIncidencia_CargaHTML_Result> HTML, string texto)
-        {
-            try
-            {
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@GRUPO", HTML[0].Grupo == null ? "" : HTML[0].Grupo);
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@OPERACION", HTML[0].Operacion == null ? "" : HTML[0].Operacion);
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@CLASIFICACION", "Incidencia");
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@CONTROLADO", "Critico");
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@TIPOINCIDENCIA", "");
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@INCIDENCIA", HTML[0].Incidencia == null ? "" : HTML[0].Incidencia);
-                //texto = System.Text.RegularExpressions.Regex.Replace(texto, "@FECHAHORA",((DateTime)GPS["FechaHora"]).ToString("dd-MM-yyyy HH:mm"));
-                //texto = System.Text.RegularExpressions.Regex.Replace(texto, "@COLOR", HTML[0].Grupo);
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@ESTATUSVIAJE", HTML[0].EstatusViaje == null ? "" : HTML[0].EstatusViaje);
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@OBSERVACIONES", HTML[0].Observaciones == null ? "" : HTML[0].Observaciones);
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@FOLIOCLIENTE", HTML[0].FolioCliente == null ? "" : HTML[0].FolioCliente);
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@FOLIOINTERNO", HTML[0].FolioInterno == null ? "" : HTML[0].FolioInterno);
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@OPERADOR", HTML[0].Operador == null ? "" : HTML[0].Operador);
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@UNIDAD", HTML[0].Unidad == null ? "" : HTML[0].Unidad);
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@PLACAS", HTML[0].Placas == null ? "" : HTML[0].Placas);
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@TRANSPORTISTA", HTML[0].Transportista == null ? "" : HTML[0].Transportista);
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@DESTINOS", HTML[0].Destinos == null ? " < strong > Sin Destinos </ strong > " + " < br >< br > " : HTML[0].Destinos + "<br><br>");
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@TIPOVIAJE", HTML[0].TipoViaje == null ? "" : HTML[0].TipoViaje);
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@AGENCIAADUANAL", HTML[0].AgenciaAduanal == null ? "" : "<strong>IMPO-EXPO: </strong>" + HTML[0].AgenciaAduanal + "  " + "<br>");
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@FORWARDING", HTML[0].Forwarding == null ? "" : "<strong>Forwarding: </strong>" + HTML[0].Forwarding + "  " + "<br>");
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@CONTENEDOR1", HTML[0].Contenedor1 == null ? "" : "<strong><u>CONTENEDOR 1:</u></strong> " + HTML[0].Contenedor1 + " <br>");
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@CONTENEDOR2", HTML[0].Contenedor2 == null ? "" : "<strong><u>CONTENEDOR 2:</u></strong> " + HTML[0].Contenedor2 + " <br><br>");
+        //private string ReemplazaTexto(DataRow GPS, List<NotificacionIncidencia_CargaHTML_Result> HTML, string texto)
+        //{
+        //    try
+        //    {
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@GRUPO", HTML[0].Grupo == null ? "" : HTML[0].Grupo);
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@OPERACION", HTML[0].Operacion == null ? "" : HTML[0].Operacion);
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@CLASIFICACION", "Incidencia");
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@CONTROLADO", "Critico");
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@TIPOINCIDENCIA", "");
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@INCIDENCIA", HTML[0].Incidencia == null ? "" : HTML[0].Incidencia);
+        //        //texto = System.Text.RegularExpressions.Regex.Replace(texto, "@FECHAHORA",((DateTime)GPS["FechaHora"]).ToString("dd-MM-yyyy HH:mm"));
+        //        //texto = System.Text.RegularExpressions.Regex.Replace(texto, "@COLOR", HTML[0].Grupo);
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@ESTATUSVIAJE", HTML[0].EstatusViaje == null ? "" : HTML[0].EstatusViaje);
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@OBSERVACIONES", HTML[0].Observaciones == null ? "" : HTML[0].Observaciones);
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@FOLIOCLIENTE", HTML[0].FolioCliente == null ? "" : HTML[0].FolioCliente);
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@FOLIOINTERNO", HTML[0].FolioInterno == null ? "" : HTML[0].FolioInterno);
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@OPERADOR", HTML[0].Operador == null ? "" : HTML[0].Operador);
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@UNIDAD", HTML[0].Unidad == null ? "" : HTML[0].Unidad);
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@PLACAS", HTML[0].Placas == null ? "" : HTML[0].Placas);
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@TRANSPORTISTA", HTML[0].Transportista == null ? "" : HTML[0].Transportista);
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@DESTINOS", HTML[0].Destinos == null ? " < strong > Sin Destinos </ strong > " + " < br >< br > " : HTML[0].Destinos + "<br><br>");
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@TIPOVIAJE", HTML[0].TipoViaje == null ? "" : HTML[0].TipoViaje);
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@AGENCIAADUANAL", HTML[0].AgenciaAduanal == null ? "" : "<strong>IMPO-EXPO: </strong>" + HTML[0].AgenciaAduanal + "  " + "<br>");
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@FORWARDING", HTML[0].Forwarding == null ? "" : "<strong>Forwarding: </strong>" + HTML[0].Forwarding + "  " + "<br>");
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@CONTENEDOR1", HTML[0].Contenedor1 == null ? "" : "<strong><u>CONTENEDOR 1:</u></strong> " + HTML[0].Contenedor1 + " <br>");
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@CONTENEDOR2", HTML[0].Contenedor2 == null ? "" : "<strong><u>CONTENEDOR 2:</u></strong> " + HTML[0].Contenedor2 + " <br><br>");
 
-                //texto = System.Text.RegularExpressions.Regex.Replace(texto, "@UBICACION", HTML[0].Grupo.ToString());
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@COORDENADAS", GPS["Lat"].ToString() + " " + GPS["Lng"].ToString());
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@VELOCIDAD", GPS["Velocidad"].ToString());
-                //texto = System.Text.RegularExpressions.Regex.Replace(texto, "@DISTANCIADESTINO", HTML[0].Grupo);
+        //        //texto = System.Text.RegularExpressions.Regex.Replace(texto, "@UBICACION", HTML[0].Grupo.ToString());
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@COORDENADAS", GPS["Lat"].ToString() + " " + GPS["Lng"].ToString());
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@VELOCIDAD", GPS["Velocidad"].ToString());
+        //        //texto = System.Text.RegularExpressions.Regex.Replace(texto, "@DISTANCIADESTINO", HTML[0].Grupo);
 
-                string mapa = "Imágen de mapa:" +
-                            "<br>" +
-                            "<a alt='Google Maps' href='https://maps.google.com/?q=" + GPS["Lat"].ToString() + " " + GPS["Lng"].ToString() + "'>" +
-                                "<img src='https://maps.google.com/maps/api/staticmap?size=480x300&markers=color:red|" + GPS["Lat"].ToString() + " " + GPS["Lng"].ToString() + "&sensor=true' />" +
-                            "</a>" +
-                            "<br>";
+        //        string mapa = "Imágen de mapa:" +
+        //                    "<br>" +
+        //                    "<a alt='Google Maps' href='https://maps.google.com/?q=" + GPS["Lat"].ToString() + " " + GPS["Lng"].ToString() + "'>" +
+        //                        "<img src='https://maps.google.com/maps/api/staticmap?size=480x300&markers=color:red|" + GPS["Lat"].ToString() + " " + GPS["Lng"].ToString() + "&sensor=true' />" +
+        //                    "</a>" +
+        //                    "<br>";
 
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@MAPA", mapa);
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@MAPA", mapa);
 
 
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@DISTANCIADESTINO", "");
-                texto = System.Text.RegularExpressions.Regex.Replace(texto, "@UBICACION", "");
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@DISTANCIADESTINO", "");
+        //        texto = System.Text.RegularExpressions.Regex.Replace(texto, "@UBICACION", "");
 
-            }
-            catch (Exception Ex)
-            {
-                log.Error("Error al reemplazar las variables. " + Ex.Message);
-            }
-            return texto;
-        }
+        //    }
+        //    catch (Exception Ex)
+        //    {
+        //        log.Error("Error al reemplazar las variables. " + Ex.Message);
+        //    }
+        //    return texto;
+        //}
 
         public void TruncarReCLog()
         {

@@ -1829,3 +1829,13 @@ Nombre del parámetro: length
 2017-11-06 14:53:54,964 [22] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_Trapol.  IMEI:  - t03 - T 03 - . El IMEI no puede ser vacio.. 
 2017-11-06 15:01:13,575 [22] ERROR ReCServices.Apis.Sama - Error al Insertar evento de WS_Trapol.  Unidad no tiene asignado valor en el campo placas: t08 - T 08 - 5579078519
 2017-11-06 15:01:13,588 [18] ERROR ReCServices.Apis.Sama - Error GrupoUDA_ObtenerPosicion: WS_Trapol. . Se canceló una tarea.
+2017-11-06 22:50:25,284 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.Soltrack - Error Soltrack_ObtenerPosicion: WS_THernandez. . Referencia a objeto no establecida como instancia de un objeto.
+2017-11-06 22:50:25,284 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.Soltrack - Error Soltrack_ObtenerPosicion: WS_THernandez. . Referencia a objeto no establecida como instancia de un objeto.
+2017-11-06 22:51:09,805 [DefaultQuartzScheduler_Worker-9] ERROR ReCServices.Apis.Soltrack - Error Soltrack_ObtenerPosicion: WS_THernandez. . Referencia a objeto no establecida como instancia de un objeto.
+2017-11-06 22:52:08,524 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.Soltrack - Error Soltrack_ObtenerPosicion: WS_THernandez. . Referencia a objeto no establecida como instancia de un objeto.
+2017-11-06 22:53:40,685 [DefaultQuartzScheduler_Worker-5] ERROR ReCServices.Apis.Moving - Error Omnitracs_ObtenerPosicion: WS_Moving. . Referencia a objeto no establecida como instancia de un objeto.
+2017-11-06 22:56:36,226 [DefaultQuartzScheduler_Worker-2] ERROR ReCServices.Apis.Moving - Error Omnitracs_ObtenerPosicion: WS_Moving. . Referencia a objeto no establecida como instancia de un objeto.
+2017-11-06 23:18:01,452 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.Soltrack - Error Soltrack_ObtenerPosicion: WS_THernandez. . Referencia a objeto no establecida como instancia de un objeto.
+2017-11-06 23:19:06,273 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.Soltrack - Error Soltrack_ObtenerPosicion: WS_THernandez. . Referencia a objeto no establecida como instancia de un objeto.
+2017-11-06 23:33:45,970 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.Moving - Error Omnitracs_ObtenerPosicion: WS_Moving. . Referencia a objeto no establecida como instancia de un objeto.
+2017-11-06 23:34:48,379 [DefaultQuartzScheduler_Worker-9] ERROR ReCServices.Apis.Moving - Error Omnitracs_ObtenerPosicion: WS_Moving. . Referencia a objeto no establecida como instancia de un objeto.

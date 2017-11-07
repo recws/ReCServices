@@ -268,9 +268,6 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Color_Consulta_Result.cs">
-      <DependentUpon>ModelMonitoreo.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MetodosController.cs" />
@@ -282,28 +279,10 @@
     <Compile Include="GPSHub.cs" />
     <Compile Include="IWebService.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="ModelMonitoreo.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelMonitoreo.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelMonitoreo.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelMonitoreo.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelMonitoreo.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelMonitoreo.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Negocio.cs" />
-    <Compile Include="NotificacionIncidencia_CargaHTML_Result.cs">
-      <DependentUpon>ModelMonitoreo.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -414,16 +393,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="ModelMonitoreo.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelMonitoreo.edmx</DependentUpon>
-      <LastGenOutput>ModelMonitoreo.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ModelMonitoreo.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelMonitoreo.edmx</DependentUpon>
-      <LastGenOutput>ModelMonitoreo.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -447,6 +416,16 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Scripts\jquery.signalR-2.2.1.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
+    <Content Include="WS_Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WS_Model.edmx</DependentUpon>
+      <LastGenOutput>WS_Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="WS_Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WS_Model.edmx</DependentUpon>
+      <LastGenOutput>WS_Model.cs</LastGenOutput>
+    </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Service References\WS_Moving_Service\ReCServices.WS_Moving_Service.AssignToVehicleGroupResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -530,6 +509,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
     <None Include="Service References\WS_Moving_Service\service.wsdl" />
     <None Include="Service References\WS_OmnitracsCC_Service\IVehicleActivityWebService.wsdl" />
     <None Include="Service References\WS_Moving_Service\service.disco" />
@@ -590,16 +570,6 @@
     </None>
     <Content Include="SOAPENV\SOAPENV_DIEZ.txt" />
     <Content Include="SOAPENV\SOAPENV_ISLAS.txt" />
-    <Content Include="WS_Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WS_Model.edmx</DependentUpon>
-      <LastGenOutput>WS_Model.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="WS_Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WS_Model.edmx</DependentUpon>
-      <LastGenOutput>WS_Model.cs</LastGenOutput>
-    </Content>
     <Content Include="app.manifest">
       <SubType>Designer</SubType>
     </Content>
@@ -808,13 +778,6 @@
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
-    <EntityDeploy Include="ModelMonitoreo.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelMonitoreo.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="ModelMonitoreo.edmx.diagram">
-      <DependentUpon>ModelMonitoreo.edmx</DependentUpon>
-    </Content>
     <Content Include="log4net.config" />
     <None Include="Properties\PublishProfiles\VS2015.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

@@ -202,14 +202,18 @@ namespace ReCServices
     public class Pruebas : IJob
     {
         public void Execute(IJobExecutionContext context)
-        {            
+        {
             //Apis.GrupoUDA.GrupoUDA_ObtenerPosicion("WS_SID", "WBS_PAN-SUVI", "123456");  //Cambiaron de plataforma... Ya no se va a contemplar este proveedor
-            //Apis.Moving.Moving_ObtenerPosicion("WS_Moving", "api_moving", "p83XAfHG");  //FALTA TERMINAR EL DESARROLLO
-            //Apis.Soltrack.Soltrack_ObtenerPosicion("WS_THernandez", "", "");  //FALTA QUE NOS DEN EL LISTADO DE IMEI
+
+
 
             //Seinext -> Revisar, en ocaciones responde vacio.
             //Apis.Seinext.Seinext_ObtenerPosicion("WS_Avensica-", "AVENSICA", "BavensicaA");  //YA FUNCIONA PERO RESPONDE VACIOS LA MAYORIA DE LAS VECES
-            
+
+
+
+            //Apis.Moving.Moving_ObtenerPosicion("WS_Moving", "api_moving", "p83XAfHG");  //FALTA TERMINAR EL DESARROLLO
+            Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
         }
     }
 
@@ -300,6 +304,8 @@ namespace ReCServices
             Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_Trameriv", "trameriv", "mexico321");  //Transportes TRAMERIV
             Apis.Boson.BOSON_ObtenerPosicion("WS_Gomez", "monitoreo@recsolutions.tech", "TraNsp0rGMZ2");  //Transportes GOMEZ  //No lleva token
             Apis.ZeekGPS.ZeekGPS_ObtenerPosicion("WS_Panamericano", "Panalpina", "teHY6kak", "iPinssoMperPogm");  //Transportes PANAMERICANO 
+
+            Apis.Soltrack.Soltrack_ObtenerPosicion("WS_THernandez", "", "");  //FALTA QUE NOS DEN EL LISTADO DE IMEI
 
             //Pendiente de validar las fechas, llegan con 2 horas de retraso
             Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI

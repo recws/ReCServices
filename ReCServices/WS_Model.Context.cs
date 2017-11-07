@@ -189,14 +189,5 @@ namespace ReCServices
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WS_GPS_ValidaUsuarioyPassword_Result>("WS_GPS_ValidaUsuarioyPassword", usuarioParameter, passwordParameter, iMEIParameter);
         }
-    
-        public virtual int WS_GPS_EliminaIncidencia(Nullable<int> idEventoGPS)
-        {
-            var idEventoGPSParameter = idEventoGPS.HasValue ?
-                new ObjectParameter("IdEventoGPS", idEventoGPS) :
-                new ObjectParameter("IdEventoGPS", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("WS_GPS_EliminaIncidencia", idEventoGPSParameter);
-        }
     }
 }

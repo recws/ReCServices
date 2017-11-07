@@ -47,9 +47,6 @@
       <Parameter Name="Password" Mode="In" Type="String" />
       <Parameter Name="IMEI" Mode="In" Type="String" />
     </FunctionImport>
-    <FunctionImport Name="WS_GPS_EliminaIncidencia">
-      <Parameter Name="IdEventoGPS" Mode="In" Type="Int32" />
-    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="WS_GPS_ConsultaHistoricoUTC_Result">
     <Property Type="String" Name="CodigoEvento" Nullable="true" MaxLength="30" />
