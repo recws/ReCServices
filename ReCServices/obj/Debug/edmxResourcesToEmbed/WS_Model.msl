@@ -109,5 +109,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="WS_GPS_EliminaIncidencia" FunctionName="WS_Model.Store.WS_GPS_EliminaIncidencia" />
   </EntityContainerMapping>
 </Mapping>

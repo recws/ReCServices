@@ -184,11 +184,11 @@ namespace ReCServices
         public void WS_GPS_SincronizaUsuario()
         {
 
-            WS_CONTEXT db = new WS_CONTEXT("WS_CONTEXT_PROD");
+            WS_CONTEXT db = new WS_CONTEXT();
             db.WS_GPS_SincronizaUsuario();
 
-            WS_CONTEXT dbTEST = new WS_CONTEXT("WS_CONTEXT_TEST");
-            dbTEST.WS_GPS_SincronizaUsuario();
+            //WS_CONTEXT dbTEST = new WS_CONTEXT();
+            //dbTEST.WS_GPS_SincronizaUsuario();
 
             //EnviarCorreo("olopez@gccomerce.com", "", "", "Ejecucion Quartz", "se ejecuto la tarea sincronizar usuario");
 
@@ -197,11 +197,11 @@ namespace ReCServices
         public void WS_GPS_SincronizaGPS()
         {
 
-            WS_CONTEXT db = new WS_CONTEXT("WS_CONTEXT_PROD");
+            WS_CONTEXT db = new WS_CONTEXT();
             db.WS_GPS_SincronizaGPS();
 
-            WS_CONTEXT dbTEST = new WS_CONTEXT("WS_CONTEXT_TEST");
-            dbTEST.WS_GPS_SincronizaGPS();
+            //WS_CONTEXT dbTEST = new WS_CONTEXT("WS_CONTEXT_TEST");
+            //dbTEST.WS_GPS_SincronizaGPS();
 
             //EnviarCorreo("olopez@gccomerce.com", "", "", "Ejecucion Quartz", "se ejecuto la tarea sincronizar gps");
 

@@ -129,7 +129,7 @@ namespace ReCServices.Apis
                         //Si no es repetida la inserta
                         List<WS_GPS_InsertaSimple_Result> WS_GPS_InsertaSimple;
 
-                        WS_CONTEXT db = new WS_CONTEXT("WS_CONTEXT_PROD");
+                        WS_CONTEXT db = new WS_CONTEXT();
 
                         WS_GPS_InsertaSimple = db.WS_GPS_InsertaSimple(UsuarioReC, imei, codigoevento, decimal.Parse(lat), decimal.Parse(lng), "", true, int.Parse(velocidad), int.Parse(direccion), 100, int.Parse(odometro), dateTime, dateTime).ToList();
                         if (WS_GPS_InsertaSimple[0].Indicador == 1)

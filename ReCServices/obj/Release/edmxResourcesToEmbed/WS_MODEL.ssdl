@@ -16,6 +16,9 @@
     <Parameter Name="FechaInicioUTC" Type="datetime" Mode="In" />
     <Parameter Name="FechaFinUTC" Type="datetime" Mode="In" />
   </Function>
+  <Function Name="WS_GPS_EliminaIncidencia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdEventoGPS" Type="int" Mode="In" />
+  </Function>
   <Function Name="WS_GPS_InsertaSimple" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Usuario" Type="varchar" Mode="In" />
     <Parameter Name="IMEI" Type="varchar" Mode="In" />

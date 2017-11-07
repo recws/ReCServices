@@ -14,37 +14,14 @@ namespace ReCServices
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    using System.Web;
-
+    
     public partial class WS_CONTEXT : DbContext
     {
-        public WS_CONTEXT(string contexto = "")
-                : base("name=" + ConnectionName(contexto))
+        public WS_CONTEXT()
+            : base("name=WS_CONTEXT")
         {
         }
-
-        private static string ConnectionName(string contexto)
-        {
-            if (contexto == "")
-            {
-                string DomainName = HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Authority);
-                if (DomainName.Contains("ws."))
-                {
-                    return "WS_CONTEXT_PROD";
-                }
-                else
-                {
-                    return "WS_CONTEXT_TEST";
-                }
-
-            }
-            else
-            {
-                return contexto;
-            }
-
-        }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -211,6 +188,15 @@ namespace ReCServices
                 new ObjectParameter("IMEI", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<WS_GPS_ValidaUsuarioyPassword_Result>("WS_GPS_ValidaUsuarioyPassword", usuarioParameter, passwordParameter, iMEIParameter);
+        }
+    
+        public virtual int WS_GPS_EliminaIncidencia(Nullable<int> idEventoGPS)
+        {
+            var idEventoGPSParameter = idEventoGPS.HasValue ?
+                new ObjectParameter("IdEventoGPS", idEventoGPS) :
+                new ObjectParameter("IdEventoGPS", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("WS_GPS_EliminaIncidencia", idEventoGPSParameter);
         }
     }
 }

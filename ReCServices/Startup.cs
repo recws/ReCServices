@@ -325,8 +325,8 @@ namespace ReCServices
 #if !DEBUG
 
             Negocio metodos = new Negocio();
-            //metodos.WS_GPS_SincronizaUsuario();
-            //metodos.WS_GPS_SincronizaGPS();
+            metodos.WS_GPS_SincronizaUsuario();
+            metodos.WS_GPS_SincronizaGPS();
 
             //Negocio metodos = new Negocio();
             metodos.ReportexCorreoLogLleno();
