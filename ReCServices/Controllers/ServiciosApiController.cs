@@ -168,7 +168,7 @@ namespace ReCServices.Controllers
                 return "Error: Solo se permite un rango maximo de 3 dias.";
             }
 
-            if (userlogged == "WS_4GPS" && (Usuario=="WS_SEND" || Usuario == "WS_NewPick" || Usuario == "WS_SagCargo")) {
+            if (userlogged == "WS_4GPS" && (Usuario=="WS_SEND" || Usuario == "WS_NewPick" || Usuario == "WS_SagCargo" || Usuario == "WS_VirtualTransport")) {
 
             }
             else

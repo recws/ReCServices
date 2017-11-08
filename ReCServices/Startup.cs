@@ -217,7 +217,7 @@ namespace ReCServices
 
 
             //Trapol - GPS Monitor
-            Apis.GpsMonitor.GGpsMonitor_ObtenerPosicion("WS_TMP");
+            //Apis.GpsMonitor.GGpsMonitor_ObtenerPosicion("WS_TMP");
         }
     }
 
