@@ -204,7 +204,7 @@ namespace ReCServices
         public void Execute(IJobExecutionContext context)
         {
             //Apis.GrupoUDA.GrupoUDA_ObtenerPosicion("WS_SID", "WBS_PAN-SUVI", "123456");  //Cambiaron de plataforma... Ya no se va a contemplar este proveedor
-
+            //Apis.Soltrack.Soltrack_ObtenerPosicion("WS_THernandez", "", "");  //FALTA QUE NOS DEN EL LISTADO DE IMEI  Ya cancelo con este proveedor
 
 
             //Seinext -> Revisar, en ocaciones responde vacio.
@@ -218,6 +218,12 @@ namespace ReCServices
 
             //Trapol - GPS Monitor
             //Apis.GpsMonitor.GGpsMonitor_ObtenerPosicion("WS_TMP");
+
+            //Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_Diez", "webservice", "Gtslo98_213#");
+
+
+            //Apis.LaNegrita lanegrita = new Apis.LaNegrita();
+            //lanegrita.WebServiceInsertaLANEGRITA();
         }
     }
 
@@ -309,7 +315,7 @@ namespace ReCServices
             Apis.Boson.BOSON_ObtenerPosicion("WS_Gomez", "monitoreo@recsolutions.tech", "TraNsp0rGMZ2");  //Transportes GOMEZ  //No lleva token
             Apis.ZeekGPS.ZeekGPS_ObtenerPosicion("WS_Panamericano", "Panalpina", "teHY6kak", "iPinssoMperPogm");  //Transportes PANAMERICANO 
 
-            Apis.Soltrack.Soltrack_ObtenerPosicion("WS_THernandez", "", "");  //FALTA QUE NOS DEN EL LISTADO DE IMEI
+            
 
             //Pendiente de validar las fechas, llegan con 2 horas de retraso
             Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI

@@ -5,6 +5,16 @@ using System.Web;
 using System.Xml.Linq;
 using Newtonsoft.Json;
 using System.Globalization;
+using System.Net;
+using System.Xml;
+using System.IO;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
+//using System.IO;
+using System.Runtime.Serialization.Formatters.Soap;
+using System.Xml.Serialization;
+using System.Web.Services;
 
 
 namespace ReCServices.Apis
@@ -20,44 +30,77 @@ namespace ReCServices.Apis
             var responseJson = "";
             try
             {
-                //WS_Moving_Service.BaseMessage bm = new WS_Moving_Service.BaseMessage();
-                //WS_Moving_Service.BaseMessageRequest bmr = new WS_Moving_Service.BaseMessageRequest();
-                WS_Moving_Service.DoLoginRequest dologin = new WS_Moving_Service.DoLoginRequest();
+    
+                
+                WS_Moving_Service.DoLoginRequest loginRequest = new WS_Moving_Service.DoLoginRequest();
                 WS_Moving_Service.ServiceSoapClient cliente = new WS_Moving_Service.ServiceSoapClient();
 
-                dologin.UserCredential = new WS_Moving_Service.UserCredentialInfo();
-                dologin.UserCredential.UserName = "api_moving";
-                dologin.UserCredential.Password = "p83XAfHG";
-                dologin.UserCredential.ApplicationID = new Guid();
-                dologin.UserCredential.ClientID = new Guid();
-                dologin.UserCredential.ClientVersion = "0";
-                dologin.Session = new WS_Moving_Service.SessionInfo();
-                dologin.Session.SessionId = new Guid();
-                var x = cliente.DoLogin(dologin);
+                loginRequest.UserCredential = new WS_Moving_Service.UserCredentialInfo();
+                loginRequest.UserCredential.UserName = "api_moving";
+                loginRequest.UserCredential.Password = "p83XAfHG";
+                loginRequest.Session = new WS_Moving_Service.SessionInfo();
+
+                WS_Moving_Service.DoLoginResponse loginResponse = null;
+                loginResponse = cliente.DoLogin(loginRequest);
 
                 var state = cliente.State;
 
-                WS_Moving_Service.GetVehiclesRequest vr = new WS_Moving_Service.GetVehiclesRequest();
-                vr.Session = x.SecurityProfile.Session;
-                vr.IsProfile = true;
-                vr.Version = 0;
-                vr.OwnerId = x.SecurityProfile.User.OwnerID;
-                
-                var vehicles = cliente.GetVehicles(vr);
+                if (loginResponse == null || !loginResponse.OperationStatus || !loginResponse.Authenticated)
+                {             //Handle the Login Failure Appropriately.             throw (new ApplicationException("Login Failed."));         } 
 
-                WS_Moving_Service.GetVehicleSnapShotsRequest vreq = new WS_Moving_Service.GetVehicleSnapShotsRequest();
-                vreq.OwnerId = x.SecurityProfile.User.OwnerID;
-                vreq.Session = x.SecurityProfile.Session;
-                vreq.Version = 0;
-                var vehicle = cliente.GetVehicleSnapShots(vreq);
-                WS_Moving_Service.GetVehiclesActivityDetailsRequest vadr = new WS_Moving_Service.GetVehiclesActivityDetailsRequest();
-                vadr.Session = x.SecurityProfile.Session;
-                var guid = new Guid[1];
-                guid[0] = vehicles.Vehicles[0].VehicleId;
-                vadr.ActivityLogIDs = guid;
-                var activitylogs = cliente.GetVehiclesActivityDetails(vadr);
+                    var x = loginResponse.SecurityProfile.Session;
 
-                return;
+                }
+
+
+
+
+
+
+
+
+
+
+                    ////WS_Moving_Service.BaseMessage bm = new WS_Moving_Service.BaseMessage();
+                    ////WS_Moving_Service.BaseMessageRequest bmr = new WS_Moving_Service.BaseMessageRequest();
+                    //WS_Moving_Service.DoLoginRequest dologin = new WS_Moving_Service.DoLoginRequest();
+                    //WS_Moving_Service.ServiceSoapClient cliente = new WS_Moving_Service.ServiceSoapClient();
+                    //WS_Moving_Service.DynamicClientConfiguration DYNCONF = new WS_Moving_Service.DynamicClientConfiguration();
+                    //DYNCONF.
+
+                    //dologin.UserCredential = new WS_Moving_Service.UserCredentialInfo();
+                    //dologin.UserCredential.UserName = "api_moving";
+                    //dologin.UserCredential.Password = "p83XAfHG";
+                    ////dologin.UserCredential.ApplicationID = new Guid();
+                    ////dologin.UserCredential.ClientID = new Guid();
+                    ////dologin.UserCredential.ClientVersion = "0";
+                    //dologin.Session = new WS_Moving_Service.SessionInfo();
+                    //dologin.Session.SessionId = new Guid();
+                    //var x = cliente.DoLogin(dologin);
+
+                    //var state = cliente.State;
+
+                    //WS_Moving_Service.GetVehiclesRequest vr = new WS_Moving_Service.GetVehiclesRequest();
+                    //vr.Session = x.SecurityProfile.Session;
+                    //vr.IsProfile = true;
+                    //vr.Version = 0;
+                    //vr.OwnerId = x.SecurityProfile.User.OwnerID;
+
+                    //var vehicles = cliente.GetVehicles(vr);
+
+                    //WS_Moving_Service.GetVehicleSnapShotsRequest vreq = new WS_Moving_Service.GetVehicleSnapShotsRequest();
+                    //vreq.OwnerId = x.SecurityProfile.User.OwnerID;
+                    //vreq.Session = x.SecurityProfile.Session;
+                    //vreq.Version = 0;
+                    //var vehicle = cliente.GetVehicleSnapShots(vreq);
+                    //WS_Moving_Service.GetVehiclesActivityDetailsRequest vadr = new WS_Moving_Service.GetVehiclesActivityDetailsRequest();
+                    //vadr.Session = x.SecurityProfile.Session;
+                    //var guid = new Guid[1];
+                    //guid[0] = vehicles.Vehicles[0].VehicleId;
+                    //vadr.ActivityLogIDs = guid;
+                    //var activitylogs = cliente.GetVehiclesActivityDetails(vadr);
+
+                    return;
 
                 //var xmlstring = "";
                 ////var x = ws.getSubscriberInfo(1);
@@ -160,6 +203,16 @@ namespace ReCServices.Apis
                     log.Error("Error Omnitracs_ObtenerPosicion: " + UsuarioReC + ". " + responseJson + ". " + Ex.Message);
                 }
             }
+        }
+
+        public static HttpWebRequest CreateWebRequest()
+        {
+            HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(@"https://onlineavl2api-mx02.navmanwireless.com/onlineavl/api/V1.0/service.asmx?wsdl");
+            webRequest.Headers.Add(@"SOAP:Action");
+            webRequest.ContentType = "text/xml;charset=\"utf-8\"";
+            webRequest.Accept = "text/xml";
+            webRequest.Method = "POST";
+            return webRequest;
         }
     }
 }

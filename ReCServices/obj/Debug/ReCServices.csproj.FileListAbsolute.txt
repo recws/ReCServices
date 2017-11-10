@@ -484,7 +484,7 @@ D:\VS2017\Projects\ReCServices\ReCServices\bin\es\Microsoft.Owin.Security.Google
 D:\VS2017\Projects\ReCServices\ReCServices\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
 D:\VS2017\Projects\ReCServices\ReCServices\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 D:\VS2017\Projects\ReCServices\ReCServices\bin\es\System.Web.Http.Owin.resources.dll
+D:\VS2017\Projects\ReCServices\ReCServices\obj\Debug\ReCServices.csprojResolveAssemblyReference.cache
 D:\VS2017\Projects\ReCServices\ReCServices\obj\Debug\ReCServices.csproj.CoreCompileInputs.cache
 D:\VS2017\Projects\ReCServices\ReCServices\obj\Debug\ReCServices.dll
 D:\VS2017\Projects\ReCServices\ReCServices\obj\Debug\ReCServices.pdb
-D:\VS2017\Projects\ReCServices\ReCServices\obj\Debug\ReCServices.csprojResolveAssemblyReference.cache

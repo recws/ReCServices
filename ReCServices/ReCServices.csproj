@@ -98,6 +98,7 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
@@ -220,6 +221,7 @@
     <Compile Include="Apis\GpsTotal.cs" />
     <Compile Include="Apis\GrupoGCP.cs" />
     <Compile Include="Apis\GrupoUDA.cs" />
+    <Compile Include="Apis\LaNegrita.cs" />
     <Compile Include="Apis\MonitoreoYRastreo.cs" />
     <Compile Include="Apis\Moving.cs" />
     <Compile Include="Apis\Omnitracs.cs" />
@@ -417,6 +419,7 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Scripts\jquery.signalR-2.2.1.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
+    <Content Include="SOAPENV\SOAPENV_MOVING.txt" />
     <Content Include="WS_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WS_Model.edmx</DependentUpon>
