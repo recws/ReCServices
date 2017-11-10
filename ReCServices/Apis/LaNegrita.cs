@@ -109,8 +109,9 @@ namespace ReCServices.Apis
                                             evento.posicionGeografica.latitud = device.latest.loc.lat;
                                             evento.posicionGeografica.longitud = device.latest.loc.lon;
                                             DateTime dt = new DateTime(1970, 1, 1, 0, 0, 0).AddSeconds(device.latest.loc.evtime);
-                                            evento.posicionGeografica.fechaAccion = dt.ToString("yyyy-MM-ddTHH:mm:sszz:00");
+                                            evento.posicionGeografica.fechaAccion = dt.ToLocalTime().ToString("dd/MM/yyyy HH:mm:ss");
                                             posicioninsertar.Add(evento);
+                                            //continue;
                                         }
                                     }
                                     else
@@ -121,7 +122,7 @@ namespace ReCServices.Apis
                             }
                             else
                             {
-                                return;
+                                continue;
                             }
                         }
                         catch (Exception Ex)
@@ -153,7 +154,11 @@ namespace ReCServices.Apis
                                 {
                                     string data = await content.ReadAsStringAsync().ConfigureAwait(false);
                                     var pexrespuesta = JsonConvert.DeserializeObject<PEXRespuesta>(data);
-                                    if (pexrespuesta.pexResponse.codigoError == "-1")
+                                    if(pexrespuesta.pexResponse.codigoError == "0")
+                                    {
+                                        //Proceso correcto
+                                    }
+                                    else
                                     {
                                         log.Error("Error Inserta WebService LA NEGRITA: al insertar en el cliente. " + " Mensaje: " + pexrespuesta.pexResponse.mensajeUsuario);
                                         continue;

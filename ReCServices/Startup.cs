@@ -242,6 +242,8 @@ namespace ReCServices
     {
         public void Execute(IJobExecutionContext context)
         {
+            Apis.LaNegrita lanegrita = new Apis.LaNegrita();
+            lanegrita.WebServiceInsertaLANEGRITA();
 #if !DEBUG
 
 #endif
