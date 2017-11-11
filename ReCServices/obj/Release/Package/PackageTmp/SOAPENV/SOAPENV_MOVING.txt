@@ -1,0 +1,25 @@
+<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:ns="http://onlineavl2.navmanwireless.com/0907/">
+   <soap:Header/>
+   <soap:Body>
+      <ns:DoLogin>
+         <!--Optional:-->
+         <ns:request>
+            <!--Optional:-->
+            <ns:Session>
+               <ns:SessionId>00000000-0000-0000-0000-000000000000</ns:SessionId>
+            </ns:Session>
+            <!--Optional:-->
+            <ns:UserCredential>
+               <!--Optional:-->
+               <ns:UserName>[-user-]</ns:UserName>
+               <!--Optional:-->
+               <ns:Password>[-pwd-]</ns:Password>
+               <ns:ApplicationID>00000000-0000-0000-0000-000000000000</ns:ApplicationID>
+               <ns:ClientID>00000000-0000-0000-0000-000000000000</ns:ClientID>
+               <!--Optional:-->
+               <ns:ClientVersion></ns:ClientVersion>
+            </ns:UserCredential>
+         </ns:request>
+      </ns:DoLogin>
+   </soap:Body>
+</soap:Envelope>

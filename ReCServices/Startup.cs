@@ -212,7 +212,7 @@ namespace ReCServices
 
 
 
-            //Apis.Moving.Moving_ObtenerPosicion("WS_Moving", "api_moving", "p83XAfHG");  //FALTA TERMINAR EL DESARROLLO
+            Apis.Moving.Moving_ObtenerPosicion("WS_Moving", "api_moving", "k0VU8XQ5");  //FALTA TERMINAR EL DESARROLLO
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
 
 
@@ -221,9 +221,6 @@ namespace ReCServices
 
             //Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_Diez", "webservice", "Gtslo98_213#");
 
-
-            //Apis.LaNegrita lanegrita = new Apis.LaNegrita();
-            //lanegrita.WebServiceInsertaLANEGRITA();
         }
     }
 
@@ -242,10 +239,10 @@ namespace ReCServices
     {
         public void Execute(IJobExecutionContext context)
         {
+
+#if !DEBUG
             Apis.LaNegrita lanegrita = new Apis.LaNegrita();
             lanegrita.WebServiceInsertaLANEGRITA();
-#if !DEBUG
-
 #endif
         }
     }

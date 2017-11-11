@@ -1957,3 +1957,21 @@ Nombre del objeto: 'System.Net.Http.StreamContent'.
 2017-11-10 13:21:30,088 [81] ERROR ReCServices.Apis.LaNegrita - Error Inserta WebService LA NEGRITA: al insertar en el cliente.  Mensaje: Formato inválido para la fecha/hora (dd/MM/yyyy HH:mm:ss) o con zona horaria (yyyy-MM-ddTHH:mm:ss-ZZ:00)
 2017-11-10 13:21:38,154 [79] ERROR ReCServices.Apis.LaNegrita - Error Inserta WebService LA NEGRITA: al insertar en el cliente.  Mensaje: No existe la clave de rastreo en el sistema
 2017-11-10 13:22:55,332 [86] ERROR ReCServices.Apis.LaNegrita - Error Inserta WebService LA NEGRITA: al insertar en el cliente.  Mensaje: No existe la clave de rastreo en el sistema
+2017-11-10 17:23:16,901 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.Moving - Error Omnitracs_ObtenerPosicion: WS_Moving. . Server was unable to process request. ---> Object reference not set to an instance of an object.
+2017-11-10 18:37:34,531 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.Moving - Error al Insertar evento de WS_Moving.  IMEI: 1402E10610257. Usuario no existe.. 
+2017-11-10 18:37:34,540 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.Moving - Error al Insertar evento de WS_Moving.  IMEI: 1509H11280079. Usuario no existe.. 
+2017-11-10 18:37:35,512 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.Moving - Error al Insertar evento de WS_Moving.  IMEI: 1402E10610300. Usuario no existe.. 
+2017-11-10 18:37:36,310 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.Moving - Error al Insertar evento de WS_Moving.  IMEI: 1402E11310150. Usuario no existe.. 
+2017-11-10 18:37:37,244 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.Moving - Error al Insertar evento de WS_Moving.  IMEI: 1402E10610257. Usuario no existe.. 
+2017-11-10 18:37:38,218 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.Moving - Error al Insertar evento de WS_Moving.  IMEI: 1305E10310116. Usuario no existe.. 
+2017-11-10 18:37:39,205 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.Moving - Error al Insertar evento de WS_Moving.  IMEI: 1402E11310150. Usuario no existe.. 
+2017-11-10 18:37:40,180 [DefaultQuartzScheduler_Worker-9] ERROR ReCServices.Apis.Moving - Error al Insertar evento de WS_Moving.  IMEI: 1509H11280079. Usuario no existe.. 
+2017-11-10 18:42:08,325 [DefaultQuartzScheduler_Worker-6] ERROR ReCServices.Apis.Moving - Error al Insertar evento de WS_Moving.  IMEI: 1305E10310116. Usuario no existe.. 
+2017-11-10 18:42:09,662 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.Moving - Error al Insertar evento de WS_Moving.  IMEI: 1509H11280227. Usuario no existe.. 
+2017-11-10 18:45:25,780 [DefaultQuartzScheduler_Worker-10] ERROR ReCServices.Apis.Moving - Error al Insertar evento de WS_Moving.  IMEI: 1509H11280079. String or binary data would be truncated.. 
+2017-11-10 18:50:12,163 [DefaultQuartzScheduler_Worker-3] ERROR ReCServices.Apis.Moving - Error Omnitracs_ObtenerPosicion: WS_Moving. . El índice y la longitud deben hacer referencia a una ubicación en la cadena.
+Nombre del parámetro: length
+2017-11-10 18:51:04,538 [DefaultQuartzScheduler_Worker-10] ERROR ReCServices.Apis.Moving - Error Omnitracs_ObtenerPosicion: WS_Moving. . El índice y la longitud deben hacer referencia a una ubicación en la cadena.
+Nombre del parámetro: length
+2017-11-10 19:07:04,493 [DefaultQuartzScheduler_Worker-10] ERROR ReCServices.Apis.Moving - Error Omnitracs_ObtenerPosicion: WS_Moving. . El canal de solicitud agotó el tiempo de espera para intentar enviar después de 00:01:00. Aumente el valor de tiempo de espera pasado a la llamada a Request, o bien aumente el valor de SendTimeout en el enlace. El tiempo asignado a esta operación puede haber sido una parte de un tiempo de espera mayor.
+2017-11-10 19:07:05,280 [DefaultQuartzScheduler_Worker-2] ERROR ReCServices.Apis.Moving - Error Omnitracs_ObtenerPosicion: WS_Moving. . El canal de solicitud agotó el tiempo de espera mientras esperaba una respuesta después de 00:00:59.9994986. Aumente el valor de tiempo de espera pasado a la llamada a Request, o bien aumente el valor de SendTimeout en el enlace. El tiempo asignado a esta operación puede haber sido una parte de un tiempo de espera mayor.
