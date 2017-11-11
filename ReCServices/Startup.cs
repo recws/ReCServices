@@ -212,7 +212,7 @@ namespace ReCServices
 
 
 
-            Apis.Moving.Moving_ObtenerPosicion("WS_Moving", "api_moving", "k0VU8XQ5");  //FALTA TERMINAR EL DESARROLLO
+            
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
 
 
@@ -266,7 +266,7 @@ namespace ReCServices
         {
 #if !DEBUG
 
-
+            Apis.Moving.Moving_ObtenerPosicion("WS_Moving", "api_moving", "k0VU8XQ5");  // HNOS HERNANDEZ MOVING - COOPER
 #endif
         }
     }
