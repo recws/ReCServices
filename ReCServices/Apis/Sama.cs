@@ -10,11 +10,13 @@ namespace ReCServices.Apis
 {
     public class Sama
     {
-
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public static async void Sama_ObtenerPosicion(string UsuarioReC, string Usuario, string Password)
         {
+
+            //{"Device":"chrysler_promaster","Device_desc":"T-38","Device_Plate":"NET-29-09","Device_SimNumber":"5578778646","EventData":[{"Device":"chrysler_promaster","Timestamp":1510466301,"Timestamp_date":"2017/11/11","Timestamp_time":"23:58:21","IgnitionStatus":0,"StatusCode":64791,"StatusCode_hex":"0xFD17","StatusCode_desc":"Apagado","GPSPoint":"19.41872,-99.05518","GPSPoint_lat":19.41872,"GPSPoint_lon":-99.05518,"Speed_kph":0,"Speed":0,"Speed_units":"km/h","Address":"Calle 4, Nezahualcóyotl, [Nezahualcóyotl], México, México","Index":0}]}
+
             var responseJson = "";
 
             try

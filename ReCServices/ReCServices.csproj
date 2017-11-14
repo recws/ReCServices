@@ -232,6 +232,7 @@
     <Compile Include="Apis\Seinext.cs" />
     <Compile Include="Apis\SGIT.cs" />
     <Compile Include="Apis\Soltrack.cs" />
+    <Compile Include="Apis\SolucionesGlobales.cs" />
     <Compile Include="Apis\Troncalnet.cs" />
     <Compile Include="Apis\Unicomm.cs" />
     <Compile Include="Apis\Vectro.cs" />
