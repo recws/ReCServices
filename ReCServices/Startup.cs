@@ -207,12 +207,9 @@ namespace ReCServices
             //Apis.Soltrack.Soltrack_ObtenerPosicion("WS_THernandez", "", "");  //FALTA QUE NOS DEN EL LISTADO DE IMEI  Ya cancelo con este proveedor
 
 
-            //Seinext -> Revisar, en ocaciones responde vacio.
-            Apis.Seinext.Seinext_ObtenerPosicion("WS_Avensica-", "AVENSICA", "BavensicaA");  //YA FUNCIONA PERO RESPONDE VACIOS LA MAYORIA DE LAS VECES
+            //Leyva SG (Soluciones Globales)
+            //SolucionesGloblaes_ObtenerPosicion("WS_TMP", "webservice", "a123456")
 
-
-
-            
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
 
 
@@ -231,6 +228,7 @@ namespace ReCServices
 #if !DEBUG
             //Negocio metodos = new Negocio();
             //metodos.NotificacionIncidencia();
+            Apis.Seinext.Seinext_ObtenerPosicion("WS_Avensica", "AVENSICA", "BavensicaA");  //Seinext -> Avensica
 #endif
         }
     }

@@ -431,6 +431,7 @@
       <DependentUpon>WS_Model.edmx</DependentUpon>
       <LastGenOutput>WS_Model.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\Eric-pc.pubxml" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Service References\WS_Moving_Service\ReCServices.WS_Moving_Service.AssignToVehicleGroupResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -514,7 +515,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
-    <None Include="Properties\PublishProfiles\FolderProfile2.pubxml" />
     <None Include="Service References\WS_Moving_Service\service.wsdl" />
     <None Include="Service References\WS_OmnitracsCC_Service\IVehicleActivityWebService.wsdl" />
     <None Include="Service References\WS_Moving_Service\service.disco" />
