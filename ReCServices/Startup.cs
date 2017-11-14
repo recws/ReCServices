@@ -213,8 +213,8 @@ namespace ReCServices
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
 
 
-            //Trapol - GPS Monitor
-            //Apis.GpsMonitor.GGpsMonitor_ObtenerPosicion("WS_TMP");
+
+            
 
             //Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_Diez", "webservice", "Gtslo98_213#");
 
@@ -286,11 +286,10 @@ namespace ReCServices
             
             Apis.Boson.BOSON_ObtenerPosicion("WS_UsaMex", "monitoreo@usamexcarrier.com", "UsaMexCa2017");  //COOPERTIRES  //Transportes USAMEX CARRIER  //No lleva token
             Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "cooper@transportesnewpick.com.mx", "CooperTire17");  //COOPERTIRES  //Transportes USAMEX CARRIER  //No lleva token
-            
+            Apis.GpsMonitor.GGpsMonitor_ObtenerPosicion("WS_Trapol"); //Trapol - GPS Monitor
             Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
 
             Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_Diez", "webservice", "Gtslo98_213#");
-
             Apis.Sama.Sama_ObtenerPosicion("WS_Trapol", "panalpina-trapol", "Andromeda500");  //TRAPOL  ProveedorGPS: SAMA
 #endif
         }
