@@ -179,7 +179,7 @@ namespace ReCServices.Apis
                         }
                         else
                         {
-                            log.Error("Error GrupoUDA_ObtenerPosicion: " + UsuarioReC + ". " + responseJson + ". " + Ex.Message);
+                            log.Error("Error MonitoreoYRastreo_ObtenerPosicion: " + UsuarioReC + ". " + responseJson + ". " + Ex.Message);
                         }
                     }
                 }
