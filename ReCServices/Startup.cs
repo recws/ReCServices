@@ -227,8 +227,7 @@ namespace ReCServices
         {
 #if !DEBUG
             //Negocio metodos = new Negocio();
-            //metodos.NotificacionIncidencia();
-            Apis.Seinext.Seinext_ObtenerPosicion("WS_Avensica", "AVENSICA", "BavensicaA");  //Seinext -> Avensica
+            //metodos.NotificacionIncidencia();            
 #endif
         }
     }
@@ -241,6 +240,7 @@ namespace ReCServices
 #if !DEBUG
             Apis.LaNegrita lanegrita = new Apis.LaNegrita();
             lanegrita.WebServiceInsertaLANEGRITA();
+            Apis.Seinext.Seinext_ObtenerPosicion("WS_Avensica", "AVENSICA", "BavensicaA");  //Seinext -> Avensica
 #endif
         }
     }
