@@ -214,7 +214,8 @@ namespace ReCServices
 
 
 
-            
+           
+
 
             //Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_Diez", "webservice", "Gtslo98_213#");
 
@@ -309,9 +310,9 @@ namespace ReCServices
             Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Jaguar", "mx4b4b3", "29162mx4b4b3", "123456");
             Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_Trameriv", "trameriv", "mexico321");  //Transportes TRAMERIV
             Apis.Boson.BOSON_ObtenerPosicion("WS_Gomez", "monitoreo@recsolutions.tech", "TraNsp0rGMZ2");  //Transportes GOMEZ  //No lleva token
-            Apis.ZeekGPS.ZeekGPS_ObtenerPosicion("WS_Panamericano", "Panalpina", "teHY6kak", "iPinssoMperPogm");  //Transportes PANAMERICANO 
+            Apis.ZeekGPS.ZeekGPS_ObtenerPosicion("WS_Panamericano", "Panalpina", "gApGdKgr", "iPinssoMperPogm");  //Transportes PANAMERICANO 
 
-            
+            Apis.Wialon.WIALON_ObtenerPosicion("WS_TMP", "Tguarneros", "Tg72x1", "d631f588de587f4f7f3e21275151a90f743988B3E2DCD1069FF9DBA73C3553FEB16A3D65");  //Transportes Guarneros
 
             //Pendiente de validar las fechas, llegan con 2 horas de retraso
             Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI

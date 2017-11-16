@@ -80,7 +80,7 @@ namespace ReCServices.Apis
                             }
                             else
                             {
-                                log.Error("Error al Insertar evento de " + UsuarioReC +". IMEI: " + imei + WS_GPS_InsertaSimple[0].Mensaje);
+                                log.Error("Error al Insertar evento de " + UsuarioReC +". IMEI: " + imei + " " +  WS_GPS_InsertaSimple[0].Mensaje);
                             }
                         }
                         catch (Exception Ex)
