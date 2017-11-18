@@ -226,6 +226,7 @@
     <Compile Include="Apis\Moving.cs" />
     <Compile Include="Apis\Omnitracs.cs" />
     <Compile Include="Apis\OmnitracsCC.cs" />
+    <Compile Include="Apis\PlataformaLVT.cs" />
     <Compile Include="Apis\Quiala.cs" />
     <Compile Include="Apis\RedGPS.cs" />
     <Compile Include="Apis\Sama.cs" />

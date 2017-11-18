@@ -143,7 +143,7 @@ namespace ReCServices.Apis
                                     }
                                     catch (Exception Ex)
                                     {
-                                        log.Error("Error ZeekGPS_ObtenerPosicion: " + UsuarioReC + ". " + xElement.ToString() + ". " + Ex.Message);
+                                        log.Error("Error MonitoreoYRastreo_ObtenerPosicion: " + UsuarioReC + ". " + xElement.ToString() + ". " + Ex.Message);
                                     }
                                 }
 
