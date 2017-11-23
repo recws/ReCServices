@@ -186,7 +186,7 @@ namespace ReCServices.Apis
             }
             catch (Exception Ex)
             {
-                log.Error("Error Troncalnet_ObtenerPosicion: " + UsuarioReC + ". " + Ex.Message);
+                log.Error("Error PlataformaLVT_ObtenerPosicion: " + UsuarioReC + ". " + Ex.Message);
             }
 
         }
