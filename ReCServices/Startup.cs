@@ -212,12 +212,7 @@ namespace ReCServices
             //Apis.SolucionesGlobales.SolucionesGloblaes_ObtenerPosicion("WS_TMP", "Huawei", "huawei2017");
 
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
-
-
-            //8w cambiar WS_User y TProveedor para que tome los IMEI de 8w
-            //Apis.PlataformaLVT.PlataformaLVT_ObtenerPosicion("WS_TMP", "8W_USUARIO_API", "API_EXPRESS_1", "1868c5a2-ac8e-4486-bae1-3b10e3645bef", "ETI");
-
-
+                        
             //TEST
             //Apis.Troncalnet.Troncalnet_ObtenerPosicion("WS_TOrtiz", "", ""); //COOPERTIRES 
 
@@ -296,6 +291,7 @@ namespace ReCServices
 
             Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_Diez", "webservice", "Gtslo98_213#");
             Apis.Sama.Sama_ObtenerPosicion("WS_Trapol", "panalpina-trapol", "Andromeda500");  //TRAPOL  ProveedorGPS: SAMA
+            Apis.PlataformaLVT.PlataformaLVT_ObtenerPosicion("WS_8W", "8W_USUARIO_API", "API_EXPRESS_1", "1868c5a2-ac8e-4486-bae1-3b10e3645bef", "8W"); //Cooper -8w
 #endif
         }
     }
