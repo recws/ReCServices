@@ -124,9 +124,7 @@ namespace ReCServices.Apis
                                     DT_Data = GetData_ListaGPSxProveedor(TProveedor); //tmp para no modificar demasiado el codigo (x8)                                
 
                                     string imei = result3.Registration.ToString();
-
-
-
+                                    
                                     for (int k = 0; k < DT_Data.Rows.Count; k++)
                                     {
                                         IMEIenCurso = DT_Data.Rows[k]["IMEI"].ToString();
