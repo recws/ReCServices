@@ -212,10 +212,12 @@ namespace ReCServices
             //Apis.SolucionesGlobales.SolucionesGloblaes_ObtenerPosicion("WS_TMP", "Huawei", "huawei2017");
 
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
-                        
+
             //TEST
             //Apis.Troncalnet.Troncalnet_ObtenerPosicion("WS_TOrtiz", "", ""); //COOPERTIRES 
+
             
+
         }
     }
 
@@ -310,7 +312,7 @@ namespace ReCServices
             Apis.Boson.BOSON_ObtenerPosicion("WS_Gomez", "monitoreo@recsolutions.tech", "TraNsp0rGMZ2");  //Transportes GOMEZ  //No lleva token
             Apis.ZeekGPS.ZeekGPS_ObtenerPosicion("WS_Panamericano", "Panalpina", "gApGdKgr", "iPinssoMperPogm");  //Transportes PANAMERICANO 
 
-            Apis.Wialon.WIALON_ObtenerPosicion("WS_Guarneros", "Tguarneros", "Tg72x1", "d631f588de587f4f7f3e21275151a90f743988B3E2DCD1069FF9DBA73C3553FEB16A3D65");  //Transportes Guarneros
+            Apis.Wialon.WIALON_ObtenerPosicion("WS_Guarneros", "Tguarneros", "L0cal1zar", "d631f588de587f4f7f3e21275151a90f2F53E50E2285C1858B4A91250F8DABB18F491EE4");  //Transportes Guarneros
 
             //Pendiente de validar las fechas, llegan con 2 horas de retraso
             Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI

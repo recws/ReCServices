@@ -109,8 +109,11 @@ namespace ReCServices.Apis
                     //HttpResponseMessage responseMessage = await client.PostAsync("/web%20services/ws_last_position/ws_last_position.asmx/GetLastPosition_02?User=" + Usuario  + "&Password=" + Password + "&Page=", formContent);
 
                     //get access token from response body
-                    responseJson = await responseMessage.Content.ReadAsStringAsync();
 
+                    //orgininal
+                    responseJson = await responseMessage.Content.ReadAsStringAsync();
+                    //responseMessage.Content.
+                    
                     if (responseJson.Contains("error"))
                     {
                         //TOKEN = "";
@@ -125,6 +128,11 @@ namespace ReCServices.Apis
                         //Consulta si ya existe la posicion, por si es repetida y no ha actualizado el equipo
                         string imei = result.items[i].id.ToString();
                         string codigoevento = result.items[i].lmsg == null ? "" : result.items[i].lmsg.tp.ToString();
+
+                        if(result.items[i].pos == null)
+                        {
+                            continue;
+                        }
 
                         string lat = result.items[i].pos.y.ToString(); 
                         string lng = result.items[i].pos.x.ToString();
