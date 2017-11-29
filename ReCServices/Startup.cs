@@ -215,8 +215,8 @@ namespace ReCServices
 
             //TEST
             //Apis.Troncalnet.Troncalnet_ObtenerPosicion("WS_TOrtiz", "", ""); //COOPERTIRES 
+           
 
-            
 
         }
     }
