@@ -234,6 +234,7 @@
     <Compile Include="Apis\SGIT.cs" />
     <Compile Include="Apis\Soltrack.cs" />
     <Compile Include="Apis\SolucionesGlobales.cs" />
+    <Compile Include="Apis\TrackJack.cs" />
     <Compile Include="Apis\Troncalnet.cs" />
     <Compile Include="Apis\Unicomm.cs" />
     <Compile Include="Apis\Vectro.cs" />
@@ -331,6 +332,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\WS_Trackjack_Service\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\WS_ZeekGPS_Service\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -421,6 +427,21 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Scripts\jquery.signalR-2.2.1.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
+    <None Include="Service References\WS_Trackjack_Service\configuration91.svcinfo" />
+    <None Include="Service References\WS_Trackjack_Service\configuration.svcinfo" />
+    <Content Include="Service References\WS_Trackjack_Service\ReCServices.WS_Trackjack_Service.PosicionesIndividualResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WS_Trackjack_Service\ReCServices.WS_Trackjack_Service.PosicionesTodosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\WS_Trackjack_Service\ReCServices.WS_Trackjack_Service.TrackJackData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\WS_Trackjack_Service\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="SOAPENV\SOAPENV_MOVING.txt" />
     <Content Include="WS_Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -757,6 +778,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\WS_SEND_StaticService\StaticService1.wsdl" />
+    <None Include="Service References\WS_Trackjack_Service\Service.wsdl" />
     <None Include="Service References\WS_ZeekGPS_Service\cmovilapi3ws.disco" />
     <None Include="Service References\WS_ZeekGPS_Service\configuration91.svcinfo" />
     <None Include="Service References\WS_ZeekGPS_Service\configuration.svcinfo" />
@@ -850,6 +872,7 @@
     <WCFMetadataStorage Include="Service References\WS_SEND_OpenSession\" />
     <WCFMetadataStorage Include="Service References\WS_SEND_StateService\" />
     <WCFMetadataStorage Include="Service References\WS_SEND_StaticService\" />
+    <WCFMetadataStorage Include="Service References\WS_Trackjack_Service\" />
     <WCFMetadataStorage Include="Service References\WS_ZeekGPS_Service\" />
   </ItemGroup>
   <PropertyGroup>

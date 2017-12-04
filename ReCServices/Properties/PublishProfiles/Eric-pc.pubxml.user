@@ -241,10 +241,10 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/13/2017 17:45:23</publishTime>
     </File>
     <File Include="bin/ReCServices.dll">
-      <publishTime>11/28/2017 16:51:52</publishTime>
+      <publishTime>12/04/2017 12:35:16</publishTime>
     </File>
     <File Include="bin/ReCServices.pdb">
-      <publishTime>11/28/2017 16:51:52</publishTime>
+      <publishTime>12/04/2017 12:35:16</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>11/13/2017 17:45:22</publishTime>
@@ -690,6 +690,15 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
     <File Include="Service References/WS_SEND_StaticService/ReCServices.WS_SEND_StaticService.PersistResultsResponse.datasource">
       <publishTime>11/13/2017 17:45:15</publishTime>
     </File>
+    <File Include="Service References/WS_Trackjack_Service/ReCServices.WS_Trackjack_Service.PosicionesIndividualResponse.datasource">
+      <publishTime>12/04/2017 10:18:08</publishTime>
+    </File>
+    <File Include="Service References/WS_Trackjack_Service/ReCServices.WS_Trackjack_Service.PosicionesTodosResponse.datasource">
+      <publishTime>12/04/2017 10:18:08</publishTime>
+    </File>
+    <File Include="Service References/WS_Trackjack_Service/ReCServices.WS_Trackjack_Service.TrackJackData.datasource">
+      <publishTime>12/04/2017 10:18:07</publishTime>
+    </File>
     <File Include="Service References/WS_ZeekGPS_Service/ReCServices.WS_ZeekGPS_Service.GeocercaLista.datasource">
       <publishTime>11/13/2017 17:45:15</publishTime>
     </File>
@@ -730,7 +739,7 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/13/2017 17:45:15</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>11/13/2017 21:10:12</publishTime>
+      <publishTime>12/04/2017 12:35:18</publishTime>
     </File>
     <File Include="WebService.svc">
       <publishTime>11/13/2017 17:45:15</publishTime>

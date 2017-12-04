@@ -215,9 +215,7 @@ namespace ReCServices
 
             //TEST
             //Apis.Troncalnet.Troncalnet_ObtenerPosicion("WS_TOrtiz", "", ""); //COOPERTIRES 
-           
-
-
+            
         }
     }
 
@@ -316,6 +314,7 @@ namespace ReCServices
 
             //Pendiente de validar las fechas, llegan con 2 horas de retraso
             Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI
+            Apis.TrackJack.Trackjack_ObtenerPosicion("WS_CargoServices", "COOPREC", "*070820/"); //Trackjack
 #endif
         }
     }
