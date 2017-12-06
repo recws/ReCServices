@@ -1,20 +1,18 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Net.Http;
-using System.Web.Http;
 using System.Net.Http.Headers;
-using Newtonsoft.Json;
-using System.Globalization;
+using System.Web;
 
 namespace ReCServices.Apis
 {
-    public static class Vectro
+    public class Rosello
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public static async void VECTRO_ObtenerPosicion(string UsuarioReC, string Usuario, string Password)
+        public static async void Rosello_ObtenerPosicion(string UsuarioReC, string Usuario, string Password)
         {
             var responseJson = "";
             try
@@ -22,46 +20,43 @@ namespace ReCServices.Apis
                 using (var client = new HttpClient())
                 {
                     //setup client
-                    client.BaseAddress = new Uri("http://162.248.55.111:8091");
+                    client.BaseAddress = new Uri("http://207.158.15.160:20999");
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    
+
 
                     //send request
-                    HttpResponseMessage responseMessage = await client.GetAsync("/panalpina");
+                    HttpResponseMessage responseMessage = await client.GetAsync("/positionv1/" + Password);
                     //HttpResponseMessage responseMessage = await client.PostAsync("/web%20services/ws_last_position/ws_last_position.asmx/GetLastPosition_02?User=" + Usuario  + "&Password=" + Password + "&Page=", formContent);
 
                     //get access token from response body
                     responseJson = await responseMessage.Content.ReadAsStringAsync();
+                                        
+                    var res = JsonConvert.DeserializeObject<RootObject>(responseJson);
 
-                    var result = JsonConvert.DeserializeObject<List<ObjectResult>>(responseJson);
+                    var result = res.position;
 
-                    
                     for (int i = 0; i < result.Count; i++)
                     {
                         try
                         {
-                            if (result[i].SERIE == null || result[i].LAT == null || result[i].LON == null)
-                            {
-                                continue;
-                            }
+                            string imei = result[i].imei.ToString();
+                            string codigoevento = "";
 
-                            string imei = result[i].SERIE.ToString();
-                            string codigoevento = result[i].IN.ToString();
-
-                            string lat = result[i].LAT.ToString().Replace("+", "");
-                            string lng = result[i].LON.ToString();
+                            string lat = result[i].lat.ToString();
+                            string lng = result[i].lng.ToString();
                             //string evento = result[i].status.ToString();
-                            string odometro = "0";
+                            string odometro = result[i].odometer.ToString();
                             ////string placas = ((dynamic)res[i]).Plates;
-                            string velocidad = result[i].SPD.ToString();
-                            string bateria = result[i].BAT == null ? "0" : result[i].BAT.ToString();
-                            string direccion = "0";
+                            string velocidad = result[i].speed.ToString();
+                            string bateria = result[i].battery.ToString();
+                            string direccion = result[i].course.ToString();
 
-                            var fechahoragps = DateTime.ParseExact(result[i].TIMEIN, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture);
+                            DateTime fechahoragps = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(result[i].gmt);
                             fechahoragps = fechahoragps.ToUniversalTime();
-                            var fechahoraserver = DateTime.ParseExact(result[i].TIMEOUT, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture);
+                            DateTime fechahoraserver = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(result[i].last_rep);
                             fechahoraserver = fechahoraserver.ToUniversalTime();
+                            //DateTime fechahoragps = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(result.items[i].pos.t);
 
                             ////Conversiones de datos
                             //codigoevento = codigoevento;
@@ -73,16 +68,16 @@ namespace ReCServices.Apis
                             //PLACAS = System.Text.RegularExpressions.Regex.Replace(PLACAS, " ", "");
                             var VELOCIDAD = int.Parse(velocidad);
                             var DIRECCION = int.Parse(direccion);
+                            var BATERIA = int.Parse(bateria);
                             //string[] formats = { "M/dd/yyyy hh:mm:ss tt" };
                             //var dateTime = DateTime.ParseExact(fechahora, formats, new System.Globalization.CultureInfo("en-US"), System.Globalization.DateTimeStyles.None);
-
-
+                            
                             //Si no es repetida la inserta
                             List<WS_GPS_InsertaSimple_Result> WS_GPS_InsertaSimple;
 
                             WS_CONTEXT db = new WS_CONTEXT();
 
-                            WS_GPS_InsertaSimple = db.WS_GPS_InsertaSimple(UsuarioReC, imei, codigoevento, decimal.Parse(lat), decimal.Parse(lng), "", true, int.Parse(velocidad), int.Parse(direccion), 100, int.Parse(odometro), fechahoragps, fechahoraserver).ToList();
+                            WS_GPS_InsertaSimple = db.WS_GPS_InsertaSimple(UsuarioReC, imei, codigoevento, LAT, LNG, "", true, VELOCIDAD, DIRECCION, BATERIA, ODOMETRO, fechahoragps, fechahoraserver).ToList();
                             if (WS_GPS_InsertaSimple[0].Indicador == 1)
                             {
 
@@ -95,42 +90,39 @@ namespace ReCServices.Apis
                         }
                         catch (Exception Ex)
                         {
-                            log.Error("Error Vectro_ObtenerPosicion: " + UsuarioReC + ". " + responseJson + ". " + Ex.Message);
+                            log.Error("Error Rosello_ObtenerPosicion: " + UsuarioReC + ". " + Ex.Message);
                             continue;
                         }
                     }
-
                 }
             }
             catch (Exception Ex)
-            {
-                if (Ex.InnerException != null && Ex.InnerException.Message == "No es posible conectar con el servidor remoto")
-                {
-                    //No hay conexion al servidor, a veces se protege de conexiones frecuentes., pero despues si deja conectarse.
-                }
-                else
-                {
-                    log.Error("Error Vectro_ObtenerPosicion: " + UsuarioReC + ". " + responseJson + ". " + Ex.Message);
-                }
+            {   
+                log.Error("Error Rosello_ObtenerPosicion: " + UsuarioReC + ". " + responseJson + ". " + Ex.Message);                
             }
+
         }
 
-
-        public class ObjectResult
+        public class Position
         {
-            public string SERIE { get; set; }
-            public string PLACAS { get; set; }
-            public string LAT { get; set; }
-            public string LON { get; set; }
-            public string SPD { get; set; }
-            public string HGT { get; set; }
-            public string IN { get; set; }
-            public int? ENC { get; set; }
-            public string TIMEIN { get; set; }
-            public string TIMEOUT { get; set; }
-            public string BAT { get; set; }
+            public object imei { get; set; }
+            public int gmt { get; set; }
+            public double lat { get; set; }
+            public double lng { get; set; }
+            public int course { get; set; }
+            public int speed { get; set; }
+            public int odometer { get; set; }
+            public int run { get; set; }
+            public int door { get; set; }
+            public int battery { get; set; }
+            public int tpr { get; set; }
+            public int last_rep { get; set; }
         }
+
+        public class RootObject
+        {
+            public List<Position> position { get; set; }
+        }
+
     }
-
-
 }

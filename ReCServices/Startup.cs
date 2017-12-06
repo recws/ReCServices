@@ -215,7 +215,16 @@ namespace ReCServices
 
             //TEST
             //Apis.Troncalnet.Troncalnet_ObtenerPosicion("WS_TOrtiz", "", ""); //COOPERTIRES 
-            
+
+
+            //Klas
+            //Apis.Rosello.Rosello_ObtenerPosicion("WS_TMP", "", "c21h728d9d4c2f636f067f");
+
+
+            //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
+
+
+
         }
     }
 

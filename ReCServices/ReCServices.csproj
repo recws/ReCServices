@@ -229,6 +229,7 @@
     <Compile Include="Apis\PlataformaLVT.cs" />
     <Compile Include="Apis\Quiala.cs" />
     <Compile Include="Apis\RedGPS.cs" />
+    <Compile Include="Apis\Rosello.cs" />
     <Compile Include="Apis\Sama.cs" />
     <Compile Include="Apis\Seinext.cs" />
     <Compile Include="Apis\SGIT.cs" />

@@ -2193,3 +2193,22 @@ Path 'otros.equipo.neconomicov', line 1, position 82.
 2017-12-04 11:33:57,975 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.TrackJack - Error al Insertar evento de WS_TMP.  IMEI: LCS 1624. IMEI no reconocido. 
 2017-12-04 12:22:01,358 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.TrackJack - Error al Insertar evento de WS_CargoServices.  IMEI: 110DN7. IMEI no reconocido. 
 2017-12-04 12:22:07,747 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.TrackJack - Error al Insertar evento de WS_CargoServices.  IMEI: 113DN7. IMEI no reconocido. 
+2017-12-05 18:25:23,866 [23] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 205246367. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-05 18:25:25,269 [23] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 868683028971806. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:09,346 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 205246367. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:09,444 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 868683028971806. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:09,521 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 860599001599349. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:09,597 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 868789022062631. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:09,674 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 863830030106427. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:09,750 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 4700271626. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:09,827 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 199072. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:09,903 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 915291. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:09,980 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 935759. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:10,058 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 400011463262. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:10,135 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 1235. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:10,211 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 123456. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:10,288 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 205163613. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:10,365 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 4700272058. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:10,441 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 205486907. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:10,519 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 7000069. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 11:59:10,595 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 868683028704108. IMEI no reconocido. ReCServices.Apis.Rosello+Position
