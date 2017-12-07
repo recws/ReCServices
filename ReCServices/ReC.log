@@ -2212,3 +2212,9 @@ Path 'otros.equipo.neconomicov', line 1, position 82.
 2017-12-06 11:59:10,441 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 205486907. IMEI no reconocido. ReCServices.Apis.Rosello+Position
 2017-12-06 11:59:10,519 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 7000069. IMEI no reconocido. ReCServices.Apis.Rosello+Position
 2017-12-06 11:59:10,595 [22] ERROR ReCServices.Apis.Rosello - Error al Insertar evento de WS_TMP. IMEI: 868683028704108. IMEI no reconocido. ReCServices.Apis.Rosello+Position
+2017-12-06 17:23:08,455 [24] ERROR ReCServices.Apis.Rosello - Error Rosello_ObtenerPosicion: WS_TMP. 429 Too Many Requests (try in 1 seconds)
+. Error converting value 429 to type 'ReCServices.Apis.Rosello+RootObject'. Path '', line 1, position 3.
+2017-12-06 17:25:40,385 [23] ERROR ReCServices.Apis.Rosello - Error Rosello_ObtenerPosicion: WS_TMP. 429 Too Many Requests (try in 28 seconds)
+. Error converting value 429 to type 'ReCServices.Apis.Rosello+RootObject'. Path '', line 1, position 3.
+2017-12-06 17:27:08,670 [23] ERROR ReCServices.Apis.Rosello - Error Rosello_ObtenerPosicion: WS_TMP. 429 Too Many Requests (try in 30 seconds)
+. Error converting value 429 to type 'ReCServices.Apis.Rosello+RootObject'. Path '', line 1, position 3.

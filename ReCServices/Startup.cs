@@ -213,13 +213,15 @@ namespace ReCServices
 
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
 
-            //TEST
-            //Apis.Troncalnet.Troncalnet_ObtenerPosicion("WS_TOrtiz", "", ""); //COOPERTIRES 
+        
 
 
             //Klas
-            //Apis.Rosello.Rosello_ObtenerPosicion("WS_TMP", "", "c21h728d9d4c2f636f067f");
-
+            //Apis.Rosello.Rosello_ObtenerPosicion("WS_KLAS", "", "f6450ha45c00b1249bbe35");
+            
+            
+            //ETI - Test horario verano
+            //Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI
 
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
 
