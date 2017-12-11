@@ -241,10 +241,10 @@ edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 
       <publishTime>11/13/2017 17:45:23</publishTime>
     </File>
     <File Include="bin/ReCServices.dll">
-      <publishTime>12/04/2017 12:35:16</publishTime>
+      <publishTime>12/11/2017 17:30:43</publishTime>
     </File>
     <File Include="bin/ReCServices.pdb">
-      <publishTime>12/04/2017 12:35:16</publishTime>
+      <publishTime>12/11/2017 17:30:43</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>11/13/2017 17:45:22</publishTime>

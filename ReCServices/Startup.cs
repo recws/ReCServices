@@ -148,7 +148,7 @@ namespace ReCServices
             .Build();
 
             scheduler_SincronizaCada5min.ScheduleJob(job_SincronizaCada5min, trigger_SincronizaCada5min);
-
+            
             ///////////////////  SCHEDULER  //////////////////////////////////
             IScheduler scheduler_SincronizaCada10min = StdSchedulerFactory.GetDefaultScheduler();
             scheduler_SincronizaCada10min.Start();
@@ -213,18 +213,20 @@ namespace ReCServices
 
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
 
-        
+
 
 
             //Klas
             //Apis.Rosello.Rosello_ObtenerPosicion("WS_KLAS", "", "f6450ha45c00b1249bbe35");
-            
-            
+
+
             //ETI - Test horario verano
             //Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI
 
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
 
+            //ya no se va a usar porque estan en la cuenta de cooper
+            //Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "panalpina@transportesnewpick.com.mx", "Panalpin2017");  //Transportes NEWPICK  //No lleva token
 
 
         }
@@ -259,6 +261,7 @@ namespace ReCServices
         {
 #if !DEBUG            
             //PRUEBA 3
+            Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "cooper@transportesnewpick.com.mx", "CooperTire17");  //COOPERTIRES  //Transportes USAMEX CARRIER  //No lleva token
             Apis.Omnitracs.Omnitracs_ObtenerPosicion("WS_Masetto", "", ""); //COOPERTIRES  (el usuario y contraseña lo lleva en web.config, en headers del endpoint)
             Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Elola", "mx80566", "29205mx80566", ">4#/synn8UxZ");
             Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_UsaMex", "mxfa811", "29244mxfa811", "Abcd1234");
@@ -284,17 +287,18 @@ namespace ReCServices
         {
 #if !DEBUG
 
+            Apis.Wialon.WIALON_ObtenerPosicion("WS_Leyva", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA  provedor WS_AVLLogic
             Apis.Boson.BOSON_ObtenerPosicion("WS_TIslas", "trans.log.is@hotmail.com", "Es29Htj8M5");  //Transportes T. ISLAS   Proveedor: KOSMOS
             Apis.SGIT.SGIT_ObtenerPosicion("WS_TIslas", "wsantonio", "ws1234peral");  //Transportes T. ISLAS  Proveedor: SGIT
             Apis.Boson.BOSON_ObtenerPosicion("WS_TLIT", "a.rivera@interestatalit.com", "panalpinalit");  //Transportes T. LIT  //No lleva token
             APIS.REESER_ObtenerPosicion("WS_IMTAutoT", "FELIPE-AGUILAR", "U2FsdGVkX1+GHY1Z/SObeDjZCZ4ARuSUN80EtrPOn54=");
-            Apis.Wialon.WIALON_ObtenerPosicion("WS_Leyva", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA  provedor WS_AVLLogic
+            
             Apis.Quiala.QUIALA_ObtenerPosicion("WS_Quiala", "ws-quiala", "Qui2kdh*bn6");
             Apis.Vectro.VECTRO_ObtenerPosicion("WS_TPina", "", "");
             Apis.Troncalnet.Troncalnet_ObtenerPosicion("WS_TOrtiz", "", ""); //COOPERTIRES 
             
             Apis.Boson.BOSON_ObtenerPosicion("WS_UsaMex", "monitoreo@usamexcarrier.com", "UsaMexCa2017");  //COOPERTIRES  //Transportes USAMEX CARRIER  //No lleva token
-            Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "cooper@transportesnewpick.com.mx", "CooperTire17");  //COOPERTIRES  //Transportes USAMEX CARRIER  //No lleva token
+            
             Apis.GpsMonitor.GGpsMonitor_ObtenerPosicion("WS_Trapol"); //Trapol - GPS Monitor
             Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
 
@@ -312,24 +316,21 @@ namespace ReCServices
 #if !DEBUG
             Apis.GrupoGCP.GrupoGCP_ObtenerPosicion("WS_GrupoGCP", "", ""); //La contraseña va dentro ya.
             Apis.RedGPS.RedGPS_ObtenerPosicion("WS_TIbarra", "panalpina", "transportesibarra");  //Transportes T. IBARRA 
-            Apis.Astus.ObtenereInsertar("WS_SEND", "webservices1@send.com", "1qaz2345");            
-            Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "panalpina@transportesnewpick.com.mx", "Panalpin2017");  //Transportes NEWPICK  //No lleva token
+            Apis.Astus.ObtenereInsertar("WS_SEND", "webservices1@send.com", "1qaz2345");                        
             Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
             Apis.Boson.BOSON_ObtenerPosicion("WS_Transcar", "panalpina@transcar.com.mx", "Panalpin2017");  //Transportes TRANSCAR  //No lleva token
             Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Jaguar", "mx4b4b3", "29162mx4b4b3", "123456");
             Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_Trameriv", "trameriv", "mexico321");  //Transportes TRAMERIV
             Apis.Boson.BOSON_ObtenerPosicion("WS_Gomez", "monitoreo@recsolutions.tech", "TraNsp0rGMZ2");  //Transportes GOMEZ  //No lleva token
-            Apis.ZeekGPS.ZeekGPS_ObtenerPosicion("WS_Panamericano", "Panalpina", "gApGdKgr", "iPinssoMperPogm");  //Transportes PANAMERICANO 
-
-            Apis.Wialon.WIALON_ObtenerPosicion("WS_Guarneros", "Tguarneros", "L0cal1zar", "d631f588de587f4f7f3e21275151a90f2F53E50E2285C1858B4A91250F8DABB18F491EE4");  //Transportes Guarneros
-
-            //Pendiente de validar las fechas, llegan con 2 horas de retraso
+            Apis.ZeekGPS.ZeekGPS_ObtenerPosicion("WS_Panamericano", "Panalpina", "gApGdKgr", "iPinssoMperPogm");  //Transportes PANAMERICANO                         
+            
             Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI
             Apis.TrackJack.Trackjack_ObtenerPosicion("WS_CargoServices", "COOPREC", "*070820/"); //Trackjack
+            Apis.Wialon.WIALON_ObtenerPosicion("WS_Guarneros", "Tguarneros", "L0cal1zar", "d631f588de587f4f7f3e21275151a90f2F53E50E2285C1858B4A91250F8DABB18F491EE4");  //Transportes Guarneros
 #endif
         }
     }
-
+    
     public class SincronizaCada10min : IJob
     {
         public void Execute(IJobExecutionContext context)

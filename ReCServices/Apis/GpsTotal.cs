@@ -93,10 +93,13 @@ namespace ReCServices.Apis
                             string bateria = "0";
                             string direccion = res.Direction.ToString().Split('.')[0];
                             //2017 / 07 / 07 20:37:06
-                            var fechahoragps = res.ActualDate;
+
+                            var fechahoragps = DateTime.ParseExact(res.ActualDateUTC, "yyyy-MM-ddTHH:mm:ss:fffZ", CultureInfo.InvariantCulture); ;
+                            fechahoragps = fechahoragps.ToUniversalTime();
+
                             //fechahoragps = fechahoragps.ToUniversalTime();
 
-                            var fechahoraserver = res.Created;
+                            var fechahoraserver = res.ActualDateUTC;
                             //fechahoraserver = fechahoraserver.ToUniversalTime();
                             ////Validaciones
 
@@ -117,7 +120,7 @@ namespace ReCServices.Apis
 
                             WS_CONTEXT db = new WS_CONTEXT();
 
-                            WS_GPS_InsertaSimple = db.WS_GPS_InsertaSimple(UsuarioReC, imei, codigoevento, LAT, LNG, "", true, VELOCIDAD, DIRECCION, BATERIA, ODOMETRO, fechahoragps, fechahoraserver).ToList();
+                            WS_GPS_InsertaSimple = db.WS_GPS_InsertaSimple(UsuarioReC, imei, codigoevento, LAT, LNG, "", true, VELOCIDAD, DIRECCION, BATERIA, ODOMETRO, fechahoragps, fechahoragps).ToList();
                             if (WS_GPS_InsertaSimple[0].Indicador == 1)
                             {
 

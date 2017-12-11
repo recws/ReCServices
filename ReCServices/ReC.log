@@ -2218,3 +2218,4 @@ Path 'otros.equipo.neconomicov', line 1, position 82.
 . Error converting value 429 to type 'ReCServices.Apis.Rosello+RootObject'. Path '', line 1, position 3.
 2017-12-06 17:27:08,670 [23] ERROR ReCServices.Apis.Rosello - Error Rosello_ObtenerPosicion: WS_TMP. 429 Too Many Requests (try in 30 seconds)
 . Error converting value 429 to type 'ReCServices.Apis.Rosello+RootObject'. Path '', line 1, position 3.
+2017-12-08 12:46:17,323 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.ZeekGPS - Error al Insertar evento de WS_Panamericano. IMEI: 207729807st  -  IMEI no reconocido. 
