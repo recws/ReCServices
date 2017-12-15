@@ -2219,3 +2219,10 @@ Path 'otros.equipo.neconomicov', line 1, position 82.
 2017-12-06 17:27:08,670 [23] ERROR ReCServices.Apis.Rosello - Error Rosello_ObtenerPosicion: WS_TMP. 429 Too Many Requests (try in 30 seconds)
 . Error converting value 429 to type 'ReCServices.Apis.Rosello+RootObject'. Path '', line 1, position 3.
 2017-12-08 12:46:17,323 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.ZeekGPS - Error al Insertar evento de WS_Panamericano. IMEI: 207729807st  -  IMEI no reconocido. 
+2017-12-12 10:20:55,359 [23] INFO ReCServices.Apis.Wialon - WebService WIALON Autenticado: WS_Guarneros. 
+2017-12-15 11:38:52,530 [24] INFO ReCServices.Apis.Wialon - WebService WIALON Autenticado: WS_Guarneros. 
+2017-12-15 13:04:05,010 [DefaultQuartzScheduler_Worker-1] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
+2017-12-15 13:05:02,761 [DefaultQuartzScheduler_Worker-9] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
+2017-12-15 13:06:02,709 [DefaultQuartzScheduler_Worker-6] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
+2017-12-15 13:07:09,437 [DefaultQuartzScheduler_Worker-10] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
+2017-12-15 13:07:39,433 [DefaultQuartzScheduler_Worker-1] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
