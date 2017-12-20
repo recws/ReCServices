@@ -212,14 +212,7 @@ namespace ReCServices
             //Apis.SolucionesGlobales.SolucionesGloblaes_ObtenerPosicion("WS_TMP", "Huawei", "huawei2017");
 
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
-
-
-
-
-            //Klas
-            //Apis.Rosello.Rosello_ObtenerPosicion("WS_KLAS", "", "f6450ha45c00b1249bbe35");
-
-
+                        
             //ETI - Test horario verano
             //Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI
 
@@ -227,7 +220,8 @@ namespace ReCServices
             //Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "panalpina@transportesnewpick.com.mx", "Panalpin2017");  //Transportes NEWPICK  //No lleva token
 
 
-            
+            //verificar placas (ya sirve y esta en el servidor)
+            //Apis.TrackJack.Trackjack_ObtenerPosicion("WS_CargoServices", "COOPREC", "*070820/"); //Trackjack
 
             //verificando
             //Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Elola", "mx80566", "29205mx80566", ">4#/synn8UxZ");
@@ -330,6 +324,7 @@ namespace ReCServices
             
             Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI
             Apis.TrackJack.Trackjack_ObtenerPosicion("WS_CargoServices", "COOPREC", "*070820/"); //Trackjack
+            Apis.Rosello.Rosello_ObtenerPosicion("WS_KLAS", "", "f6450ha45c00b1249bbe35"); //Klas
             Apis.Wialon.WIALON_ObtenerPosicion("WS_Guarneros", "Tguarneros", "L0cal1zar", "d631f588de587f4f7f3e21275151a90f2F53E50E2285C1858B4A91250F8DABB18F491EE4");  //Transportes Guarneros
 #endif
         }

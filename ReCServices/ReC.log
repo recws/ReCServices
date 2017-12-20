@@ -2226,3 +2226,17 @@ Path 'otros.equipo.neconomicov', line 1, position 82.
 2017-12-15 13:06:02,709 [DefaultQuartzScheduler_Worker-6] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
 2017-12-15 13:07:09,437 [DefaultQuartzScheduler_Worker-10] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
 2017-12-15 13:07:39,433 [DefaultQuartzScheduler_Worker-1] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
+2017-12-20 17:12:00,395 [22] ERROR ReCServices.Apis.Rosello - Error Rosello_ObtenerPosicion: WS_KLAS. 401 Unauthorized
+. Error converting value 401 to type 'ReCServices.Apis.Rosello+RootObject'. Path '', line 1, position 3.
+2017-12-20 17:12:58,102 [26] ERROR ReCServices.Apis.Rosello - Error Rosello_ObtenerPosicion: WS_KLAS. 401 Unauthorized
+. Error converting value 401 to type 'ReCServices.Apis.Rosello+RootObject'. Path '', line 1, position 3.
+2017-12-20 17:13:58,041 [27] ERROR ReCServices.Apis.Rosello - Error Rosello_ObtenerPosicion: WS_KLAS. 401 Unauthorized
+. Error converting value 401 to type 'ReCServices.Apis.Rosello+RootObject'. Path '', line 1, position 3.
+2017-12-20 17:14:59,040 [29] ERROR ReCServices.Apis.Rosello - Error Rosello_ObtenerPosicion: WS_KLAS. 401 Unauthorized
+. Error converting value 401 to type 'ReCServices.Apis.Rosello+RootObject'. Path '', line 1, position 3.
+2017-12-20 17:15:59,031 [32] ERROR ReCServices.Apis.Rosello - Error Rosello_ObtenerPosicion: WS_KLAS. 401 Unauthorized
+. Error converting value 401 to type 'ReCServices.Apis.Rosello+RootObject'. Path '', line 1, position 3.
+2017-12-20 17:16:58,037 [35] ERROR ReCServices.Apis.Rosello - Error Rosello_ObtenerPosicion: WS_KLAS. 401 Unauthorized
+. Error converting value 401 to type 'ReCServices.Apis.Rosello+RootObject'. Path '', line 1, position 3.
+2017-12-20 17:17:58,040 [35] ERROR ReCServices.Apis.Rosello - Error Rosello_ObtenerPosicion: WS_KLAS. 401 Unauthorized
+. Error converting value 401 to type 'ReCServices.Apis.Rosello+RootObject'. Path '', line 1, position 3.
