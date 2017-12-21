@@ -212,16 +212,14 @@ namespace ReCServices
             //Apis.SolucionesGlobales.SolucionesGloblaes_ObtenerPosicion("WS_TMP", "Huawei", "huawei2017");
 
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
-                        
-            //ETI - Test horario verano
-            //Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI
+
+            Apis.GpsMonitor.GGpsMonitor_ObtenerPosicion("WS_Trapol"); //Trapol - GPS Monitor
 
             //ya no se va a usar porque estan en la cuenta de cooper
             //Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "panalpina@transportesnewpick.com.mx", "Panalpin2017");  //Transportes NEWPICK  //No lleva token
 
 
-            //verificar placas (ya sirve y esta en el servidor)
-            //Apis.TrackJack.Trackjack_ObtenerPosicion("WS_CargoServices", "COOPREC", "*070820/"); //Trackjack
+
 
             //verificando
             //Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Elola", "mx80566", "29205mx80566", ">4#/synn8UxZ");

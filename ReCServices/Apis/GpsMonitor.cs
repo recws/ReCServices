@@ -52,10 +52,10 @@ namespace ReCServices.Apis
                             string direccion = result[i].course.ToString().Split('.')[0];
 
                             var fechahoragps = DateTime.ParseExact(result[i].pos_date, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-                            fechahoragps = fechahoragps.ToUniversalTime();
+                            //fechahoragps = fechahoragps.ToUniversalTime();
 
                             var fechahoraserver = DateTime.ParseExact(result[i].pos_rec, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-                            fechahoraserver = fechahoraserver.ToUniversalTime();
+                            //fechahoraserver = fechahoraserver.ToUniversalTime();
                             ////Validaciones
 
                             //////Conversiones de datos
