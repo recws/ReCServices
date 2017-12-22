@@ -53,9 +53,9 @@ namespace ReCServices.Apis
                             string direccion = result[i].course.ToString();
 
                             DateTime fechahoragps = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(result[i].gmt);
-                            fechahoragps = fechahoragps.ToUniversalTime();
+                            //fechahoragps = fechahoragps.ToUniversalTime();
                             DateTime fechahoraserver = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(result[i].last_rep);
-                            fechahoraserver = fechahoraserver.ToUniversalTime();
+                            //fechahoraserver = fechahoraserver.ToUniversalTime();
                             //DateTime fechahoragps = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(result.items[i].pos.t);
 
                             ////Conversiones de datos
