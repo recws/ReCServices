@@ -217,11 +217,12 @@ namespace ReCServices
 
             //ya no se va a usar porque estan en la cuenta de cooper
             //Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "panalpina@transportesnewpick.com.mx", "Panalpin2017");  //Transportes NEWPICK  //No lleva token
-            
-               
+
+
             //verificando
             //Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Elola", "mx80566", "29205mx80566", ">4#/synn8UxZ");
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
+                       
 
         }
     }
@@ -283,7 +284,7 @@ namespace ReCServices
 #if !DEBUG
                         
             Apis.Boson.BOSON_ObtenerPosicion("WS_TIslas", "trans.log.is@hotmail.com", "Es29Htj8M5");  //Transportes T. ISLAS   Proveedor: KOSMOS
-            Apis.SGIT.SGIT_ObtenerPosicion("WS_TIslas", "wsantonio", "ws1234peral");  //Transportes T. ISLAS  Proveedor: SGIT
+            Apis.SGIT.SGIT_ObtenerPosicion("WS_TIslas", "antonio", "antonio69");  //Transportes T. ISLAS  Proveedor: SGIT
             Apis.Boson.BOSON_ObtenerPosicion("WS_TLIT", "a.rivera@interestatalit.com", "panalpinalit");  //Transportes T. LIT  //No lleva token
             APIS.REESER_ObtenerPosicion("WS_IMTAutoT", "FELIPE-AGUILAR", "U2FsdGVkX1+GHY1Z/SObeDjZCZ4ARuSUN80EtrPOn54=");
             
