@@ -41,7 +41,7 @@ namespace ReCServices.Apis
                     client.DefaultRequestHeaders.Accept.Clear();
 
                     var Content = new StringContent("{\"user\":\"" + Usuario + "\",\"pwd\":\"" + Password + "\",\"action\":\"DATOSACTUALES\"}", System.Text.Encoding.UTF8, "application/json");
-
+                    
                     //send request
                     HttpResponseMessage responseMessage = await client.PostAsync("/ws/ws.js", Content);
 

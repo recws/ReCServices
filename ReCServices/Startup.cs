@@ -222,7 +222,9 @@ namespace ReCServices
             //verificando
             //Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Elola", "mx80566", "29205mx80566", ">4#/synn8UxZ");
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
-                       
+            
+            //Se pasaron a soluciones globlaes como aley (ver excel)
+            //Apis.Wialon.WIALON_ObtenerPosicion("WS_Leyva", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA  provedor WS_AVLLogic
 
         }
     }
@@ -272,7 +274,7 @@ namespace ReCServices
 #if !DEBUG
 
             Apis.Moving.Moving_ObtenerPosicion("WS_Moving", "api_moving", "k0VU8XQ5");  // HNOS HERNANDEZ MOVING - COOPER
-            Apis.Wialon.WIALON_ObtenerPosicion("WS_Leyva", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA  provedor WS_AVLLogic
+            Apis.Wialon.WIALON_ObtenerPosicion("WS_Guarneros", "Tguarneros", "L0cal1zar", "d631f588de587f4f7f3e21275151a90f66DEFCC570EEB200ACDE950BEA9D3606159254A5");  //Transportes Guarneros
 #endif
         }
     }
@@ -322,7 +324,7 @@ namespace ReCServices
             Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI
             Apis.TrackJack.Trackjack_ObtenerPosicion("WS_CargoServices", "COOPREC", "*070820/"); //Trackjack
             Apis.Rosello.Rosello_ObtenerPosicion("WS_KLAS", "", "f6450ha45c00b1249bbe35"); //Klas
-            Apis.Wialon.WIALON_ObtenerPosicion("WS_Guarneros", "Tguarneros", "L0cal1zar", "d631f588de587f4f7f3e21275151a90f2F53E50E2285C1858B4A91250F8DABB18F491EE4");  //Transportes Guarneros
+            
 #endif
         }
     }
