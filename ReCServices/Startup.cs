@@ -222,9 +222,12 @@ namespace ReCServices
             //verificando
             //Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Elola", "mx80566", "29205mx80566", ">4#/synn8UxZ");
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
-            
+
             //Se pasaron a soluciones globlaes como aley (ver excel)
             //Apis.Wialon.WIALON_ObtenerPosicion("WS_Leyva", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA  provedor WS_AVLLogic
+
+            
+
 
         }
     }
@@ -258,7 +261,7 @@ namespace ReCServices
         {
 #if !DEBUG            
             //PRUEBA 3
-            Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "cooper@transportesnewpick.com.mx", "CooperTire17");  //COOPERTIRES  //Transportes USAMEX CARRIER  //No lleva token
+            Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "olopez@recsolutions.tech", "R2e0C1C8c");  //COOPERTIRES  //Transportes USAMEX CARRIER  //No lleva token
             Apis.Omnitracs.Omnitracs_ObtenerPosicion("WS_Masetto", "", ""); //COOPERTIRES  (el usuario y contraseña lo lleva en web.config, en headers del endpoint)
             Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Elola", "mx80566", "29205mx80566", ">4#/synn8UxZ");
             Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_UsaMex", "mxfa811", "29244mxfa811", "Abcd1234");
