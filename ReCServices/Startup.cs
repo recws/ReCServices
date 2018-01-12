@@ -219,8 +219,7 @@ namespace ReCServices
             //Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "panalpina@transportesnewpick.com.mx", "Panalpin2017");  //Transportes NEWPICK  //No lleva token
 
 
-            //verificando
-            //Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Elola", "mx80566", "29205mx80566", ">4#/synn8UxZ");
+            //verificando            
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
 
             //Se pasaron a soluciones globlaes como aley (ver excel)
@@ -228,7 +227,7 @@ namespace ReCServices
 
             
 
-
+            
         }
     }
 
@@ -263,7 +262,7 @@ namespace ReCServices
             //PRUEBA 3
             Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "olopez@recsolutions.tech", "R2e0C1C8c");  //COOPERTIRES  //Transportes USAMEX CARRIER  //No lleva token
             Apis.Omnitracs.Omnitracs_ObtenerPosicion("WS_Masetto", "", ""); //COOPERTIRES  (el usuario y contraseña lo lleva en web.config, en headers del endpoint)
-            Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Elola", "mx80566", "29205mx80566", ">4#/synn8UxZ");
+            Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Elola", "mx80566", "29205mx80566", "123456");
             Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_UsaMex", "mxfa811", "29244mxfa811", "Abcd1234");
             Apis.Unicomm.Unicomm_ObtenerPosicion("WS_SagCargo", "token=7a09096bf2a1dec49d2e3cb9b817ab4c", "", "");
 #endif
