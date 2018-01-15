@@ -321,7 +321,7 @@ namespace ReCServices
             Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Jaguar", "mx4b4b3", "29162mx4b4b3", "123456");
             Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_Trameriv", "trameriv", "mexico321");  //Transportes TRAMERIV
             Apis.Boson.BOSON_ObtenerPosicion("WS_Gomez", "monitoreo@recsolutions.tech", "TraNsp0rGMZ2");  //Transportes GOMEZ  //No lleva token
-            Apis.ZeekGPS.ZeekGPS_ObtenerPosicion("WS_Panamericano", "Panalpina", "rsWE1A0H", "iPinssoMperPogm");  //Transportes PANAMERICANO                         
+            Apis.ZeekGPS.ZeekGPS_ObtenerPosicion("WS_Panamericano", "Panalpina", "cmGxtFia", "iPinssoMperPogm");  //Transportes PANAMERICANO                         
             
             Apis.GpsTotal.GpsTotal_ObtenerPosicion("WS_ETI", "0929ccdd-cb9a-4d47-8c1f-22850a0b71d9");  // FALTA LA PARTE DE ENCABEZADO PARA CONSULTAR POR IMEI
             Apis.TrackJack.Trackjack_ObtenerPosicion("WS_CargoServices", "COOPREC", "*070820/"); //Trackjack
