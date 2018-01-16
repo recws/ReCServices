@@ -1,6 +1,9 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
@@ -14,105 +17,131 @@ namespace ReCServices.Apis
 
         public static async void PositionGate_ObtenerPosicion(string UsuarioReC, string Usuario, string Password)
         {
-
-            var responseJson = "";
-            var imei = "862170014392201";
-
+            DataTable DT_Data = new DataTable();
+            var imei = "";
             try
             {
-                using (var client = new HttpClient())
+                DT_Data = GetData_ListaGPSxProveedor("AFN");
+
+                if (DT_Data.Rows.Count == 0)
                 {
-                    //setup client
-                    client.BaseAddress = new Uri("http://tracking.positiongate.com");
-                    client.DefaultRequestHeaders.Accept.Clear();
+                    return;
+                }
+                for (int i = 0; i < DT_Data.Rows.Count; i++)
+                {
+                    imei = DT_Data.Rows[i]["IMEI"].ToString();
+                    var responseJson = "";
 
-                    //send request
-                    HttpResponseMessage responseMessage = await client.GetAsync("/api/api.php?api=user&ver=1.0&key=78590AAF421B58B347492656C11340ED&cmd=OBJECT_GET_LOCATIONS," + imei);
-
-                    //get access token from response body
-                    responseJson = await responseMessage.Content.ReadAsStringAsync();
-
-                    var result = JsonConvert.DeserializeObject<List<RootObject>>(responseJson);
-                    
-                    for (int i = 0; i < result.Count; i++)
+                    try
                     {
-                        
-                        try
+                        using (var client = new HttpClient())
                         {
-                            var res = result[i].gpsIMEI;
+                            //setup client
+                            client.BaseAddress = new Uri("http://tracking.positiongate.com");
+                            client.DefaultRequestHeaders.Accept.Clear();
 
-                            //Consulta si ya existe la posicion, por si es repetida y no ha actualizado el equipo
-                            //var imei = "";
-                            string codigoevento = "";
+                            //send request
+                            HttpResponseMessage responseMessage = await client.GetAsync("/api/api.php?api=user&ver=1.0&key=" + Password + "&cmd=OBJECT_GET_LOCATIONS," + imei);
 
-                            string lat = res.lat.ToString();
-                            string lng = res.lng.ToString();
-                            //string evento = result[i].status.ToString();
-                            string odometro = res.@params.odo.ToString();
-                            ////string placas = ((dynamic)res[i]).Plates;
-                            string velocidad = res.speed.ToString();
-                            string bateria = "100";
-                            string direccion = res.angle.ToString().Split('.')[0];
+                            //get access token from response body
+                            responseJson = await responseMessage.Content.ReadAsStringAsync();
 
-                            var fechahoragps = DateTime.ParseExact(res.dt_tracker, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-                            fechahoragps = fechahoragps.ToUniversalTime();
-                            //ver track jack
-                            var fechahoraserver = DateTime.ParseExact(res.dt_server, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
-                            fechahoraserver = fechahoraserver.ToUniversalTime();
+                            responseJson = responseJson.Replace(imei, "GpsIMEI");
+                            var result = JsonConvert.DeserializeObject<RootObject>(responseJson);
+                            //var result = JsonConvert.DeserializeObject<List<RootObject>>(responseJson);
 
-                            ////Validaciones
+                            //shift + tab
 
-                            //////Conversiones de datos
-                            var LAT = decimal.Parse(lat);
-                            var LNG = decimal.Parse(lng);
-                            var ODOMETRO = int.Parse(odometro);
-                            ////var PLACAS = System.Text.RegularExpressions.Regex.Replace(placas, "-", "");
-                            ////PLACAS = System.Text.RegularExpressions.Regex.Replace(PLACAS, " ", "");
-                            var VELOCIDAD = int.Parse(velocidad);
-                            var DIRECCION = int.Parse(direccion);
-                            var BATERIA = int.Parse(bateria);
-
-
-                            //Si no es repetida la inserta
-                            List<WS_GPS_InsertaSimple_Result> WS_GPS_InsertaSimple;
-
-                            WS_CONTEXT db = new WS_CONTEXT();
-
-                            WS_GPS_InsertaSimple = db.WS_GPS_InsertaSimple(UsuarioReC, imei, codigoevento, LAT, LNG, "", true, VELOCIDAD, DIRECCION, BATERIA, ODOMETRO, fechahoragps, fechahoragps).ToList();
-                            if (WS_GPS_InsertaSimple[0].Indicador == 1)
+                            try
                             {
+                                var res = result.gpsIMEI;
 
+                                //Consulta si ya existe la posicion, por si es repetida y no ha actualizado el equipo
+                                //var imei = "";
+                                string codigoevento = "";
+
+                                string lat = res.lat.ToString();
+                                string lng = res.lng.ToString();
+                                //string evento = result[i].status.ToString();
+                                string odometro = res.@params.odo.ToString().Split('.')[0];
+                                ////string placas = ((dynamic)res[i]).Plates;
+                                string velocidad = res.speed.ToString();
+                                string bateria = "100";
+                                string direccion = res.angle.ToString().Split('.')[0];
+
+                                var fechahoragps = DateTime.ParseExact(res.dt_tracker, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+                                fechahoragps = fechahoragps.ToUniversalTime();
+                                //ver track jack
+                                var fechahoraserver = DateTime.ParseExact(res.dt_server, "yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture);
+                                fechahoraserver = fechahoraserver.ToUniversalTime();
+
+                                ////Validaciones
+
+                                //////Conversiones de datos
+                                var LAT = decimal.Parse(lat);
+                                var LNG = decimal.Parse(lng);
+                                var ODOMETRO = int.Parse(odometro);
+                                ////var PLACAS = System.Text.RegularExpressions.Regex.Replace(placas, "-", "");
+                                ////PLACAS = System.Text.RegularExpressions.Regex.Replace(PLACAS, " ", "");
+                                var VELOCIDAD = int.Parse(velocidad);
+                                var DIRECCION = int.Parse(direccion);
+                                var BATERIA = int.Parse(bateria);
+
+
+                                //Si no es repetida la inserta
+                                List<WS_GPS_InsertaSimple_Result> WS_GPS_InsertaSimple;
+
+                                WS_CONTEXT db = new WS_CONTEXT();
+
+                                WS_GPS_InsertaSimple = db.WS_GPS_InsertaSimple(UsuarioReC, imei, codigoevento, LAT, LNG, "", true, VELOCIDAD, DIRECCION, BATERIA, ODOMETRO, fechahoragps, fechahoraserver).ToList();
+                                if (WS_GPS_InsertaSimple[0].Indicador == 1)
+                                {
+
+                                }
+                                else
+                                {
+                                    log.Error("Error al Insertar evento de " + UsuarioReC + ". IMEI: " + imei + "  " + WS_GPS_InsertaSimple[0].Mensaje + ". ");
+                                }
                             }
-                            else
+                            catch (Exception Ex)
                             {
-                                log.Error("Error al Insertar evento de " + UsuarioReC + ". IMEI: " + imei + "  " + WS_GPS_InsertaSimple[0].Mensaje + ". " + responseJson);
+                                log.Error("Error PositionGate_ObtenerPosicion: " + UsuarioReC + ". " + imei + ". " + Ex.Message);
                             }
-                        }
-                        catch (Exception Ex)
-                        {
-                            log.Error("Error PositionGate_ObtenerPosicion: " + UsuarioReC + ". " + imei + ". " + Ex.Message);
                         }
                     }
+                    catch (Exception Ex)
+                    {
 
+                        log.Error("Error PositionGate_ObtenerPosicion: " + UsuarioReC + ". " + Ex.Message);
+
+                    }
                 }
             }
             catch (Exception Ex)
             {
-                if (Ex.Message == "'System.Dynamic.ExpandoObject' no contiene una definición para 'Latitude'.")
-                {
-                    //No guarda nada en el log por que aveces no viene completa la trama
-                }
-                else
-                {
-                    log.Error("Error PositionGate_ObtenerPosicion: " + UsuarioReC + ". " + Ex.Message);
-                    //log.Error("Error RedGPS_ObtenerPosicion: " + UsuarioReC + ". " + responseJson + ". " + Ex.Message);
-                }
-
+                
+                log.Error("Error PositionGate_ObtenerPosicion: " + UsuarioReC + ". " + Ex.Message);
+                
             }
+        }
+        public static DataTable GetData_ListaGPSxProveedor(string Proveedor)
+        {
+            DataTable dtbl = new DataTable("DataTable1");
 
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["WS_PROD"].ConnectionString);
+            SqlDataAdapter adp = new SqlDataAdapter();
+            adp.SelectCommand = new SqlCommand();
+            adp.SelectCommand.Connection = con;
+
+            adp.SelectCommand.CommandText = "WS_GPS_ListaGPSxProveedor";
+            adp.SelectCommand.CommandType = CommandType.StoredProcedure;
+            adp.SelectCommand.Parameters.AddWithValue("@IdTransportista", 0);
+            adp.SelectCommand.Parameters.AddWithValue("@Proveedor", Proveedor);
+            adp.Fill(dtbl);
+
+            return dtbl;
         }
     }
-
 
     public class Params
     {

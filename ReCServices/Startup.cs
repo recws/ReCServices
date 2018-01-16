@@ -214,9 +214,10 @@ namespace ReCServices
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
 
 
+            //Apis.PositionGate.PositionGate_ObtenerPosicion("WS_TMP", "", "78590AAF421B58B347492656C11340ED");
 
-            //ya no se va a usar porque estan en la cuenta de cooper
-            //Apis.Boson.BOSON_ObtenerPosicion("WS_NewPick", "panalpina@transportesnewpick.com.mx", "Panalpin2017");  //Transportes NEWPICK  //No lleva token
+
+
 
 
             //verificando            

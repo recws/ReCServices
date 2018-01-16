@@ -2241,3 +2241,6 @@ Path 'otros.equipo.neconomicov', line 1, position 82.
 2017-12-20 17:17:58,040 [35] ERROR ReCServices.Apis.Rosello - Error Rosello_ObtenerPosicion: WS_KLAS. 401 Unauthorized
 . Error converting value 401 to type 'ReCServices.Apis.Rosello+RootObject'. Path '', line 1, position 3.
 2018-01-03 18:03:13,142 [23] ERROR ReCServices.Apis.Cybermapa - Error RedGPS_ObtenerPosicion: WS_RBA. Error converting value 403 to type 'System.Collections.Generic.List`1[ReCServices.Apis.Cybermapa+ObjectResult]'. Path '', line 1, position 3.
+2018-01-16 16:34:14,175 [24] ERROR ReCServices.Apis.PositionGate - Error al Insertar evento de WS_TMP. IMEI: 862170014392201  Usuario no existe.. 
+2018-01-16 16:34:45,649 [23] ERROR ReCServices.Apis.PositionGate - Error al Insertar evento de WS_TMP. IMEI: 862170014392201  Usuario no existe.. 
+2018-01-16 16:35:35,093 [26] ERROR ReCServices.Apis.PositionGate - Error al Insertar evento de WS_TMP. IMEI: 862170014392201  Usuario no existe.. 
