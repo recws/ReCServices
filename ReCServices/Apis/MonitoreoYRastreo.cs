@@ -24,7 +24,7 @@ namespace ReCServices.Apis
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         
-        public static void MonitoreoYRastreo_ObtenerPosicion(string UsuarioReC, string Usuario, string Password)
+        public static void MonitoreoYRastreo_ObtenerPosicion(string UsuarioReC, string Usuario, string Password, string proveedorGPS)
         {
             var ECOenCurso = "";
             DataTable DT_Data = new DataTable();
@@ -32,7 +32,7 @@ namespace ReCServices.Apis
             try
             {
                 //Carga los IMEI que se van a consultar
-                DT_Data = GetData_ListaGPSxProveedor("DIEZ"); //tmp para no modificar demaciado el codigo (x8)
+                DT_Data = GetData_ListaGPSxProveedor(proveedorGPS); //tmp para no modificar demaciado el codigo (x8)
                 if (DT_Data.Rows.Count == 0)
                 {
                     return;

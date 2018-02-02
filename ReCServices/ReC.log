@@ -2244,3 +2244,12 @@ Path 'otros.equipo.neconomicov', line 1, position 82.
 2018-01-16 16:34:14,175 [24] ERROR ReCServices.Apis.PositionGate - Error al Insertar evento de WS_TMP. IMEI: 862170014392201  Usuario no existe.. 
 2018-01-16 16:34:45,649 [23] ERROR ReCServices.Apis.PositionGate - Error al Insertar evento de WS_TMP. IMEI: 862170014392201  Usuario no existe.. 
 2018-01-16 16:35:35,093 [26] ERROR ReCServices.Apis.PositionGate - Error al Insertar evento de WS_TMP. IMEI: 862170014392201  Usuario no existe.. 
+2018-01-29 10:27:03,834 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_Diez. IMEI: 864180035672737. PLACA: LA73086  -  IMEI no reconocido. 
+2018-01-29 10:27:15,284 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_Diez. IMEI: 864180035555205. PLACA: LA77825  -  IMEI no reconocido. 
+2018-01-29 10:27:46,889 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_Diez. IMEI: 864180033515672. PLACA: MXX6079  -  IMEI no reconocido. 
+2018-01-29 10:36:02,195 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.MonitoreoYRastereo - Error al Insertar evento de WS_Diez. IMEI: 864180035672737. PLACA: LA73086  -  IMEI no reconocido. 
+2018-01-31 16:19:58,261 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.ZeekGPS - Error al Insertar evento de WS_Panamericano. IMEI: 207729790st  -  IMEI no reconocido. 
+2018-01-31 16:20:18,439 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.ZeekGPS - Error ZeekGPS_ObtenerPosicion: WS_Panamericano. . Error del proveedor subyacente en Open.
+2018-01-31 16:20:49,568 [DefaultQuartzScheduler_Worker-3] ERROR ReCServices.Apis.ZeekGPS - Error ZeekGPS_ObtenerPosicion: WS_Panamericano. . Error del proveedor subyacente en Open.
+2018-01-31 16:22:02,014 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.ZeekGPS - Error al Insertar evento de WS_Panamericano. IMEI: 207729790st  -  IMEI no reconocido. 
+2018-01-31 16:22:14,407 [DefaultQuartzScheduler_Worker-5] ERROR ReCServices.Apis.ZeekGPS - Error al Insertar evento de WS_Panamericano. IMEI: 207729790st  -  IMEI no reconocido. 

@@ -211,11 +211,13 @@ namespace ReCServices
             //USER Y PWDde cuenta espejo no funcionan en WS 
             //Apis.SolucionesGlobales.SolucionesGloblaes_ObtenerPosicion("WS_TMP", "Huawei", "huawei2017");
 
-            //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_TRuiz", "logisticos", "monica321");  //Transportes RUIZ
+            
 
 
             //Apis.PositionGate.PositionGate_ObtenerPosicion("WS_TMP", "", "78590AAF421B58B347492656C11340ED");
 
+            //Modificar para transportes ROMO
+            //Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_Diez", "webservice", "Gtslo98_213#", "DIEZ");
 
 
 
@@ -226,8 +228,8 @@ namespace ReCServices
             //Se pasaron a soluciones globlaes como aley (ver excel)
             //Apis.Wialon.WIALON_ObtenerPosicion("WS_Leyva", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA  provedor WS_AVLLogic
 
-
             
+            //Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Elola", "mx80566", "29205mx80566", "123456");
 
         }
     }
@@ -302,7 +304,7 @@ namespace ReCServices
             Apis.GpsMonitor.GGpsMonitor_ObtenerPosicion("WS_Trapol"); //Trapol - GPS Monitor
             Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
 
-            Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_Diez", "webservice", "Gtslo98_213#");
+            Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_Diez", "webservice", "Gtslo98_213#", "DIEZ");
             Apis.Sama.Sama_ObtenerPosicion("WS_Trapol", "panalpina-trapol", "Andromeda500");  //TRAPOL  ProveedorGPS: SAMA
             Apis.PlataformaLVT.PlataformaLVT_ObtenerPosicion("WS_8W", "8W_USUARIO_API", "API_EXPRESS_1", "1868c5a2-ac8e-4486-bae1-3b10e3645bef", "8W"); //Cooper -8w
 #endif
