@@ -211,7 +211,7 @@ namespace ReCServices
             //USER Y PWDde cuenta espejo no funcionan en WS 
             //Apis.SolucionesGlobales.SolucionesGloblaes_ObtenerPosicion("WS_TMP", "Huawei", "huawei2017");
 
-            
+
 
 
             //Apis.PositionGate.PositionGate_ObtenerPosicion("WS_TMP", "", "78590AAF421B58B347492656C11340ED");
@@ -228,8 +228,12 @@ namespace ReCServices
             //Se pasaron a soluciones globlaes como aley (ver excel)
             //Apis.Wialon.WIALON_ObtenerPosicion("WS_Leyva", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA  provedor WS_AVLLogic
 
+
             
+
             //Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Elola", "mx80566", "29205mx80566", "123456");
+
+
 
         }
     }
@@ -279,7 +283,7 @@ namespace ReCServices
 #if !DEBUG
 
             Apis.Moving.Moving_ObtenerPosicion("WS_Moving", "api_moving", "k0VU8XQ5");  // HNOS HERNANDEZ MOVING - COOPER
-            Apis.Wialon.WIALON_ObtenerPosicion("WS_Guarneros", "Tguarneros", "L0cal1zar", "d631f588de587f4f7f3e21275151a90f66DEFCC570EEB200ACDE950BEA9D3606159254A5");  //Transportes Guarneros
+            Apis.Wialon.WIALON_ObtenerPosicion("WS_Guarneros", "Tguarneros", "L0cal1zar", "d631f588de587f4f7f3e21275151a90fE24BDB7F1B7EAB281936C06D139B56B1826750A8");  //Transportes Guarneros
 #endif
         }
     }

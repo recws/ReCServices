@@ -2253,3 +2253,7 @@ Path 'otros.equipo.neconomicov', line 1, position 82.
 2018-01-31 16:20:49,568 [DefaultQuartzScheduler_Worker-3] ERROR ReCServices.Apis.ZeekGPS - Error ZeekGPS_ObtenerPosicion: WS_Panamericano. . Error del proveedor subyacente en Open.
 2018-01-31 16:22:02,014 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.ZeekGPS - Error al Insertar evento de WS_Panamericano. IMEI: 207729790st  -  IMEI no reconocido. 
 2018-01-31 16:22:14,407 [DefaultQuartzScheduler_Worker-5] ERROR ReCServices.Apis.ZeekGPS - Error al Insertar evento de WS_Panamericano. IMEI: 207729790st  -  IMEI no reconocido. 
+2018-02-09 10:28:11,922 [22] INFO ReCServices.Apis.Wialon - WebService WIALON Autenticado: WS_Guarneros. 
+2018-02-19 11:42:36,806 [DefaultQuartzScheduler_Worker-1] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
+2018-02-19 11:43:38,291 [DefaultQuartzScheduler_Worker-5] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
+2018-02-19 12:16:06,278 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.OmnitracsCC - Error LOGIN FAIL WS_Jaguar. Error de usuario o contraseña.
