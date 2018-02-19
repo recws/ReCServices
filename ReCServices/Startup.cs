@@ -203,6 +203,8 @@ namespace ReCServices
     {
         public void Execute(IJobExecutionContext context)
         {
+            //Se pasaron a soluciones globlaes como aley (ver excel)
+            //Apis.Wialon.WIALON_ObtenerPosicion("WS_Leyva", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA  provedor WS_AVLLogic
             //Apis.GrupoUDA.GrupoUDA_ObtenerPosicion("WS_SID", "WBS_PAN-SUVI", "123456");  //Cambiaron de plataforma... Ya no se va a contemplar este proveedor
             //Apis.Soltrack.Soltrack_ObtenerPosicion("WS_THernandez", "", "");  //FALTA QUE NOS DEN EL LISTADO DE IMEI  Ya cancelo con este proveedor
 
@@ -225,11 +227,10 @@ namespace ReCServices
             //verificando            
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
 
-            //Se pasaron a soluciones globlaes como aley (ver excel)
-            //Apis.Wialon.WIALON_ObtenerPosicion("WS_Leyva", "huawei", "huawei2016", "b16a120f3fdab34dade89383ee0712cb79ECECE76F8ECAE55344826FC75993C214FAD9F4");  //Transportes LEYVA  provedor WS_AVLLogic
 
 
-            
+
+
 
             //Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Elola", "mx80566", "29205mx80566", "123456");
 
