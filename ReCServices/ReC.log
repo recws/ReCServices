@@ -2257,3 +2257,12 @@ Path 'otros.equipo.neconomicov', line 1, position 82.
 2018-02-19 11:42:36,806 [DefaultQuartzScheduler_Worker-1] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
 2018-02-19 11:43:38,291 [DefaultQuartzScheduler_Worker-5] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
 2018-02-19 12:16:06,278 [DefaultQuartzScheduler_Worker-1] ERROR ReCServices.Apis.OmnitracsCC - Error LOGIN FAIL WS_Jaguar. Error de usuario o contraseña.
+2018-02-20 09:46:25,083 [DefaultQuartzScheduler_Worker-1] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
+2018-02-20 09:46:47,058 [DefaultQuartzScheduler_Worker-6] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
+2018-02-20 09:47:49,136 [DefaultQuartzScheduler_Worker-5] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
+2018-02-20 09:49:20,598 [DefaultQuartzScheduler_Worker-1] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
+2018-02-20 10:01:47,408 [DefaultQuartzScheduler_Worker-4] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
+2018-02-20 10:04:00,068 [DefaultQuartzScheduler_Worker-6] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
+2018-02-20 10:04:25,834 [DefaultQuartzScheduler_Worker-2] ERROR ReCServices.Apis.ZeekGPS - Error ZeekGPS_ObtenerToken: WS_Panamericano. El canal de solicitud agotó el tiempo de espera mientras esperaba una respuesta después de 00:01:00. Aumente el valor de tiempo de espera pasado a la llamada a Request, o bien aumente el valor de SendTimeout en el enlace. El tiempo asignado a esta operación puede haber sido una parte de un tiempo de espera mayor.
+2018-02-20 10:05:13,993 [DefaultQuartzScheduler_Worker-7] ERROR ReCServices.Apis.ZeekGPS - Error ZeekGPS_ObtenerToken: WS_Panamericano. No había ningún extremo escuchando en http://apps.zeekgps.com/cmovilapi3ws/cmovilapi3ws.asmx que pudiera aceptar el mensaje. La causa suele ser una dirección o una acción SOAP incorrecta. Consulte InnerException, si está presente, para obtener más información.
+2018-02-20 10:05:50,752 [DefaultQuartzScheduler_Worker-10] INFO ReCServices.Apis.ZeekGPS - WebService ZeekGPS Error de Autenticacion: WS_Panamericano. 
