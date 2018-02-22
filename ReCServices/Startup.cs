@@ -219,9 +219,8 @@ namespace ReCServices
 
             //Apis.PositionGate.PositionGate_ObtenerPosicion("WS_TMP", "", "78590AAF421B58B347492656C11340ED");
 
-            //Modificar para transportes ROMO
+            //Modificar para transportes ROMO (ver excel status)
             //Apis.MonitoreoYRastereo.MonitoreoYRastreo_ObtenerPosicion("WS_Diez", "webservice", "Gtslo98_213#", "DIEZ");
-
 
 
 
@@ -229,13 +228,9 @@ namespace ReCServices
             //Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
 
 
-
-            
-
-
             //Apis.OmnitracsCC.Omnitracs_ObtenerPosicion("WS_Elola", "mx80566", "29205mx80566", "123456");
 
-
+            
 
         }
     }
@@ -305,8 +300,7 @@ namespace ReCServices
             Apis.Vectro.VECTRO_ObtenerPosicion("WS_TPina", "", "");
             Apis.Troncalnet.Troncalnet_ObtenerPosicion("WS_TOrtiz", "", ""); //COOPERTIRES 
             
-            Apis.Boson.BOSON_ObtenerPosicion("WS_UsaMex", "monitoreo@usamexcarrier.com", "UsaMexCa2017");  //COOPERTIRES  //Transportes USAMEX CARRIER  //No lleva token
-            
+            Apis.Boson.BOSON_ObtenerPosicion("WS_UsaMex", "monitoreo@usamexcarrier.com", "UsaMexCa2017");  //COOPERTIRES  //Transportes USAMEX CARRIER  //No lleva token            
             Apis.GpsMonitor.GGpsMonitor_ObtenerPosicion("WS_Trapol"); //Trapol - GPS Monitor
             Apis.Cybermapa.Cybermapa_ObtenerPosicion("WS_RBA", "PANA", "MUNDIAL2016");  //Transportes RBA
 
